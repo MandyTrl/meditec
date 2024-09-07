@@ -1,80 +1,21 @@
-import React, { useMemo } from "react"
-import { AxisOptions, Chart } from "react-charts"
-
-type DailyStars = {
-	date: Date
-	stars: number
-}
-
-type Series = {
-	label: string
-	data: DailyStars[]
-}
-
-const data: Series[] = [
-	{
-		label: "Série 1",
-		data: [
-			{
-				date: new Date(),
-				stars: 23,
-			},
-		],
-	},
-	{
-		label: "Série 2",
-		data: [
-			{
-				date: new Date(),
-				stars: 16,
-			},
-		],
-	},
-	{
-		label: "Série 3",
-		data: [
-			{
-				date: new Date(),
-				stars: 6,
-			},
-		],
-	},
-	{
-		label: "Série 4",
-		data: [
-			{
-				date: new Date(),
-				stars: 14,
-			},
-		],
-	},
-]
+import React from "react"
+import { LineChart, Line, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts"
 
 export const CustomChart = () => {
-	const primaryAxis = useMemo(
-		(): AxisOptions<DailyStars> => ({
-			getValue: (datum) => datum.date,
-		}),
-		[]
-	)
-
-	const secondaryAxes = useMemo(
-		(): AxisOptions<DailyStars>[] => [
-			{
-				getValue: (datum) => datum.stars,
-			},
-		],
-		[]
-	)
+	const data = [
+		{ name: "Page A", uv: 400, pv: 2400, amt: 2400 },
+		{ name: "Page A", uv: 450, pv: 2400, amt: 2400 },
+		{ name: "Page A", uv: 480, pv: 2400, amt: 2400 },
+		{ name: "Page A", uv: 410, pv: 2400, amt: 2400 },
+	]
 
 	return (
-		<Chart
-			options={{
-				data,
-				primaryAxis,
-				secondaryAxes,
-			}}
-			className="flex w-4/5 h-5/6"
-		/>
+		<LineChart width={400} height={400} data={data}>
+			<Line type="monotone" dataKey="uv" stroke="#8d8" />
+			<CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+			<XAxis dataKey="name" />
+			<YAxis />
+			<Tooltip />
+		</LineChart>
 	)
 }
