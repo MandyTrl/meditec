@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="fr">
-			<body className={`${krub.className} px-12`}>
+			<body className={`${krub.className} px-3 md:px-12`}>
 				<Header />
 
 				{children}

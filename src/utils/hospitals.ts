@@ -24,7 +24,7 @@ type MonthlyHospitalization = {
 	value: number
 }
 
-type Overviews = {
+type Overview = {
 	totalPatients: number
 	satisfactionRate: string
 	totalTreatments: number
@@ -35,18 +35,18 @@ type Overviews = {
 export type Hospital = {
 	name: string
 	location: string
-	overviews: Overviews
+	overview: Overview
 	monthlyHospitalizations: MonthlyHospitalization[]
 	doctorSpecialties: DoctorSpecialty[]
 	clinicalTrials: ClinicalTrial[]
 	hospitalDepartments: HospitalDepartment[]
 }
 
-export const Hospitals: Hospital[] = [
+const topHospitals: Hospital[] = [
 	{
 		name: "Hôpital Saint-Jean",
 		location: "Paris, France",
-		overviews: {
+		overview: {
 			totalPatients: 12345,
 			satisfactionRate: "89%",
 			totalTreatments: 8765,
@@ -472,3 +472,42 @@ export const Hospitals: Hospital[] = [
 		],
 	},
 ]
+
+type ResumeHospital = {
+	name: string
+	location: string
+	satisfactionRate: string
+}
+
+const resumeTopHospitals: ResumeHospital[] = topHospitals
+	.map((hospital: Hospital) => ({
+		name: hospital.name,
+		location: hospital.location,
+		satisfactionRate: hospital.overview.satisfactionRate,
+	}))
+	.sort(
+		(a, b) => parseFloat(b.satisfactionRate) - parseFloat(a.satisfactionRate)
+	)
+
+const hospitalizationsPerYear = topHospitals.map((hospital) => {
+	const hospitalData: {
+		name: string
+		yearlyHospitalizations: { [year: number]: number }
+	} = {
+		name: hospital.name,
+		yearlyHospitalizations: {},
+	}
+
+	//calcul de la somme des hospitalisations par année et par hôpital
+	hospital.monthlyHospitalizations.forEach((hospital) => {
+		if (!hospitalData.yearlyHospitalizations[hospital.year]) {
+			hospitalData.yearlyHospitalizations[hospital.year] = 0
+		}
+		hospitalData.yearlyHospitalizations[hospital.year] += hospital.value
+	})
+
+	return hospitalData
+})
+
+export { topHospitals, resumeTopHospitals, hospitalizationsPerYear }
+export type { ResumeHospital }

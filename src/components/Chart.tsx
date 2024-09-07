@@ -1,7 +1,7 @@
 import React from "react"
 import { LineChart, Line, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts"
 
-export const CustomChart = () => {
+export const Chart = () => {
 	const data = [
 		{ name: "Page A", uv: 400, pv: 2400, amt: 2400 },
 		{ name: "Page A", uv: 450, pv: 2400, amt: 2400 },

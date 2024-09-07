@@ -1,10 +1,10 @@
-import { Dashboard } from "@components/Dashboard"
+import { DashboardContainer } from "@components/DashboardContainer"
 
 export default function Home() {
 	return (
 		<div>
 			<main className="w-full flex flex-col">
-				<Dashboard />
+				<DashboardContainer />
 			</main>
 		</div>
 	)
