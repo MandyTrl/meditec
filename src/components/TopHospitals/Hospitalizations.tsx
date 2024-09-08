@@ -1,14 +1,54 @@
 import React from "react"
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts"
+import {
+	BarChart,
+	Bar,
+	CartesianGrid,
+	Tooltip,
+	XAxis,
+	YAxis,
+	Legend,
+} from "recharts"
 import { hospitalizationsPerYear } from "@/utils/hospitals"
+import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
 
 export const Hospitalizations = () => {
-	console.log(hospitalizationsPerYear)
+	const chartData = hospitalizationsPerYear.map((hospital) => {
+		return {
+			name: hospital.name,
+			"2023": hospital.yearlyHospitalizations["2023"],
+			"2024": hospital.yearlyHospitalizations["2024"],
+		}
+	})
 
 	return (
-		<div className="w-fit bg-white rounded-2xl p-6 text-primary shadow-md">
-			<BarChart width={150} height={40} data={hospitalizationsPerYear}>
-				<Bar dataKey="year" fill="#8884d8" />
+		<div className="w-full md:w-fit mt-2 md:mt-0 ml-0 md:ml-2 bg-white rounded-2xl p-6 text-primary shadow-md">
+			<h4 className="font-bold mb-5 md:mb-10">Hospitalisations</h4>
+
+			<BarChart width={675} height={280} data={chartData} barGap={3}>
+				<CartesianGrid stroke="#d2cee5" strokeDasharray="3 5" />
+
+				<XAxis dataKey="name" stroke="#2100AD" height={17} />
+
+				<YAxis stroke="#2100AD" />
+
+				<Tooltip
+					wrapperStyle={{
+						width: 180,
+						backgroundColor: "rgba(210, 229, 255, 0.5)",
+					}}
+				/>
+
+				<Legend
+					width={100}
+					wrapperStyle={{
+						top: -60,
+						right: 0,
+						lineHeight: "17px",
+					}}
+				/>
+
+				<Bar dataKey="2023" fill="#64BEFF" label={CustomTextLabel} />
+				<Bar dataKey="2024" fill="#EF62FF" label={CustomTextLabel} />
 			</BarChart>
 		</div>
 	)

@@ -489,13 +489,13 @@ const resumeTopHospitals: ResumeHospital[] = topHospitals
 		(a, b) => parseFloat(b.satisfactionRate) - parseFloat(a.satisfactionRate)
 	)
 
-const hospitalizationsPerYear = topHospitals.map((hospital) => {
+const hospitalizationsPerYear = topHospitals.map((hospital: Hospital) => {
 	const hospitalData: {
 		name: string
 		yearlyHospitalizations: { [year: number]: number }
 	} = {
 		name: hospital.name,
-		yearlyHospitalizations: {},
+		yearlyHospitalizations: [],
 	}
 
 	//calcul de la somme des hospitalisations par année et par hôpital
