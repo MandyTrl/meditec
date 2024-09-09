@@ -1,7 +1,7 @@
 # Tekkare Dashboard
-
-### Techincal test for [Tekkare](https://tekkare.com/)
-Dashboard with KPI, charts, datavisualisation for medical structures.
+<sup>Techincal test for [Tekkare](https://tekkare.com/)</sup> <br>
+Dashboard with KPI, charts, datavisualisation for medical structures.<br>
+→	 For filter datas by hospital, click on one hospital for select it.<br>
 
 💻 **Front** [ NextJS • TypeScript • Tailwind • Recharts ]<br>
 📚 **Documentation Links**
@@ -9,13 +9,24 @@ Dashboard with KPI, charts, datavisualisation for medical structures.
 [Tailwind](https://tailwindcss.com/) • 
 [Recharts](https://recharts.org/en-US) }
 
+**Deployed on https://tekkare-dashboard-wine.vercel.app/**
 <br>
 
 ### How to run project ?
-- [ ] Clone project with the command ```git clone https://github.com/MandyTrl/tekkare.git```
-- [ ] Open and use our terminal 
-- [ ] Run with the command ```yarn dev```
-- [ ] Open your browser at [http://localhost:3000](http://localhost:3000/)
+1. Clone project with the command ```git clone https://github.com/MandyTrl/tekkare.git```
+2. Open our terminal and run with the command ```yarn dev```
+3. Open your browser at [http://localhost:3000](http://localhost:3000/)
 
   _Et voilà !_ 👌
-<br><br>
+
+<br>
+
+### Upcoming Features 🚀
+- [ ]  filter by date
+- [ ]  chart by department with number of patients per day
+- [ ]  a chart for clinical tests
+- [ ]  a graph for satisfaction by specialty with number of staff allocated
+- [ ]  integrate an additional table with data on the latest research
+- [ ]  add a monthly visualization to the hospitalization chart
+- [ ]  integrate a search bar to filter data
+- [ ]  integrated translation
