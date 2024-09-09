@@ -1,4 +1,4 @@
-import { tabs } from "@/utils/tabs"
+import { tabs } from "@/utils/Datas/tabs"
 import { Tab } from "@components/UI/Tab"
 
 export const ListTabs = () => {

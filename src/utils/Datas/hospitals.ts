@@ -32,7 +32,7 @@ type Overview = {
 	numberOfNurses: number
 }
 
-export type Hospital = {
+type Hospital = {
 	name: string
 	location: string
 	overview: Overview
@@ -510,4 +510,4 @@ const hospitalizationsPerYear = topHospitals.map((hospital: Hospital) => {
 })
 
 export { topHospitals, resumeTopHospitals, hospitalizationsPerYear }
-export type { ResumeHospital }
+export type { ResumeHospital, Hospital }

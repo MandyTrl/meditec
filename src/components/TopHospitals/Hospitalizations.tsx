@@ -8,7 +8,7 @@ import {
 	YAxis,
 	Legend,
 } from "recharts"
-import { hospitalizationsPerYear } from "@/utils/hospitals"
+import { hospitalizationsPerYear } from "@/utils/Datas/hospitals"
 import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
 
 export const Hospitalizations = () => {
@@ -24,12 +24,22 @@ export const Hospitalizations = () => {
 		<div className="w-full md:w-fit mt-2 md:mt-0 ml-0 md:ml-2 bg-white rounded-2xl p-6 text-primary shadow-md">
 			<h4 className="font-bold mb-5 md:mb-10">Hospitalisations</h4>
 
-			<BarChart width={675} height={280} data={chartData} barGap={3}>
-				<CartesianGrid stroke="#d2cee5" strokeDasharray="3 5" />
+			<BarChart
+				width={675}
+				height={280}
+				data={chartData}
+				barGap={3}
+				margin={{
+					top: 12,
+					right: 18,
+					left: 12,
+					bottom: 0,
+				}}>
+				<CartesianGrid stroke="#d2cee5" strokeDasharray="3 3" />
 
 				<XAxis dataKey="name" stroke="#2100AD" height={17} />
 
-				<YAxis stroke="#2100AD" />
+				<YAxis stroke="#2100AD" allowDataOverflow />
 
 				<Tooltip
 					wrapperStyle={{

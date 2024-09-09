@@ -1,25 +1,54 @@
-import React from "react"
-import { resumeTopHospitals, ResumeHospital } from "@/utils/hospitals"
+"use client"
+import React, { useContext, useEffect, useState } from "react"
+import { HospitalContext } from "@utils/Context/index"
+import { resumeTopHospitals, ResumeHospital } from "@/utils/Datas/hospitals"
 
 export const Intro = () => {
+	const hospitalCtxt = useContext(HospitalContext)
+	const { hospital, handleHospital } = hospitalCtxt
+
+	const [hospitalsToRender, setHospitalsToRender] =
+		useState<ResumeHospital[]>(resumeTopHospitals)
+
+	useEffect(() => {
+		if (!hospitalCtxt) {
+			console.log("no context available")
+			setHospitalsToRender(resumeTopHospitals)
+			return
+		}
+
+		//si le context renvoit un hôpital sélectionné, le trouver dans "resumeTopHospital", sinon renvoyer tous les résumés
+		if (Array.isArray(hospital)) {
+			setHospitalsToRender(resumeTopHospitals)
+		} else {
+			setHospitalsToRender(
+				resumeTopHospitals.filter((el) => el.name === hospital.name)
+			)
+		}
+	}, [hospitalCtxt, hospitalCtxt?.hospital, hospital])
+
+	//composant rendu en fonction des données choisies (un hôpital || tous les hôpitaux)
+	const renderHospital = (el: ResumeHospital) => {
+		return (
+			<div
+				key={el.name}
+				className="group flex flex-col items-center my-3 md:my-0 mx-2 md:mx-4 text-center hover:opacity-80 transition-all duration-150 ease-in-out hover:cursor-pointer"
+				onClick={() => handleHospital(el.name)}>
+				<p className="w-fit font-semibold border-2 border-secondary group-hover:border-secondary/50 group-hover:bg-secondary/20 transition-all duration-150 ease-in-out  rounded-full py-5 px-4 mb-3">
+					{el.satisfactionRate}
+				</p>
+				<p className="font-medium">{el.name}</p>
+				<p className="text-xs">{el.location}</p>
+			</div>
+		)
+	}
+
 	return (
 		<div className="w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
 			<h4 className="font-bold mb-5 md:mb-10">Satisfaction %</h4>
 
 			<div className="flex flex-wrap md:flex-row items-center justify-between my-2">
-				{resumeTopHospitals.map((el: ResumeHospital) => {
-					return (
-						<div
-							key={el.name}
-							className="group flex flex-col items-center my-3 md:my-0 mx-2 md:mx-4 text-center hover:opacity-80 transition-all duration-150 ease-in-out hover:cursor-pointer">
-							<p className="w-fit font-semibold border-2 border-secondary group-hover:border-secondary/50 group-hover:bg-secondary/20 transition-all duration-150 ease-in-out  rounded-full py-5 px-4 mb-3">
-								{el.satisfactionRate}
-							</p>
-							<p className="font-medium">{el.name}</p>
-							<p className="text-xs">{el.location}</p>
-						</div>
-					)
-				})}
+				{hospitalsToRender.map(renderHospital)}
 			</div>
 		</div>
 	)
