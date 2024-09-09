@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import {
 	BarChart,
 	Bar,
@@ -8,17 +8,52 @@ import {
 	YAxis,
 	Legend,
 } from "recharts"
-import { hospitalizationsPerYear } from "@/utils/Datas/hospitals"
 import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
+import { useHospitalSelected } from "@utils/Hooks/useHospitalSelected"
+import { Hospital } from "@/utils/Datas/hospitals"
+
+type ChartData = {
+	name: string
+	2023: number
+	2024: number
+}
 
 export const Hospitalizations = () => {
-	const chartData = hospitalizationsPerYear.map((hospital) => {
-		return {
-			name: hospital.name,
-			"2023": hospital.yearlyHospitalizations["2023"],
-			"2024": hospital.yearlyHospitalizations["2024"],
-		}
-	})
+	const { hospital } = useHospitalSelected()
+	const [chartData, setChartData] = useState<ChartData[] | []>([])
+
+	useEffect(() => {
+		console.log(hospital)
+		const hospitalizationsPerYear = hospital.map((el: Hospital) => {
+			const hospitalData: {
+				name: string
+				yearlyHospitalizations: { [year: number]: number }
+			} = {
+				name: el.name,
+				yearlyHospitalizations: [],
+			}
+
+			//calcul de la somme des hospitalisations par année et par hôpital
+			el.monthlyHospitalizations.forEach((el) => {
+				if (!hospitalData.yearlyHospitalizations[el.year]) {
+					hospitalData.yearlyHospitalizations[el.year] = 0
+				}
+				hospitalData.yearlyHospitalizations[el.year] += el.value
+			})
+
+			return hospitalData
+		})
+
+		const datas: ChartData[] = hospitalizationsPerYear.map((hospital) => {
+			return {
+				name: hospital.name,
+				"2023": hospital.yearlyHospitalizations["2023"],
+				"2024": hospital.yearlyHospitalizations["2024"],
+			}
+		})
+
+		setChartData(datas)
+	}, [hospital])
 
 	return (
 		<div className="w-full md:w-fit mt-2 md:mt-0 ml-0 md:ml-2 bg-white rounded-2xl p-6 text-primary shadow-md">

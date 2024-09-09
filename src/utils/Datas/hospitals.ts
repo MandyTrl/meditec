@@ -489,25 +489,5 @@ const resumeTopHospitals: ResumeHospital[] = topHospitals
 		(a, b) => parseFloat(b.satisfactionRate) - parseFloat(a.satisfactionRate)
 	)
 
-const hospitalizationsPerYear = topHospitals.map((hospital: Hospital) => {
-	const hospitalData: {
-		name: string
-		yearlyHospitalizations: { [year: number]: number }
-	} = {
-		name: hospital.name,
-		yearlyHospitalizations: [],
-	}
-
-	//calcul de la somme des hospitalisations par année et par hôpital
-	hospital.monthlyHospitalizations.forEach((hospital) => {
-		if (!hospitalData.yearlyHospitalizations[hospital.year]) {
-			hospitalData.yearlyHospitalizations[hospital.year] = 0
-		}
-		hospitalData.yearlyHospitalizations[hospital.year] += hospital.value
-	})
-
-	return hospitalData
-})
-
-export { topHospitals, resumeTopHospitals, hospitalizationsPerYear }
+export { topHospitals, resumeTopHospitals }
 export type { ResumeHospital, Hospital }

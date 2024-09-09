@@ -1,16 +1,14 @@
-import { tabs } from "@/utils/Datas/tabs"
 import { Tab } from "@components/UI/Tab"
-import { HospitalContext } from "@/utils/Context"
-import { useContext } from "react"
+import { tabs } from "@/utils/Datas/tabs"
+import { useHospitalSelected } from "@/utils/Hooks/useHospitalSelected"
 
 export const ListTabs = () => {
-	const hospitalCtxt = useContext(HospitalContext)
-	const { hospital } = hospitalCtxt
+	const { hospital, hospitalSelected } = useHospitalSelected()
 
 	return (
 		<ul className="w-full md:w-fit flex">
 			{tabs.map((title: string) => {
-				const titleToRender = !Array.isArray(hospital) ? hospital.name : title
+				const titleToRender = hospitalSelected ? hospital[0].name : title
 
 				return (
 					<Tab

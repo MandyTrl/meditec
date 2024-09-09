@@ -1,11 +1,13 @@
 "use client"
 import React, { useContext, useEffect, useState } from "react"
 import { HospitalContext } from "@utils/Context/index"
+import { useHospitalSelected } from "@/utils/Hooks/useHospitalSelected"
 import { resumeTopHospitals, ResumeHospital } from "@/utils/Datas/hospitals"
 
 export const Intro = () => {
 	const hospitalCtxt = useContext(HospitalContext)
-	const { hospital, handleHospital } = hospitalCtxt
+	const { handleHospital } = hospitalCtxt
+	const { hospital, hospitalSelected } = useHospitalSelected()
 
 	const [hospitalsToRender, setHospitalsToRender] =
 		useState<ResumeHospital[]>(resumeTopHospitals)
@@ -18,14 +20,16 @@ export const Intro = () => {
 		}
 
 		//si le context renvoit un hôpital sélectionné, le trouver dans "resumeTopHospital", sinon renvoyer tous les résumés
-		if (Array.isArray(hospital)) {
+		if (!hospitalSelected) {
 			setHospitalsToRender(resumeTopHospitals)
 		} else {
-			setHospitalsToRender(
-				resumeTopHospitals.filter((el) => el.name === hospital.name)
+			const hospitalFound = resumeTopHospitals.filter(
+				(el) => el.name === hospital[0].name
 			)
+
+			setHospitalsToRender(hospitalFound)
 		}
-	}, [hospitalCtxt, hospitalCtxt?.hospital, hospital])
+	}, [hospitalCtxt, hospitalCtxt.hospital, hospital, hospitalSelected])
 
 	//composant rendu en fonction des données choisies (un hôpital || tous les hôpitaux)
 	const renderHospital = (el: ResumeHospital) => {
