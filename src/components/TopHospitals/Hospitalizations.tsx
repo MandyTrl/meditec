@@ -9,8 +9,9 @@ import {
 	Legend,
 } from "recharts"
 import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
-import { useHospitalSelected } from "@utils/Hooks/useHospitalSelected"
-import { Hospital } from "@/utils/Datas/hospitals"
+import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
+import { useBreakpoint } from "@/utils/hooks/useBP"
+import { Hospital } from "@/utils/data/hospitals"
 
 type ChartData = {
 	name: string
@@ -19,11 +20,14 @@ type ChartData = {
 }
 
 export const Hospitalizations = () => {
-	const { hospital } = useHospitalSelected()
+	const breakpoint = useBreakpoint()
+	const isMobile = breakpoint === "mobile"
+
+	const { hospital, hospitalSelected } = useHospitalSelected()
+
 	const [chartData, setChartData] = useState<ChartData[] | []>([])
 
 	useEffect(() => {
-		console.log(hospital)
 		const hospitalizationsPerYear = hospital.map((el: Hospital) => {
 			const hospitalData: {
 				name: string
@@ -44,7 +48,7 @@ export const Hospitalizations = () => {
 			return hospitalData
 		})
 
-		const datas: ChartData[] = hospitalizationsPerYear.map((hospital) => {
+		const data: ChartData[] = hospitalizationsPerYear.map((hospital) => {
 			return {
 				name: hospital.name,
 				"2023": hospital.yearlyHospitalizations["2023"],
@@ -52,29 +56,42 @@ export const Hospitalizations = () => {
 			}
 		})
 
-		setChartData(datas)
+		setChartData(data)
 	}, [hospital])
 
 	return (
-		<div className="w-full md:w-fit mt-2 md:mt-0 ml-0 md:ml-2 bg-white rounded-2xl p-6 text-primary shadow-md">
-			<h4 className="font-bold mb-5 md:mb-10">Hospitalisations</h4>
+		<div className="w-full md:w-fit mt-2 md:mt-0 bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
+				Hospitalisations
+			</h4>
 
 			<BarChart
-				width={675}
-				height={280}
+				width={isMobile ? 320 : hospitalSelected ? 375 : 675}
+				height={isMobile ? 300 : 280}
 				data={chartData}
 				barGap={3}
 				margin={{
-					top: 12,
-					right: 18,
-					left: 12,
+					top: isMobile ? 35 : 12,
+					right: isMobile ? 30 : 18,
+					left: isMobile ? 0 : 12,
 					bottom: 0,
 				}}>
 				<CartesianGrid stroke="#d2cee5" strokeDasharray="3 3" />
 
 				<XAxis dataKey="name" stroke="#2100AD" height={17} />
 
-				<YAxis stroke="#2100AD" allowDataOverflow />
+				<YAxis
+					stroke="#2100AD"
+					allowDataOverflow
+					width={isMobile ? 25 : 60}
+					tick={{
+						fontSize: isMobile ? 14 : 16,
+						angle: isMobile ? -90 : 0,
+						dx: isMobile ? -10 : 0,
+						dy: isMobile ? 10 : 0,
+					}}
+					tickSize={isMobile ? 4 : 6}
+				/>
 
 				<Tooltip
 					wrapperStyle={{
@@ -86,7 +103,7 @@ export const Hospitalizations = () => {
 				<Legend
 					width={100}
 					wrapperStyle={{
-						top: -60,
+						top: isMobile ? -20 : -40,
 						right: 0,
 						lineHeight: "17px",
 					}}

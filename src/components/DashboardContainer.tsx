@@ -1,10 +1,9 @@
 "use client"
 import React, { useState } from "react"
 import { HospitalContext } from "@/utils/Context"
-import { Hospital, topHospitals } from "@/utils/Datas/hospitals"
+import { Hospital, topHospitals } from "@/utils/data/hospitals"
 import { ListTabs } from "@components/UI/ListTabs"
 import { TopHospitalsLayout } from "@components/Layout/TopHospitalsLayout"
-import { Hospitalizations } from "./TopHospitals/Hospitalizations"
 
 export const DashboardContainer = () => {
 	const [hospital, setHospital] = useState<Hospital[]>(topHospitals)
@@ -21,9 +20,8 @@ export const DashboardContainer = () => {
 			<div className="w-full h-full mt-5 md:mt-20">
 				<ListTabs />
 
-				<div className="flex flex-col md:flex-row items-start bg-white/20 p-2 md:p-5 rounded-b-xl md:rounded-tl-none">
+				<div className="w-full bg-white/20 p-2 md:p-5 md:rounded-tr-xl rounded-b-xl md:rounded-tl-none">
 					<TopHospitalsLayout />
-					<Hospitalizations />
 				</div>
 			</div>
 		</HospitalContext.Provider>

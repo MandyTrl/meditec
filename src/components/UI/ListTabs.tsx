@@ -1,6 +1,6 @@
 import { Tab } from "@components/UI/Tab"
-import { tabs } from "@/utils/Datas/tabs"
-import { useHospitalSelected } from "@/utils/Hooks/useHospitalSelected"
+import { tabs } from "@/utils/data/tabs"
+import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 
 export const ListTabs = () => {
 	const { hospital, hospitalSelected } = useHospitalSelected()

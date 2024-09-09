@@ -1,5 +1,5 @@
 import { createContext } from "react"
-import { Hospital, topHospitals } from "@utils/Datas/hospitals"
+import { Hospital, topHospitals } from "@utils/data/hospitals"
 
 export type HospitalContextProps = {
 	hospital: Hospital[]

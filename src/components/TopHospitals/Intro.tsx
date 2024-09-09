@@ -1,8 +1,9 @@
 "use client"
 import React, { useContext, useEffect, useState } from "react"
+import clsx from "clsx"
 import { HospitalContext } from "@utils/Context/index"
-import { useHospitalSelected } from "@/utils/Hooks/useHospitalSelected"
-import { resumeTopHospitals, ResumeHospital } from "@/utils/Datas/hospitals"
+import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
+import { resumeTopHospitals, ResumeHospital } from "@/utils/data/hospitals"
 
 export const Intro = () => {
 	const hospitalCtxt = useContext(HospitalContext)
@@ -36,9 +37,9 @@ export const Intro = () => {
 		return (
 			<div
 				key={el.name}
-				className="group flex flex-col items-center my-3 md:my-0 mx-2 md:mx-4 text-center hover:opacity-80 transition-all duration-150 ease-in-out hover:cursor-pointer"
+				className="group flex flex-col items-center text-center hover:opacity-80 transition-all duration-150 ease-in-out hover:cursor-pointer"
 				onClick={() => handleHospital(el.name)}>
-				<p className="w-fit font-semibold border-2 border-secondary group-hover:border-secondary/50 group-hover:bg-secondary/20 transition-all duration-150 ease-in-out  rounded-full py-5 px-4 mb-3">
+				<p className="w-fit font-semibold border-2 border-secondary group-hover:border-secondary/50 group-hover:bg-secondary/20 transition-all duration-150 ease-in-out rounded-full py-5 px-4 mb-3">
 					{el.satisfactionRate}
 				</p>
 				<p className="font-medium">{el.name}</p>
@@ -48,10 +49,16 @@ export const Intro = () => {
 	}
 
 	return (
-		<div className="w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
-			<h4 className="font-bold mb-5 md:mb-10">Satisfaction %</h4>
+		<div className="h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+			<h4 className="font-bold text-center md:text-left mt-2 mb-7 md:mb-10">
+				Satisfaction %
+			</h4>
 
-			<div className="flex flex-wrap md:flex-row items-center justify-between my-2">
+			<div
+				className={clsx(
+					hospitalSelected ? "grid-cols" : "grid-cols-2 gap-y-5",
+					"grid my-2"
+				)}>
 				{hospitalsToRender.map(renderHospital)}
 			</div>
 		</div>
