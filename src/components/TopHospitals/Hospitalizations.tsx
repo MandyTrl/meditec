@@ -8,9 +8,10 @@ import {
 	YAxis,
 	Legend,
 } from "recharts"
+
+import { useBreakpoint } from "@/utils/hooks/useBP"
 import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
-import { useBreakpoint } from "@/utils/hooks/useBP"
 import { Hospital } from "@/utils/data/hospitals"
 
 type ChartData = {
@@ -59,6 +60,17 @@ export const Hospitalizations = () => {
 		setChartData(data)
 	}, [hospital])
 
+	const handleChartWidth = () => {
+		if (isMobile) {
+			return 320
+		} else {
+			if (hospitalSelected) {
+				return 375
+			}
+			return 675
+		}
+	}
+
 	return (
 		<div className="w-full md:w-fit mt-2 md:mt-0 bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
 			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
@@ -66,7 +78,7 @@ export const Hospitalizations = () => {
 			</h4>
 
 			<BarChart
-				width={isMobile ? 320 : hospitalSelected ? 375 : 675}
+				width={handleChartWidth()}
 				height={isMobile ? 300 : 280}
 				data={chartData}
 				barGap={3}
@@ -80,18 +92,14 @@ export const Hospitalizations = () => {
 
 				<XAxis dataKey="name" stroke="#2100AD" height={17} />
 
-				<YAxis
-					stroke="#2100AD"
-					allowDataOverflow
-					width={isMobile ? 25 : 60}
-					tick={{
-						fontSize: isMobile ? 14 : 16,
-						angle: isMobile ? -90 : 0,
-						dx: isMobile ? -10 : 0,
-						dy: isMobile ? 10 : 0,
-					}}
-					tickSize={isMobile ? 4 : 6}
-				/>
+				{isMobile && (
+					<YAxis
+						stroke="#2100AD"
+						allowDataOverflow
+						width={isMobile ? 25 : 60}
+						tickSize={isMobile ? 4 : 6}
+					/>
+				)}
 
 				<Tooltip
 					wrapperStyle={{
