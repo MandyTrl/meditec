@@ -8,7 +8,6 @@ import {
 	YAxis,
 	Legend,
 } from "recharts"
-
 import { useBreakpoint } from "@/utils/hooks/useBP"
 import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
@@ -67,7 +66,7 @@ export const Hospitalizations = () => {
 			if (hospitalSelected) {
 				return 375
 			}
-			return 675
+			return 700
 		}
 	}
 
@@ -92,13 +91,8 @@ export const Hospitalizations = () => {
 
 				<XAxis dataKey="name" stroke="#2100AD" height={17} />
 
-				{isMobile && (
-					<YAxis
-						stroke="#2100AD"
-						allowDataOverflow
-						width={isMobile ? 25 : 60}
-						tickSize={isMobile ? 4 : 6}
-					/>
+				{!isMobile && (
+					<YAxis stroke="#2100AD" allowDataOverflow width={60} tickSize={6} />
 				)}
 
 				<Tooltip

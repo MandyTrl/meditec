@@ -1,7 +1,7 @@
 type HospitalDepartment = {
 	department: string
 	patientsPerDay: number
-	averageWaitTime: string
+	averageWaitTime: number
 }
 
 type ClinicalTrial = {
@@ -136,17 +136,17 @@ const topHospitals: Hospital[] = [
 			{
 				department: "Urgences",
 				patientsPerDay: 150,
-				averageWaitTime: "45 min",
+				averageWaitTime: 45,
 			},
 			{
 				department: "Cardiologie",
 				patientsPerDay: 80,
-				averageWaitTime: "30 min",
+				averageWaitTime: 30,
 			},
 			{
 				department: "Neurologie",
 				patientsPerDay: 60,
-				averageWaitTime: "35 min",
+				averageWaitTime: 35,
 			},
 		],
 	},
@@ -243,17 +243,17 @@ const topHospitals: Hospital[] = [
 			{
 				department: "Urgences",
 				patientsPerDay: 140,
-				averageWaitTime: "50 min",
+				averageWaitTime: 50,
 			},
 			{
 				department: "Cardiologie",
 				patientsPerDay: 75,
-				averageWaitTime: "25 min",
+				averageWaitTime: 25,
 			},
 			{
 				department: "Neurologie",
 				patientsPerDay: 55,
-				averageWaitTime: "40 min",
+				averageWaitTime: 40,
 			},
 		],
 	},
@@ -350,17 +350,17 @@ const topHospitals: Hospital[] = [
 			{
 				department: "Urgences",
 				patientsPerDay: 160,
-				averageWaitTime: "40 min",
+				averageWaitTime: 40,
 			},
 			{
 				department: "Cardiologie",
 				patientsPerDay: 85,
-				averageWaitTime: "28 min",
+				averageWaitTime: 28,
 			},
 			{
 				department: "Neurologie",
 				patientsPerDay: 65,
-				averageWaitTime: "32 min",
+				averageWaitTime: 32,
 			},
 		],
 	},
@@ -457,17 +457,17 @@ const topHospitals: Hospital[] = [
 			{
 				department: "Urgences",
 				patientsPerDay: 155,
-				averageWaitTime: "42 min",
+				averageWaitTime: 42,
 			},
 			{
 				department: "Cardiologie",
 				patientsPerDay: 80,
-				averageWaitTime: "33 min",
+				averageWaitTime: 33,
 			},
 			{
 				department: "Neurologie",
 				patientsPerDay: 60,
-				averageWaitTime: "38 min",
+				averageWaitTime: 38,
 			},
 		],
 	},
@@ -490,4 +490,4 @@ const resumeTopHospitals: ResumeHospital[] = topHospitals
 	)
 
 export { topHospitals, resumeTopHospitals }
-export type { ResumeHospital, Hospital }
+export type { ResumeHospital, Hospital, DoctorSpecialty, HospitalDepartment }
