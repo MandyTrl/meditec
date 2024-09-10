@@ -24,7 +24,6 @@ export const ActiveShape = ({
 	outerRadius,
 	startAngle,
 	endAngle,
-	fill,
 	payload,
 }: ActiveShapeProps) => {
 	const RADIAN = Math.PI / 180
