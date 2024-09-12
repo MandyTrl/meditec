@@ -1,5 +1,5 @@
 export const tabs: string[] = [
-	"Top Hôpitaux de France",
+	"Performance des Hôpitaux",
 	// "Molécules",
 	// "Dernières recherches",
 ]

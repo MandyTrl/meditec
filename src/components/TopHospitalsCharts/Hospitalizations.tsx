@@ -11,7 +11,7 @@ import {
 import { useBreakpoint } from "@/utils/hooks/useBP"
 import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
-import { Hospital } from "@/utils/data/hospitals"
+import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 
 type ChartData = {
 	name: string

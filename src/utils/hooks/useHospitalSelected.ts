@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { HospitalContext, HospitalContextProps } from "@utils/Context/index"
-import { topHospitals } from "@utils/data/hospitals"
+import { topHospitals } from "@utils/data/hospitals/hospitals"
 
 export const useHospitalSelected = () => {
 	const hospitalCtxt: HospitalContextProps = useContext(HospitalContext)

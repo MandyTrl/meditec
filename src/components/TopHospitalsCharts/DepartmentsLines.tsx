@@ -1,6 +1,6 @@
 import React from "react"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
-import { Hospital } from "@/utils/data/hospitals"
+import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import {
 	LineChart,
 	CartesianGrid,

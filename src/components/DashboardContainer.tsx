@@ -1,7 +1,8 @@
 "use client"
 import React, { useState } from "react"
 import { HospitalContext } from "@/utils/Context"
-import { Hospital, topHospitals } from "@/utils/data/hospitals"
+import { topHospitals } from "@/utils/data/hospitals/hospitals"
+import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { ListTabs } from "@components/UI/ListTabs"
 import { TopHospitalsLayout } from "@components/Layout/TopHospitalsLayout"
 

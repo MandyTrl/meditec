@@ -3,7 +3,8 @@ import React, { useContext, useEffect, useState } from "react"
 import clsx from "clsx"
 import { HospitalContext } from "@utils/Context/index"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
-import { resumeTopHospitals, ResumeHospital } from "@/utils/data/hospitals"
+import { resumeTopHospitals } from "@/utils/data/hospitals/hospitals"
+import { ResumeHospital } from "@/utils/data/hospitals/hospitalsTypes"
 
 export const Intro = () => {
 	const hospitalCtxt = useContext(HospitalContext)
