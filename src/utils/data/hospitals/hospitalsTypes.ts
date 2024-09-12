@@ -15,7 +15,7 @@ type ClinicalTrial = {
 type DoctorSpecialty = {
 	specialty: string
 	numberOfDoctors: number
-	satisfactionRate: string
+	satisfactionRate: number
 }
 
 type MonthlyHospitalization = {

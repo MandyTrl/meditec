@@ -20,7 +20,7 @@ export const DepartmentsLines = () => {
 	return (
 		<div className="h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
 			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
-				Patients by departments
+				Patients par département
 			</h4>
 
 			<div className="flex flex-wrap justify-around">
@@ -30,7 +30,7 @@ export const DepartmentsLines = () => {
 							<p className="mb-0 md:mb-1">{el.name}</p>
 
 							<LineChart
-								width={isMobile ? 320 : 565}
+								width={isMobile ? 320 : 575}
 								height={isMobile ? 350 : 300}
 								data={el.hospitalDepartments}
 								margin={{
@@ -41,14 +41,18 @@ export const DepartmentsLines = () => {
 								}}>
 								<CartesianGrid strokeDasharray="3 3" />
 
-								<XAxis dataKey="department" padding={{ left: 20, right: 20 }} />
-								{!isMobile && <YAxis />}
+								<XAxis
+									dataKey="department"
+									padding={{ left: 20, right: 20 }}
+									stroke="#2100AD"
+								/>
+								{!isMobile && <YAxis stroke="#2100AD" />}
 
 								<Tooltip />
 								<Legend
 									width={300}
 									wrapperStyle={{
-										bottom: isMobile ? 40 : 20,
+										bottom: isMobile ? 40 : 10,
 										right: isMobile ? 0 : 90,
 										lineHeight: "50px",
 									}}

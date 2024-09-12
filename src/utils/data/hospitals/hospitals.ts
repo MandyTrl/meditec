@@ -37,27 +37,27 @@ const topHospitals: Hospital[] = [
 			{
 				specialty: "Cardiologie",
 				numberOfDoctors: 120,
-				satisfactionRate: "89%",
+				satisfactionRate: 89,
 			},
 			{
 				specialty: "Neurologie",
 				numberOfDoctors: 80,
-				satisfactionRate: "80%",
+				satisfactionRate: 80,
 			},
 			{
 				specialty: "Oncologie",
 				numberOfDoctors: 60,
-				satisfactionRate: "70%",
+				satisfactionRate: 70,
 			},
 			{
 				specialty: "Pédiatrie",
 				numberOfDoctors: 90,
-				satisfactionRate: "60%",
+				satisfactionRate: 60,
 			},
 			{
 				specialty: "Médecine Générale",
 				numberOfDoctors: 150,
-				satisfactionRate: "90%",
+				satisfactionRate: 90,
 			},
 		],
 		clinicalTrials: [
@@ -144,27 +144,27 @@ const topHospitals: Hospital[] = [
 			{
 				specialty: "Cardiologie",
 				numberOfDoctors: 110,
-				satisfactionRate: "87%",
+				satisfactionRate: 87,
 			},
 			{
 				specialty: "Neurologie",
 				numberOfDoctors: 75,
-				satisfactionRate: "78%",
+				satisfactionRate: 78,
 			},
 			{
 				specialty: "Oncologie",
 				numberOfDoctors: 65,
-				satisfactionRate: "72%",
+				satisfactionRate: 72,
 			},
 			{
 				specialty: "Pédiatrie",
 				numberOfDoctors: 85,
-				satisfactionRate: "63%",
+				satisfactionRate: 63,
 			},
 			{
 				specialty: "Médecine Générale",
 				numberOfDoctors: 140,
-				satisfactionRate: "88%",
+				satisfactionRate: 88,
 			},
 		],
 		clinicalTrials: [
@@ -205,12 +205,12 @@ const topHospitals: Hospital[] = [
 			},
 			{
 				department: "Cardiologie",
-				patientsPerDay: 75,
+				patientsPerDay: 45,
 				averageWaitTime: 25,
 			},
 			{
 				department: "Neurologie",
-				patientsPerDay: 55,
+				patientsPerDay: 25,
 				averageWaitTime: 40,
 			},
 		],
@@ -251,27 +251,27 @@ const topHospitals: Hospital[] = [
 			{
 				specialty: "Cardiologie",
 				numberOfDoctors: 115,
-				satisfactionRate: "86%",
+				satisfactionRate: 86,
 			},
 			{
 				specialty: "Neurologie",
 				numberOfDoctors: 85,
-				satisfactionRate: "82%",
+				satisfactionRate: 82,
 			},
 			{
 				specialty: "Oncologie",
 				numberOfDoctors: 70,
-				satisfactionRate: "75%",
+				satisfactionRate: 75,
 			},
 			{
 				specialty: "Pédiatrie",
 				numberOfDoctors: 95,
-				satisfactionRate: "65%",
+				satisfactionRate: 65,
 			},
 			{
 				specialty: "Médecine Générale",
 				numberOfDoctors: 145,
-				satisfactionRate: "92%",
+				satisfactionRate: 92,
 			},
 		],
 		clinicalTrials: [
@@ -307,18 +307,18 @@ const topHospitals: Hospital[] = [
 		hospitalDepartments: [
 			{
 				department: "Urgences",
-				patientsPerDay: 160,
-				averageWaitTime: 40,
+				patientsPerDay: 170,
+				averageWaitTime: 81,
 			},
 			{
 				department: "Cardiologie",
-				patientsPerDay: 85,
-				averageWaitTime: 28,
+				patientsPerDay: 95,
+				averageWaitTime: 35,
 			},
 			{
 				department: "Neurologie",
 				patientsPerDay: 65,
-				averageWaitTime: 32,
+				averageWaitTime: 20,
 			},
 		],
 	},
@@ -358,27 +358,27 @@ const topHospitals: Hospital[] = [
 			{
 				specialty: "Cardiologie",
 				numberOfDoctors: 100,
-				satisfactionRate: "84%",
+				satisfactionRate: 84,
 			},
 			{
 				specialty: "Neurologie",
 				numberOfDoctors: 70,
-				satisfactionRate: "77%",
+				satisfactionRate: 77,
 			},
 			{
 				specialty: "Oncologie",
 				numberOfDoctors: 55,
-				satisfactionRate: "71%",
+				satisfactionRate: 71,
 			},
 			{
 				specialty: "Pédiatrie",
 				numberOfDoctors: 80,
-				satisfactionRate: "62%",
+				satisfactionRate: 62,
 			},
 			{
 				specialty: "Médecine Générale",
 				numberOfDoctors: 130,
-				satisfactionRate: "88%",
+				satisfactionRate: 88,
 			},
 		],
 		clinicalTrials: [
@@ -415,17 +415,17 @@ const topHospitals: Hospital[] = [
 			{
 				department: "Urgences",
 				patientsPerDay: 155,
-				averageWaitTime: 42,
+				averageWaitTime: 55,
 			},
 			{
 				department: "Cardiologie",
-				patientsPerDay: 80,
-				averageWaitTime: 33,
+				patientsPerDay: 88,
+				averageWaitTime: 30,
 			},
 			{
 				department: "Neurologie",
 				patientsPerDay: 60,
-				averageWaitTime: 38,
+				averageWaitTime: 45,
 			},
 		],
 	},
@@ -441,4 +441,18 @@ const resumeTopHospitals: ResumeHospital[] = topHospitals
 		(a, b) => parseFloat(b.satisfactionRate) - parseFloat(a.satisfactionRate)
 	)
 
-export { topHospitals, resumeTopHospitals }
+const getSpecialties = (hospitals: Hospital[]): string[] => {
+	const specialties: string[] = []
+
+	hospitals.forEach((hospital) => {
+		hospital.doctorSpecialties.forEach((specialty) => {
+			if (!specialties.includes(specialty.specialty)) {
+				specialties.push(specialty.specialty)
+			}
+		})
+	})
+
+	return specialties
+}
+
+export { topHospitals, resumeTopHospitals, getSpecialties }

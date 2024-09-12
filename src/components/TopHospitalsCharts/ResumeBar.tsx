@@ -6,7 +6,7 @@ import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { resumeTopHospitals } from "@/utils/data/hospitals/hospitals"
 import { ResumeHospital } from "@/utils/data/hospitals/hospitalsTypes"
 
-export const Intro = () => {
+export const ResumeBar = () => {
 	const hospitalCtxt = useContext(HospitalContext)
 	const { handleHospital } = hospitalCtxt
 	const { hospital, hospitalSelected } = useHospitalSelected()
@@ -50,7 +50,7 @@ export const Intro = () => {
 	}
 
 	return (
-		<div className="h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+		<div className="h-fit w-full md:w-max bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
 			<h4 className="font-bold text-center md:text-left mt-2 mb-7 md:mb-10">
 				Satisfaction %
 			</h4>
