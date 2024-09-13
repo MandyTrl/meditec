@@ -7,7 +7,7 @@ type SelectInputProps = {
 }
 
 export const SelectInput = ({ labels, onSelectChange }: SelectInputProps) => {
-	const [selectedValue, setSelectedValue] = useState<string>(labels[0])
+	const [selectedValue, setSelectedValue] = useState<string>("")
 
 	const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedValue(event.target.value)

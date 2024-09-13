@@ -18,7 +18,7 @@ export const DepartmentsLines = () => {
 	const { hospital } = useHospitalSelected()
 
 	return (
-		<div className="h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+		<div className="flex-1 h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
 			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
 				Patients par département
 			</h4>
@@ -39,12 +39,13 @@ export const DepartmentsLines = () => {
 									left: isMobile ? 20 : 12,
 									bottom: isMobile ? 35 : 12,
 								}}>
-								<CartesianGrid strokeDasharray="3 3" />
+								<CartesianGrid stroke="#f5f5f5" />
 
 								<XAxis
 									dataKey="department"
 									padding={{ left: 20, right: 20 }}
 									stroke="#2100AD"
+									className="text-sm"
 								/>
 								{!isMobile && <YAxis stroke="#2100AD" />}
 

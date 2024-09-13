@@ -66,19 +66,19 @@ export const Hospitalizations = () => {
 			if (hospitalSelected) {
 				return 375
 			}
-			return 700
+			return 920
 		}
 	}
 
 	return (
-		<div className="w-full md:w-max mt-2 md:mt-0 bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+		<div className="flex-1 w-full md:w-max mt-2 md:mt-0 bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
 			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
 				Hospitalisations
 			</h4>
 
 			<BarChart
 				width={handleChartWidth()}
-				height={isMobile ? 300 : 280}
+				height={isMobile ? 330 : 280}
 				data={chartData}
 				barGap={3}
 				margin={{
@@ -87,9 +87,14 @@ export const Hospitalizations = () => {
 					left: isMobile ? 0 : 12,
 					bottom: 0,
 				}}>
-				<CartesianGrid stroke="#d2cee5" strokeDasharray="3 3" />
+				<CartesianGrid stroke="#f5f5f5" />
 
-				<XAxis dataKey="name" stroke="#2100AD" height={17} />
+				<XAxis
+					dataKey="name"
+					stroke="#2100AD"
+					height={17}
+					className="text-sm"
+				/>
 
 				{!isMobile && (
 					<YAxis stroke="#2100AD" allowDataOverflow width={60} tickSize={6} />
@@ -111,8 +116,18 @@ export const Hospitalizations = () => {
 					}}
 				/>
 
-				<Bar dataKey="2023" fill="#64BEFF" label={CustomTextLabel} />
-				<Bar dataKey="2024" fill="#EF62FF" label={CustomTextLabel} />
+				<Bar
+					dataKey="2023"
+					fill="#64BEFF"
+					label={CustomTextLabel}
+					barSize={60}
+				/>
+				<Bar
+					dataKey="2024"
+					fill="#EF62FF"
+					label={CustomTextLabel}
+					barSize={60}
+				/>
 			</BarChart>
 		</div>
 	)

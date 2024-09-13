@@ -25,9 +25,9 @@ type DatasDoctorSpecialties = {
 export const DoctorSpecialties = () => {
 	const breakpoint = useBreakpoint()
 	const isMobile = breakpoint === "mobile"
-	const { hospital } = useHospitalSelected()
+	const { hospital, hospitalSelected } = useHospitalSelected()
 	const labels: string[] = getSpecialties(topHospitals)
-	const [selectedLabel, setSelectedLabel] = useState<string>("")
+	const [selectedLabel, setSelectedLabel] = useState<string>(labels[0])
 
 	const handleSelectChange = (value: string) => {
 		setSelectedLabel(value)
@@ -50,7 +50,7 @@ export const DoctorSpecialties = () => {
 	}
 
 	return (
-		<div className="h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+		<div className="flex-1 w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
 			<h4 className="font-bold text-center md:text-left mt-2 mb-7 md:mb-10">
 				Spécialités
 			</h4>
@@ -58,37 +58,42 @@ export const DoctorSpecialties = () => {
 			<SelectInput labels={labels} onSelectChange={handleSelectChange} />
 
 			<ComposedChart
-				width={900}
-				height={400}
+				width={isMobile || hospitalSelected ? 320 : 900}
+				height={isMobile ? 300 : 330}
 				data={datasReformated(selectedLabel)}
+				barGap={3}
 				margin={{
-					top: isMobile ? 15 : 32,
-					right: isMobile ? 20 : 12,
-					left: isMobile ? 20 : 12,
-					bottom: isMobile ? 35 : 12,
+					top: isMobile ? 35 : 12,
+					right: isMobile ? 30 : 18,
+					left: isMobile ? 0 : 12,
+					bottom: 0,
 				}}>
 				<CartesianGrid stroke="#f5f5f5" />
 
-				<XAxis dataKey="name" stroke="#2100AD" />
-				<YAxis stroke="#2100AD" />
+				<XAxis
+					dataKey="name"
+					stroke="#2100AD"
+					minTickGap={isMobile ? 2 : 5}
+					label={{ position: "insideBottomRight", offset: 0 }}
+					className="text-sm text-wrap"
+				/>
+				{!isMobile && <YAxis stroke="#2100AD" />}
 
 				<Tooltip />
-				<Legend
-					width={400}
-					wrapperStyle={{
-						bottom: isMobile ? 40 : 10,
-						right: isMobile ? 0 : 220,
-						lineHeight: "50px",
-					}}
-				/>
-				<Area
-					type="monotone"
-					dataKey="satisfactionRate"
-					fill="#FDE6FF"
-					stroke="#EF62FF"
-				/>
+				<Legend />
 
-				<Bar dataKey="numberOfDoctors" barSize={25} fill="#64BEFF" />
+				{!hospitalSelected ? (
+					<Area
+						type="monotone"
+						dataKey="satisfactionRate"
+						fill="#FDE6FF"
+						stroke="#EF62FF"
+					/>
+				) : (
+					<Bar dataKey="satisfactionRate" fill="#EF62FF" barSize={35} />
+				)}
+
+				<Bar dataKey="numberOfDoctors" fill="#64BEFF" barSize={60} />
 			</ComposedChart>
 		</div>
 	)
