@@ -23,9 +23,9 @@ Dashboard with KPI, charts, datavisualisation for medical structures.<br>
 
 ### Upcoming Features 🚀
 - [ ]  filter by date
-- [ ]  chart by department with number of patients per day
+- [x]  ~~chart by department with number of patients per day~~
 - [ ]  a chart for clinical tests
-- [ ]  a graph for satisfaction by specialty with number of staff allocated
+- [x]  ~~a graph for satisfaction by specialty with number of staff allocated~~
 - [ ]  integrate an additional table with data on the latest research
 - [ ]  add a monthly visualization to the hospitalization chart
 - [ ]  integrate a search bar to filter data
