@@ -8,7 +8,6 @@ import { ResumeHospital } from "@/utils/data/hospitals/hospitalsTypes"
 
 export const ResumeChart = () => {
 	const hospitalCtxt = useContext(HospitalContext)
-	const { handleHospital } = hospitalCtxt
 	const { hospital, hospitalSelected } = useHospitalSelected()
 
 	const [hospitalsToRender, setHospitalsToRender] =
@@ -38,8 +37,7 @@ export const ResumeChart = () => {
 		return (
 			<div
 				key={el.name}
-				className="group flex flex-col items-center text-center hover:opacity-80 transition-all duration-150 ease-in-out hover:cursor-pointer"
-				onClick={() => handleHospital(el.name)}>
+				className="group flex flex-col items-center text-center hover:opacity-80 transition-all duration-150 ease-in-out">
 				<p className="md:w-[85px] h-fit md:h-[85px] font-semibold border-2 border-secondary group-hover:border-secondary/50 group-hover:bg-secondary/20 transition-all duration-150 ease-in-out rounded-full py-5 px-4 mb-3 text-xl flex items-center justify-center">
 					{el.satisfactionRate}
 				</p>

@@ -1,14 +1,17 @@
 "use client"
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { HospitalContext } from "@/utils/Context"
-import { topHospitals } from "@/utils/data/hospitals/hospitals"
+import { hospitalsName, topHospitals } from "@/utils/data/hospitals/hospitals"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { TopHospitalsLayout } from "@components/Layout/TopHospitalsLayout"
+import { SelectInput } from "./UI/SelectInput"
 
 export const DashboardContainer = () => {
+	const hospitalCtxt = useContext(HospitalContext)
+	const { handleHospital } = hospitalCtxt
 	const [hospital, setHospital] = useState<Hospital[]>(topHospitals)
 
-	const handleHospital = (hospitalSelected: string) => {
+	const handleSelect = (hospitalSelected: string) => {
 		const hospitalFound = topHospitals.find(
 			(el: Hospital) => el.name === hospitalSelected
 		)
@@ -18,6 +21,12 @@ export const DashboardContainer = () => {
 	return (
 		<HospitalContext.Provider value={{ hospital, handleHospital }}>
 			<div className="w-full h-full">
+				<SelectInput
+					labels={hospitalsName}
+					onSelectChange={(selectedHospital) => handleSelect(selectedHospital)}
+					placeholder="Select an hospital"
+				/>
+
 				<div className="w-full bg-white/20 p-2 md:p-5 rounded-xl shadow">
 					<TopHospitalsLayout />
 				</div>

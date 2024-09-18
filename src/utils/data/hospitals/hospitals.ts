@@ -455,4 +455,6 @@ const getSpecialties = (hospitals: Hospital[]): string[] => {
 	return specialties
 }
 
-export { topHospitals, resumeTopHospitals, getSpecialties }
+const hospitalsName = topHospitals.map((hospital: Hospital) => hospital.name)
+
+export { topHospitals, resumeTopHospitals, getSpecialties, hospitalsName }
