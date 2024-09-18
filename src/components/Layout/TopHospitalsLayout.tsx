@@ -6,7 +6,7 @@ import { DoctorSpecialties } from "@components/TopHospitalsCharts/DoctorSpecialt
 
 export const TopHospitalsLayout = () => {
 	return (
-		<section className="w-full flex flex-col justify-items-stretch items-stretch md:flex-row flex-wrap gap-2">
+		<section className="w-full flex flex-col justify-items-stretch items-stretch md:flex-row flex-wrap gap-3">
 			<ResumeChart />
 
 			<Hospitalizations />

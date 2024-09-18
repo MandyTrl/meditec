@@ -71,7 +71,7 @@ export const Hospitalizations = () => {
 	}
 
 	return (
-		<div className="flex-1 w-full md:w-max mt-2 md:mt-0 bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+		<div className="flex-1 w-full md:w-max mt-2 md:mt-0 bg-white rounded-2xl p-3 md:p-6">
 			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
 				Hospitalisations
 			</h4>

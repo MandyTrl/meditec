@@ -18,7 +18,7 @@ export const DepartmentsLines = () => {
 	const { hospital } = useHospitalSelected()
 
 	return (
-		<div className="flex-1 h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+		<div className="flex-1 h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6">
 			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
 				Patients par département
 			</h4>

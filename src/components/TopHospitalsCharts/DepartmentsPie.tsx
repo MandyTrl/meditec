@@ -14,7 +14,7 @@
 // 	}
 
 // 	return (
-// 		<div className="h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+// 		<div className="h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6">
 // 			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
 // 				Patients by departments
 // 			</h4>

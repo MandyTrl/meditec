@@ -3,7 +3,6 @@ import React, { useState } from "react"
 import { HospitalContext } from "@/utils/Context"
 import { topHospitals } from "@/utils/data/hospitals/hospitals"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
-import { ListTabs } from "@components/UI/ListTabs"
 import { TopHospitalsLayout } from "@components/Layout/TopHospitalsLayout"
 
 export const DashboardContainer = () => {
@@ -18,10 +17,8 @@ export const DashboardContainer = () => {
 
 	return (
 		<HospitalContext.Provider value={{ hospital, handleHospital }}>
-			<div className="w-full h-full mt-5 md:mt-20">
-				<ListTabs />
-
-				<div className="w-full bg-white/20 p-2 md:p-5 md:rounded-tr-xl rounded-b-xl md:rounded-tl-none">
+			<div className="w-full h-full">
+				<div className="w-full bg-white/20 p-2 md:p-5 rounded-xl shadow">
 					<TopHospitalsLayout />
 				</div>
 			</div>

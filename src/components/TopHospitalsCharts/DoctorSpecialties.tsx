@@ -50,7 +50,7 @@ export const DoctorSpecialties = () => {
 	}
 
 	return (
-		<div className="flex-1 w-full md:w-fit bg-white rounded-2xl p-3 md:p-6 text-primary shadow-md">
+		<div className="flex-1 w-full md:w-fit bg-white rounded-2xl p-3 md:p-6">
 			<h4 className="font-bold text-center md:text-left mt-2 mb-7 md:mb-10">
 				Spécialités
 			</h4>
