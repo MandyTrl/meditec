@@ -7,10 +7,13 @@ import {
 	XAxis,
 	YAxis,
 	Legend,
+	ResponsiveContainer,
 } from "recharts"
 import { useBreakpoint } from "@/utils/hooks/useBP"
-import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
+import { ChartContainer } from "@components/ChartUI/ChartContainer"
+import { ChartHeader } from "@components/ChartUI/ChartHeader"
+import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 
 type ChartData = {
@@ -59,76 +62,75 @@ export const Hospitalizations = () => {
 		setChartData(data)
 	}, [hospital])
 
-	const handleChartWidth = () => {
+	// const handleChartWidth = () => {
+	// 	if (isMobile) {
+	// 		return 300
+	// 	} else {
+	// 		if (hospitalSelected) {
+	// 			return 375
+	// 		}
+	// 		return 780
+	// 	}
+	// }
+
+	const handleChartHeight = () => {
 		if (isMobile) {
-			return 320
+			return 280
 		} else {
-			if (hospitalSelected) {
-				return 375
-			}
-			return 920
+			return 380
 		}
 	}
 
 	return (
-		<div className="flex-1 w-full md:w-max mt-2 md:mt-0 bg-white rounded-2xl p-3 md:p-6">
-			<h4 className="font-bold text-center md:text-left mb-7 md:mb-10">
-				Hospitalisations
-			</h4>
+		<ChartContainer>
+			<ChartHeader title="Hospitalisations" />
 
-			<BarChart
-				width={handleChartWidth()}
-				height={isMobile ? 330 : 280}
-				data={chartData}
-				barGap={3}
-				margin={{
-					top: isMobile ? 35 : 12,
-					right: isMobile ? 30 : 18,
-					left: isMobile ? 0 : 12,
-					bottom: 0,
-				}}>
-				<CartesianGrid stroke="#f5f5f5" />
+			<ResponsiveContainer height={handleChartHeight()}>
+				<BarChart
+					data={chartData}
+					barGap={3}
+					margin={{
+						top: isMobile ? 0 : 12,
+						right: isMobile ? 0 : 18,
+						left: isMobile ? 0 : 18,
+						bottom: 0,
+					}}>
+					<CartesianGrid stroke="#f5f5f5" />
 
-				<XAxis
-					dataKey="name"
-					stroke="#2100AD"
-					height={17}
-					className="text-sm"
-				/>
+					<XAxis
+						dataKey="name"
+						stroke="#2100AD"
+						className="text-sm"
+						tickMargin={8}
+					/>
 
-				{!isMobile && (
-					<YAxis stroke="#2100AD" allowDataOverflow width={60} tickSize={6} />
-				)}
+					{!isMobile && (
+						<YAxis stroke="#2100AD" allowDataOverflow width={60} tickSize={6} />
+					)}
 
-				<Tooltip
-					wrapperStyle={{
-						width: 180,
-						backgroundColor: "rgba(210, 229, 255, 0.5)",
-					}}
-				/>
+					<Tooltip
+						wrapperStyle={{
+							width: 180,
+							backgroundColor: "rgba(210, 229, 255, 0.5)",
+						}}
+					/>
 
-				<Legend
-					width={100}
-					wrapperStyle={{
-						top: isMobile ? -20 : -40,
-						right: 0,
-						lineHeight: "17px",
-					}}
-				/>
+					<Legend />
 
-				<Bar
-					dataKey="2023"
-					fill="#64BEFF"
-					label={CustomTextLabel}
-					barSize={60}
-				/>
-				<Bar
-					dataKey="2024"
-					fill="#EF62FF"
-					label={CustomTextLabel}
-					barSize={60}
-				/>
-			</BarChart>
-		</div>
+					<Bar
+						dataKey="2023"
+						fill="#009dff"
+						label={CustomTextLabel}
+						barSize={40}
+					/>
+					<Bar
+						dataKey="2024"
+						fill="#EF62FF"
+						label={CustomTextLabel}
+						barSize={40}
+					/>
+				</BarChart>
+			</ResponsiveContainer>
+		</ChartContainer>
 	)
 }

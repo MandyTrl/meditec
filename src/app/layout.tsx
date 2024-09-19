@@ -21,7 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="fr">
 			<body
-				className={`${krub.className} px-3 md:px-20 bg-slate-300 text-sky-950`}>
+				className={`${krub.className} w-screen px-3 md:px-20 bg-slate-300 text-sky-950`}>
 				<Header />
 
 				{children}

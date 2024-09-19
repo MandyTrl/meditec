@@ -51,9 +51,8 @@ export const DoctorSpecialties = () => {
 
 	return (
 		<div className="flex-1 w-full md:w-fit bg-white rounded-2xl p-3 md:p-6">
-			<h4 className="font-bold text-center md:text-left mt-2 mb-7 md:mb-10">
-				Spécialités
-			</h4>
+			<h4 className="font-bold text-center md:text-left mt-2">Spécialités</h4>
+			<div className="w-full h-[1px] bg-slate-200 mt-2 mb-4"></div>
 
 			<SelectInput labels={labels} onSelectChange={handleSelectChange} />
 
@@ -93,7 +92,7 @@ export const DoctorSpecialties = () => {
 					<Bar dataKey="satisfactionRate" fill="#EF62FF" barSize={35} />
 				)}
 
-				<Bar dataKey="numberOfDoctors" fill="#64BEFF" barSize={60} />
+				<Bar dataKey="numberOfDoctors" fill="#009dff" barSize={60} />
 			</ComposedChart>
 		</div>
 	)

@@ -31,7 +31,7 @@
 // 								cy="50%"
 // 								innerRadius={50}
 // 								outerRadius={80}
-// 								fill="#64BEFF"
+// 								fill="#009dff"
 // 								dataKey="patientsPerDay"
 // 								onMouseEnter={handleIdxOnPieEnter}
 // 								onMouseLeave={() => setActiveIdx(chartIndex)}

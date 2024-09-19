@@ -27,7 +27,7 @@ export const DashboardContainer = () => {
 					placeholder="Select an hospital"
 				/>
 
-				<div className="w-full bg-white/20 p-2 md:p-5 rounded-xl shadow">
+				<div className="w-full bg-white/50 p-2 md:p-5 rounded-xl shadow">
 					<TopHospitalsLayout />
 				</div>
 			</div>

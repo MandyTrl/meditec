@@ -49,9 +49,10 @@ export const ResumeChart = () => {
 
 	return (
 		<div className="flex-1 flex flex-col justify-between w-full md:w-max bg-white rounded-2xl p-3 md:p-6">
-			<h4 className="font-bold text-center md:text-left mt-2 mb-7 md:mb-10">
+			<h4 className="font-bold text-center md:text-left mt-2">
 				Satisfaction %
 			</h4>
+			<div className="w-full h-[1px] bg-slate-200 mt-2 mb-4"></div>
 
 			<div
 				className={clsx(
