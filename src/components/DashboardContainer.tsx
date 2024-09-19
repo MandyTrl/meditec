@@ -21,6 +21,10 @@ export const DashboardContainer = () => {
 	return (
 		<HospitalContext.Provider value={{ hospital, handleHospital }}>
 			<div className="w-full h-full">
+				<h2 className="text-xl md:text-2xl">
+					Welcome on your <span className="font-semibold">Dashboard</span>
+				</h2>
+
 				<SelectInput
 					labels={hospitalsName}
 					onSelectChange={(selectedHospital) => handleSelect(selectedHospital)}

@@ -13,7 +13,8 @@ export const CustomTextLabel = ({ x, y, width, value }: CustomLabelProps) => {
 			x={x + width / 2} //centre le label
 			y={y}
 			dy={-10} //distance entre la barre et le label
-			fill="#2100AD"
+			fill="#1b4f72"
+			fontSize={18}
 			textAnchor="middle">
 			{value}
 		</text>

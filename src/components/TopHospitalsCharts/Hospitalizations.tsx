@@ -6,7 +6,6 @@ import {
 	CartesianGrid,
 	Tooltip,
 	XAxis,
-	YAxis,
 	Legend,
 	ResponsiveContainer,
 } from "recharts"
@@ -17,6 +16,7 @@ import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { CustomBar } from "@components/ChartUI/CustomBar"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
+import { CustomTextLabel } from "../ChartUI/CustomTextLabel"
 
 type ChartData = {
 	name: string
@@ -77,7 +77,7 @@ export const Hospitalizations = () => {
 
 	const handleChartHeight = () => {
 		if (isMobile) {
-			return 280
+			return 260
 		} else {
 			return 380
 		}
@@ -92,25 +92,21 @@ export const Hospitalizations = () => {
 					data={chartData}
 					barGap={3}
 					margin={{
-						top: isMobile ? 20 : 12,
+						top: isMobile ? 0 : 12,
 						right: isMobile ? 0 : 18,
 						left: isMobile ? 0 : 18,
-						bottom: 0,
+						bottom: isMobile ? 0 : 18,
 					}}>
-					<CartesianGrid stroke="#f5f5f5" />
+					<CartesianGrid strokeDasharray={1} stroke="#ebf5fb" />
 
 					<XAxis
 						dataKey="name"
-						stroke="#2100AD"
+						stroke="#1b4f72"
 						height={50}
 						tick={(props) => <CustomAxisTick {...props} />}
 						tickMargin={5}
 						interval={0}
 					/>
-
-					{!isMobile && (
-						<YAxis stroke="#2100AD" allowDataOverflow width={60} tickSize={6} />
-					)}
 
 					<Tooltip
 						wrapperStyle={{
@@ -119,17 +115,20 @@ export const Hospitalizations = () => {
 						}}
 					/>
 
-					<Legend />
+					<Legend iconType="circle" wrapperStyle={{ paddingTop: "15px" }} />
 
 					<Bar
 						dataKey="2023"
-						fill="#009dff"
+						fill="#aed6f1"
 						shape={(props: any) => <CustomBar {...props} />}
+						label={(props) => <CustomTextLabel {...props} />}
 					/>
 					<Bar
 						dataKey="2024"
-						fill="#EF62FF"
+						fill="#1b4f72"
+						// fill="#0EA5E9"
 						shape={(props: any) => <CustomBar {...props} />}
+						label={(props) => <CustomTextLabel {...props} />}
 					/>
 				</BarChart>
 			</ResponsiveContainer>

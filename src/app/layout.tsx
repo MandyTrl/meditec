@@ -1,16 +1,20 @@
 import type { Metadata } from "next"
-import { Krub } from "next/font/google"
+import { Krub, Dancing_Script } from "next/font/google"
 import "./globals.css"
 import { Header } from "@components/Header"
 
-const krub = Krub({
+export const krub = Krub({
 	subsets: ["latin"],
 	weight: ["200", "300", "400", "500", "600", "700"],
 })
+export const dancingScript = Dancing_Script({
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"],
+})
 
-export const metadata: Metadata = {
-	title: "Tekkare Dashboard",
-	description: "Tekkare's tecnical test",
+const metadata: Metadata = {
+	title: "Meditec Dashboard",
+	description: "Admin dashboard for medical data visualization",
 }
 
 export default function RootLayout({
