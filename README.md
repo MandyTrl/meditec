@@ -1,6 +1,5 @@
-# Tekkare Dashboard
+# Meditec Dashboard
 
-<sup>Techincal test for [Tekkare](https://tekkare.com/)</sup> <br>
 Dashboard with KPI, charts, datavisualisation for medical structures.<br>
 → For filter datas by hospital, click on one hospital for select it.<br>
 

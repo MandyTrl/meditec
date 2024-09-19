@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react"
 import {
 	BarChart,
@@ -13,7 +14,8 @@ import { useBreakpoint } from "@/utils/hooks/useBP"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
-import { CustomTextLabel } from "@components/ChartUI/CustomTextLabel"
+import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
+import { CustomBar } from "@components/ChartUI/CustomBar"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 
 type ChartData = {
@@ -26,7 +28,7 @@ export const Hospitalizations = () => {
 	const breakpoint = useBreakpoint()
 	const isMobile = breakpoint === "mobile"
 
-	const { hospital, hospitalSelected } = useHospitalSelected()
+	const { hospital } = useHospitalSelected()
 
 	const [chartData, setChartData] = useState<ChartData[] | []>([])
 
@@ -90,7 +92,7 @@ export const Hospitalizations = () => {
 					data={chartData}
 					barGap={3}
 					margin={{
-						top: isMobile ? 0 : 12,
+						top: isMobile ? 20 : 12,
 						right: isMobile ? 0 : 18,
 						left: isMobile ? 0 : 18,
 						bottom: 0,
@@ -100,8 +102,10 @@ export const Hospitalizations = () => {
 					<XAxis
 						dataKey="name"
 						stroke="#2100AD"
-						className="text-sm"
-						tickMargin={8}
+						height={50}
+						tick={(props) => <CustomAxisTick {...props} />}
+						tickMargin={5}
+						interval={0}
 					/>
 
 					{!isMobile && (
@@ -120,14 +124,12 @@ export const Hospitalizations = () => {
 					<Bar
 						dataKey="2023"
 						fill="#009dff"
-						label={CustomTextLabel}
-						barSize={40}
+						shape={(props: any) => <CustomBar {...props} />}
 					/>
 					<Bar
 						dataKey="2024"
 						fill="#EF62FF"
-						label={CustomTextLabel}
-						barSize={40}
+						shape={(props: any) => <CustomBar {...props} />}
 					/>
 				</BarChart>
 			</ResponsiveContainer>
