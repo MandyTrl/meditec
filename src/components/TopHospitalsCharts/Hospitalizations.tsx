@@ -17,6 +17,7 @@ import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { CustomBar } from "@components/ChartUI/CustomBar"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { CustomTextLabel } from "../ChartUI/CustomTextLabel"
+import hospitalIcon from "@assets/hospital.svg"
 
 type ChartData = {
 	name: string
@@ -85,17 +86,21 @@ export const Hospitalizations = () => {
 
 	return (
 		<ChartContainer>
-			<ChartHeader title="Hospitalisations" />
+			<ChartHeader
+				title="Hospitalisations"
+				icon={hospitalIcon}
+				description="Hospitalisations totales par an"
+			/>
 
 			<ResponsiveContainer height={handleChartHeight()}>
 				<BarChart
 					data={chartData}
 					barGap={3}
 					margin={{
-						top: isMobile ? 0 : 12,
-						right: isMobile ? 0 : 18,
-						left: isMobile ? 0 : 18,
-						bottom: isMobile ? 0 : 18,
+						top: isMobile ? 14 : 12,
+						right: 8,
+						left: 8,
+						bottom: 0,
 					}}>
 					<CartesianGrid strokeDasharray={1} stroke="#ebf5fb" />
 
@@ -109,10 +114,21 @@ export const Hospitalizations = () => {
 					/>
 
 					<Tooltip
-						wrapperStyle={{
-							width: 180,
-							backgroundColor: "rgba(210, 229, 255, 0.5)",
+						cursor={{
+							fill: "#ebf5fb",
+							radius: 8,
+							y: 10,
 						}}
+						contentStyle={{
+							border: "none",
+							padding: 20,
+							borderRadius: 8,
+							boxShadow:
+								"3.4px 3.4px 2.7px rgba(0, 0, 0, 0.022), 8.7px 8.7px 6.9px rgba(0, 0, 0, 0.031),17.7px 17.7px 14.2px rgba(0, 0, 0, 0.039),36.5px 36.5px 29.2px rgba(0, 0, 0, 0.048),100px 100px 80px rgba(0, 0, 0, 0.07)",
+							fontSize: 15,
+						}}
+						labelStyle={{ fontSize: 16 }}
+						itemStyle={{ lineHeight: 1, fontWeight: 600 }}
 					/>
 
 					<Legend iconType="circle" wrapperStyle={{ paddingTop: "15px" }} />

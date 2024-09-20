@@ -1,4 +1,6 @@
+"use client"
 import React from "react"
+import { useBreakpoint } from "@/utils/hooks/useBP"
 
 type CustomLabelProps = {
 	x: number
@@ -8,13 +10,16 @@ type CustomLabelProps = {
 }
 
 export const CustomTextLabel = ({ x, y, width, value }: CustomLabelProps) => {
+	const breakpoint = useBreakpoint()
+	const isMobile = breakpoint === "mobile"
+
 	return (
 		<text
 			x={x + width / 2} //centre le label
 			y={y}
 			dy={-10} //distance entre la barre et le label
 			fill="#1b4f72"
-			fontSize={18}
+			fontSize={isMobile ? 16 : 18}
 			textAnchor="middle">
 			{value}
 		</text>
