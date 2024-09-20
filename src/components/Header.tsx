@@ -1,4 +1,3 @@
-"use client"
 import React from "react"
 import { ListTabs } from "./UI/ListTabs"
 import { dancingScript } from "@/app/layout"

@@ -12,7 +12,7 @@ export const dancingScript = Dancing_Script({
 	weight: ["400", "500", "600", "700"],
 })
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
 	title: "Meditec Dashboard",
 	description: "Admin dashboard for medical data visualization",
 }
