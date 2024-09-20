@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import React, { useState } from "react"
 import {
@@ -8,13 +9,20 @@ import {
 	Legend,
 	Tooltip,
 	XAxis,
-	YAxis,
+	ResponsiveContainer,
 } from "recharts"
 import { SelectInput } from "@components/UI/SelectInput"
 import { getSpecialties, topHospitals } from "@/utils/data/hospitals/hospitals"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { useBreakpoint } from "@/utils/hooks/useBP"
+import { ChartContainer } from "../ChartUI/ChartContainer"
+import { ChartHeader } from "../ChartUI/ChartHeader"
+import { handleChartHeight, shadowTool } from "@utils/utils"
+import stethoscopeIcon from "@assets/icons/stethoscope.svg"
+import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
+import { CustomBar } from "../ChartUI/CustomBar"
+import { CustomTextLabel } from "../ChartUI/CustomTextLabel"
 
 type DatasDoctorSpecialties = {
 	name: string
@@ -50,50 +58,87 @@ export const DoctorSpecialties = () => {
 	}
 
 	return (
-		<div className="flex-1 w-full md:w-fit bg-white rounded-2xl p-3 md:p-6">
-			<h4 className="font-bold text-center md:text-left mt-2">Spécialités</h4>
-			<div className="w-full h-[1px] bg-slate-200 mt-2 mb-4"></div>
+		<ChartContainer>
+			<ChartHeader
+				title="Specialties"
+				icon={stethoscopeIcon}
+				description="Ratio between satisfaction rate and number of doctors per specialty"
+			/>
 
 			<SelectInput labels={labels} onSelectChange={handleSelectChange} />
 
-			<ComposedChart
-				width={isMobile || hospitalSelected ? 320 : 900}
-				height={isMobile ? 300 : 330}
-				data={datasReformated(selectedLabel)}
-				barGap={3}
-				margin={{
-					top: isMobile ? 35 : 12,
-					right: isMobile ? 30 : 18,
-					left: isMobile ? 0 : 12,
-					bottom: 0,
-				}}>
-				<CartesianGrid stroke="#f5f5f5" />
+			<ResponsiveContainer height={handleChartHeight(isMobile)}>
+				<ComposedChart
+					width={isMobile || hospitalSelected ? 320 : 900}
+					height={isMobile ? 300 : 330}
+					data={datasReformated(selectedLabel)}
+					barGap={3}
+					margin={{
+						top: isMobile ? 22 : 12,
+						right: 8,
+						left: 8,
+						bottom: 0,
+					}}>
+					<CartesianGrid vertical={false} stroke="#ebf5fb" />
 
-				<XAxis
-					dataKey="name"
-					stroke="#2100AD"
-					minTickGap={isMobile ? 2 : 5}
-					label={{ position: "insideBottomRight", offset: 0 }}
-					className="text-sm text-wrap"
-				/>
-				{!isMobile && <YAxis stroke="#2100AD" />}
-
-				<Tooltip />
-				<Legend />
-
-				{!hospitalSelected ? (
-					<Area
-						type="monotone"
-						dataKey="satisfactionRate"
-						fill="#FDE6FF"
-						stroke="#EF62FF"
+					<XAxis
+						dataKey="name"
+						stroke="#1b4f72"
+						height={50}
+						tick={(props) => <CustomAxisTick {...props} />}
+						tickMargin={5}
+						interval={0}
 					/>
-				) : (
-					<Bar dataKey="satisfactionRate" fill="#EF62FF" barSize={35} />
-				)}
 
-				<Bar dataKey="numberOfDoctors" fill="#009dff" barSize={60} />
-			</ComposedChart>
-		</div>
+					<Legend
+						iconType="circle"
+						iconSize={12}
+						margin={{ top: 15, left: 0, right: 0, bottom: 0 }}
+						wrapperStyle={{ paddingTop: "15px" }}
+					/>
+
+					{!hospitalSelected ? (
+						<Area
+							type="monotone"
+							dataKey="satisfactionRate"
+							fill="#FDE6FF"
+							stroke="#EF62FF"
+						/>
+					) : (
+						<Bar
+							dataKey="satisfactionRate"
+							fill="#EF62FF"
+							shape={(props: any) => <CustomBar {...props} />}
+							label={(props) => <CustomTextLabel {...props} />}
+						/>
+					)}
+
+					<Bar
+						dataKey="numberOfDoctors"
+						fill="#1b4f72"
+						barSize={10}
+						shape={(props: any) => <CustomBar {...props} />}
+						label={(props) => <CustomTextLabel {...props} />}
+					/>
+
+					<Tooltip
+						cursor={{
+							fill: "#ebf5fb",
+							radius: 8,
+							y: 10,
+						}}
+						contentStyle={{
+							border: "none",
+							padding: 20,
+							borderRadius: 8,
+							boxShadow: `${shadowTool}`,
+							fontSize: 15,
+						}}
+						labelStyle={{ fontSize: 16 }}
+						itemStyle={{ lineHeight: 1, fontWeight: 600 }}
+					/>
+				</ComposedChart>
+			</ResponsiveContainer>
+		</ChartContainer>
 	)
 }

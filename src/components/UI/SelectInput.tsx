@@ -21,7 +21,7 @@ export const SelectInput = ({
 
 	return (
 		<select
-			className="w-fit hover:cursor-pointer px-2 py-1 active:outline-none bg-transparent my-3"
+			className="w-fit hover:cursor-pointer px-2 py-1 active:outline-none bg-transparent mb-3"
 			value={selectedValue}
 			onChange={handleChange}>
 			{placeholder && (

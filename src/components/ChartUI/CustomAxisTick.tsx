@@ -21,6 +21,7 @@ type CustomAxisTickProps = {
 	x: number
 	y: number
 	payload: { value: string }
+	isMobile?: boolean
 }
 
 export const CustomAxisTick: React.FC<CustomAxisTickProps> = ({
@@ -30,7 +31,7 @@ export const CustomAxisTick: React.FC<CustomAxisTickProps> = ({
 }) => {
 	return (
 		<g transform={`translate(${x},${y})`}>
-			<text textAnchor="middle" fill="#1b4f72" fontSize={14}>
+			<text textAnchor="middle" fill="#1b4f72" fontSize={15}>
 				{formatLabel(payload.value)}
 			</text>
 		</g>

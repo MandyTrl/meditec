@@ -17,7 +17,8 @@ import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { CustomBar } from "@components/ChartUI/CustomBar"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { CustomTextLabel } from "../ChartUI/CustomTextLabel"
-import hospitalIcon from "@assets/hospital.svg"
+import hospitalIcon from "@assets/icons/hospital.svg"
+import { handleChartHeight, shadowTool } from "@/utils/utils"
 
 type ChartData = {
 	name: string
@@ -65,34 +66,15 @@ export const Hospitalizations = () => {
 		setChartData(data)
 	}, [hospital])
 
-	// const handleChartWidth = () => {
-	// 	if (isMobile) {
-	// 		return 300
-	// 	} else {
-	// 		if (hospitalSelected) {
-	// 			return 375
-	// 		}
-	// 		return 780
-	// 	}
-	// }
-
-	const handleChartHeight = () => {
-		if (isMobile) {
-			return 260
-		} else {
-			return 320
-		}
-	}
-
 	return (
 		<ChartContainer>
 			<ChartHeader
-				title="Hospitalisations"
+				title="Hospitalizations"
 				icon={hospitalIcon}
-				description="Hospitalisations totales par an"
+				description="Total hospitalizations per year"
 			/>
 
-			<ResponsiveContainer height={handleChartHeight()}>
+			<ResponsiveContainer height={handleChartHeight(isMobile)}>
 				<BarChart
 					data={chartData}
 					barGap={3}
@@ -102,7 +84,7 @@ export const Hospitalizations = () => {
 						left: 8,
 						bottom: 0,
 					}}>
-					<CartesianGrid strokeDasharray={1} stroke="#ebf5fb" />
+					<CartesianGrid vertical={false} stroke="#ebf5fb" />
 
 					<XAxis
 						dataKey="name"
@@ -113,25 +95,11 @@ export const Hospitalizations = () => {
 						interval={0}
 					/>
 
-					<Tooltip
-						cursor={{
-							fill: "#ebf5fb",
-							radius: 8,
-							y: 10,
-						}}
-						contentStyle={{
-							border: "none",
-							padding: 20,
-							borderRadius: 8,
-							boxShadow:
-								"3.4px 3.4px 2.7px rgba(0, 0, 0, 0.022), 8.7px 8.7px 6.9px rgba(0, 0, 0, 0.031),17.7px 17.7px 14.2px rgba(0, 0, 0, 0.039),36.5px 36.5px 29.2px rgba(0, 0, 0, 0.048),100px 100px 80px rgba(0, 0, 0, 0.07)",
-							fontSize: 15,
-						}}
-						labelStyle={{ fontSize: 16 }}
-						itemStyle={{ lineHeight: 1, fontWeight: 600 }}
+					<Legend
+						iconType="circle"
+						iconSize={12}
+						wrapperStyle={{ paddingTop: "15px" }}
 					/>
-
-					<Legend iconType="circle" wrapperStyle={{ paddingTop: "15px" }} />
 
 					<Bar
 						dataKey="2023"
@@ -145,6 +113,24 @@ export const Hospitalizations = () => {
 						// fill="#0EA5E9"
 						shape={(props: any) => <CustomBar {...props} />}
 						label={(props) => <CustomTextLabel {...props} />}
+					/>
+
+					<Tooltip
+						cursor={{
+							fill: "#ebf5fb",
+							radius: 8,
+							y: 10,
+							opacity: 0.5,
+						}}
+						contentStyle={{
+							border: "none",
+							padding: 20,
+							borderRadius: 8,
+							boxShadow: `${shadowTool}`,
+							fontSize: 15,
+						}}
+						labelStyle={{ fontSize: 16 }}
+						itemStyle={{ lineHeight: 1, fontWeight: 600 }}
 					/>
 				</BarChart>
 			</ResponsiveContainer>

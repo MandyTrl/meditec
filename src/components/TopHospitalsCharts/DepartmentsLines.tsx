@@ -1,81 +1,102 @@
-import React from "react"
-import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
-import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
+import clsx from "clsx"
 import {
 	LineChart,
 	CartesianGrid,
 	XAxis,
-	YAxis,
 	Tooltip,
 	Legend,
 	Line,
+	ResponsiveContainer,
 } from "recharts"
 import { useBreakpoint } from "@/utils/hooks/useBP"
+import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
+import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
+import { ChartContainer } from "../ChartUI/ChartContainer"
+import { ChartHeader } from "../ChartUI/ChartHeader"
+import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
+import { handleChartHeight, handleChartWidth, shadowTool } from "@/utils/utils"
+import stethoscopeIcon from "@assets/icons/stethoscope.svg"
 
 export const DepartmentsLines = () => {
 	const breakpoint = useBreakpoint()
 	const isMobile = breakpoint === "mobile"
-	const { hospital } = useHospitalSelected()
+	const { hospital, hospitalSelected } = useHospitalSelected()
 
 	return (
-		<div className="flex-1 h-fit w-full md:w-fit bg-white rounded-2xl p-3 md:p-6">
-			<h4 className="font-bold text-center md:text-left mt-2">
-				Patients par département
-			</h4>
-			<div className="w-full h-[1px] bg-slate-200 mt-2 mb-4"></div>
+		<ChartContainer>
+			<ChartHeader
+				title="Acceptance rate"
+				icon={stethoscopeIcon}
+				description="Waiting time ratio and number of patients per day by department"
+			/>
 
-			<div className="flex flex-wrap justify-around">
+			<div className="w-full md:overflow-x-auto md:flex">
 				{hospital.map((el: Hospital) => {
 					return (
-						<div key={el.name}>
-							<p className="mb-0 md:mb-1">{el.name}</p>
+						<div
+							key={el.name}
+							className={clsx(hospitalSelected ? "my1" : "my-5", "w-full")}>
+							{!hospitalSelected && (
+								<p className="md:mb-1 font-medium">{el.name}</p>
+							)}
 
-							<LineChart
-								width={isMobile ? 320 : 575}
-								height={isMobile ? 350 : 300}
-								data={el.hospitalDepartments}
-								margin={{
-									top: isMobile ? 15 : 12,
-									right: isMobile ? 20 : 12,
-									left: isMobile ? 20 : 12,
-									bottom: isMobile ? 35 : 12,
-								}}>
-								<CartesianGrid stroke="#f5f5f5" />
+							<ResponsiveContainer
+								height={handleChartHeight(isMobile)}
+								width={handleChartWidth(isMobile, hospitalSelected)}>
+								<LineChart
+									data={el.hospitalDepartments}
+									margin={{
+										top: isMobile ? 14 : 12,
+										right: isMobile ? 30 : 40,
+										left: isMobile ? 30 : 40,
+										bottom: 0,
+									}}>
+									<CartesianGrid stroke="#ebf5fb" />
 
-								<XAxis
-									dataKey="department"
-									padding={{ left: 20, right: 20 }}
-									stroke="#2100AD"
-									className="text-sm"
-								/>
-								{!isMobile && <YAxis stroke="#2100AD" />}
+									<XAxis
+										dataKey="department"
+										stroke="#1b4f72"
+										height={50}
+										interval={0}
+										tickMargin={18}
+										tick={(props) => <CustomAxisTick {...props} />}
+									/>
 
-								<Tooltip />
-								<Legend
-									width={300}
-									wrapperStyle={{
-										bottom: isMobile ? 40 : 10,
-										right: isMobile ? 0 : 90,
-										lineHeight: "50px",
-									}}
-								/>
+									<Legend iconSize={12} wrapperStyle={{ paddingTop: "2px" }} />
 
-								<Line
-									type="monotone"
-									dataKey="patientsPerDay"
-									stroke="#009dff"
-									activeDot={{ r: 4 }}
-								/>
-								<Line
-									type="monotone"
-									dataKey="averageWaitTime"
-									stroke="#EF62FF"
-								/>
-							</LineChart>
+									<Line
+										type="monotone"
+										dataKey="patientsPerDay"
+										stroke="#1b4f72"
+									/>
+									<Line
+										type="monotone"
+										dataKey="averageWaitTime"
+										stroke="#EF62FF"
+									/>
+
+									<Tooltip
+										cursor={{
+											fill: "#ebf5fb",
+											radius: 8,
+											y: 10,
+										}}
+										contentStyle={{
+											border: "none",
+											padding: 20,
+											borderRadius: 8,
+											boxShadow: `${shadowTool}`,
+											fontSize: 15,
+										}}
+										labelStyle={{ fontSize: 16 }}
+										itemStyle={{ lineHeight: 1, fontWeight: 600 }}
+									/>
+								</LineChart>
+							</ResponsiveContainer>
 						</div>
 					)
 				})}
 			</div>
-		</div>
+		</ChartContainer>
 	)
 }

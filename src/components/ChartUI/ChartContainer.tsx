@@ -11,7 +11,7 @@ export const ChartContainer = ({ children, dark }: ChartContainerProps) => {
 		<div
 			className={clsx(
 				dark ? "bg-[#051f30] text-white" : "bg-white",
-				"flex-1 w-full mt-2 md:mt-0 rounded-2xl p-3 md:p-6"
+				"w-full flex-1 mt-2 md:mt-0 rounded-2xl p-4 md:p-8 pb-8"
 			)}>
 			{children}
 		</div>
