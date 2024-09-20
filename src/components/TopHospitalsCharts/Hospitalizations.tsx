@@ -80,7 +80,7 @@ export const Hospitalizations = () => {
 		if (isMobile) {
 			return 260
 		} else {
-			return 380
+			return 320
 		}
 	}
 

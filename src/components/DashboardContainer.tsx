@@ -21,7 +21,7 @@ export const DashboardContainer = () => {
 	return (
 		<HospitalContext.Provider value={{ hospital, handleHospital }}>
 			<div className="w-full h-full">
-				<h2 className="text-xl md:text-2xl">
+				<h2 className="text-xl md:text-2xl mt-8">
 					Welcome on your <span className="font-semibold">Dashboard</span>
 				</h2>
 
@@ -31,7 +31,7 @@ export const DashboardContainer = () => {
 					placeholder="Select an hospital"
 				/>
 
-				<div className="w-full bg-white/50 p-2 md:p-5 rounded-xl shadow">
+				<div className="w-full bg-white/50 p-2 md:p-5 rounded-2xl shadow">
 					<TopHospitalsLayout />
 				</div>
 			</div>
