@@ -67,7 +67,7 @@ export const DoctorSpecialties = () => {
 
 			<SelectInput labels={labels} onSelectChange={handleSelectChange} />
 
-			<ResponsiveContainer height={handleChartHeight(isMobile)}>
+			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
 				<ComposedChart
 					width={isMobile || hospitalSelected ? 320 : 900}
 					height={isMobile ? 300 : 330}

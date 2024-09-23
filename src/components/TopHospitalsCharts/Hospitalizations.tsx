@@ -74,7 +74,7 @@ export const Hospitalizations = () => {
 				description="Total hospitalizations per year"
 			/>
 
-			<ResponsiveContainer height={handleChartHeight(isMobile)}>
+			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
 				<BarChart
 					data={chartData}
 					barGap={3}

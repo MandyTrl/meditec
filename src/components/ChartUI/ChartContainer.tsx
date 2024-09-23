@@ -1,5 +1,6 @@
 import React from "react"
 import clsx from "clsx"
+import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 
 type ChartContainerProps = {
 	children: React.ReactNode
@@ -7,11 +8,14 @@ type ChartContainerProps = {
 }
 
 export const ChartContainer = ({ children, dark }: ChartContainerProps) => {
+	const { hospitalSelected } = useHospitalSelected()
+
 	return (
 		<div
 			className={clsx(
 				dark ? "bg-[#051f30] text-white" : "bg-white",
-				"w-full flex-1 mt-2 md:mt-0 rounded-2xl p-4 md:p-8 pb-8"
+				hospitalSelected ? "h-fit" : "h-full",
+				"w-full min-w-[340px] h-fit flex-auto mt-2 md:mt-0 rounded-2xl p-4 md:p-8 pb-8"
 			)}>
 			{children}
 		</div>

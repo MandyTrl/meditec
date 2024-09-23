@@ -1,13 +1,7 @@
-export const handleChartWidth = (
-	isMobile: boolean,
-	hospitalSelected: boolean
-) => {
+export const handleChartWidth = (isMobile: boolean) => {
 	if (isMobile) {
 		return 300
 	} else {
-		if (hospitalSelected) {
-			return 375
-		}
 		return 580
 	}
 }

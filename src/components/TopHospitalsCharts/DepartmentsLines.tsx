@@ -16,11 +16,14 @@ import { ChartHeader } from "../ChartUI/ChartHeader"
 import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
 import { handleChartHeight, handleChartWidth, shadowTool } from "@/utils/utils"
 import stethoscopeIcon from "@assets/icons/stethoscope.svg"
+import { useEffect } from "react"
 
 export const DepartmentsLines = () => {
 	const breakpoint = useBreakpoint()
 	const isMobile = breakpoint === "mobile"
 	const { hospital, hospitalSelected } = useHospitalSelected()
+
+	useEffect(() => {}, [isMobile])
 
 	return (
 		<ChartContainer>
@@ -40,9 +43,11 @@ export const DepartmentsLines = () => {
 								<p className="md:mb-1 font-medium">{el.name}</p>
 							)}
 
+							<Legend iconSize={12} wrapperStyle={{ paddingTop: "2px" }} />
+
 							<ResponsiveContainer
-								height={handleChartHeight(isMobile)}
-								width={handleChartWidth(isMobile, hospitalSelected)}>
+								width={handleChartWidth(isMobile)}
+								height={handleChartHeight(isMobile)}>
 								<LineChart
 									data={el.hospitalDepartments}
 									margin={{
@@ -61,8 +66,6 @@ export const DepartmentsLines = () => {
 										tickMargin={18}
 										tick={(props) => <CustomAxisTick {...props} />}
 									/>
-
-									<Legend iconSize={12} wrapperStyle={{ paddingTop: "2px" }} />
 
 									<Line
 										type="monotone"

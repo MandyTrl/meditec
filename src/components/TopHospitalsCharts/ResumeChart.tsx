@@ -41,7 +41,7 @@ export const ResumeChart = () => {
 				key={el.name}
 				className={clsx(
 					hospitalSelected && "border-none",
-					"w-full border-b border-secondary/20 group flex items-start hover:opacity-80 transition-all duration-150 ease-in-out gap-2 mb-3 py-1"
+					"border-b border-secondary/20 group flex items-start hover:opacity-80 transition-all duration-150 ease-in-out gap-2 mb-3 py-1"
 				)}>
 				<p className="font-semibold transition-all duration-150 ease-in-out text-2xl flex items-center justify-center">
 					{el.satisfactionRate}
