@@ -8,10 +8,8 @@ export type TabProps = {
 
 export const Tab = ({ title, onClick }: TabProps) => {
 	return (
-		<li className="w-full flex items-center justify-center rounded-full bg-white/20 p-3 md:py-2 px-4 transition-all duration-300 ease-in-out border hover:border-white/50 transition-all ease-in-out duration-300 font-medium tracking-widdest">
-			<button onClick={onClick} className="text-center w-full h-full">
-				{title}
-			</button>
+		<li className="z-10 w-fit flex items-center justify-center transition-all duration-300 ease-in-out border-b border-transparent hover:border-sky-500 transition-all ease-in-out duration-300 font-medium tracking-widdest -my-[1px] md:pb-2">
+			<button onClick={onClick}>{title}</button>
 		</li>
 	)
 }

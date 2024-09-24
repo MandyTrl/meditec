@@ -7,7 +7,7 @@ export const ListTabs = () => {
 	const { hospital, hospitalSelected } = useHospitalSelected()
 
 	return (
-		<ul className="w-full md:w-fit flex gap-2 rounded-full bg-white/20">
+		<ul className="w-3/5 md:w-fit flex">
 			{tabs.map((title: string) => {
 				const titleToRender = hospitalSelected ? hospital[0].name : title
 
