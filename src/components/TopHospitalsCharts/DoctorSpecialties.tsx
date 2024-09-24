@@ -13,16 +13,16 @@ import {
 } from "recharts"
 import { SelectInput } from "@components/UI/SelectInput"
 import { getSpecialties, topHospitals } from "@/utils/data/hospitals/hospitals"
-import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
-import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { useBreakpoint } from "@/utils/hooks/useBP"
-import { ChartContainer } from "../ChartUI/ChartContainer"
-import { ChartHeader } from "../ChartUI/ChartHeader"
-import { handleChartHeight, shadowTool } from "@utils/utils"
-import stethoscopeIcon from "@assets/icons/stethoscope.svg"
-import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
+import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { CustomBar } from "../ChartUI/CustomBar"
+import { ChartHeader } from "../ChartUI/ChartHeader"
+import { ChartContainer } from "../ChartUI/ChartContainer"
+import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
 import { CustomTextLabel } from "../ChartUI/CustomTextLabel"
+import { handleChartHeight, shadowTool } from "@utils/utils"
+import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
+import stethoscopeIcon from "@assets/icons/stethoscope.svg"
 
 type DatasDoctorSpecialties = {
 	name: string
@@ -65,7 +65,11 @@ export const DoctorSpecialties = () => {
 				description="Ratio between satisfaction rate and number of doctors per specialty"
 			/>
 
-			<SelectInput labels={labels} onSelectChange={handleSelectChange} />
+			<SelectInput
+				labels={labels}
+				onSelectChange={handleSelectChange}
+				resetLabel
+			/>
 
 			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
 				<ComposedChart
@@ -74,7 +78,7 @@ export const DoctorSpecialties = () => {
 					data={datasReformated(selectedLabel)}
 					barGap={3}
 					margin={{
-						top: isMobile ? 22 : 12,
+						top: isMobile ? 22 : 25,
 						right: 8,
 						left: 8,
 						bottom: 0,

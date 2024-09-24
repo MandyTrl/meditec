@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import clsx from "clsx"
 import {
 	LineChart,
@@ -11,12 +12,11 @@ import {
 import { useBreakpoint } from "@/utils/hooks/useBP"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
-import { ChartContainer } from "../ChartUI/ChartContainer"
 import { ChartHeader } from "../ChartUI/ChartHeader"
+import { ChartContainer } from "../ChartUI/ChartContainer"
 import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
 import { handleChartHeight, handleChartWidth, shadowTool } from "@/utils/utils"
-import stethoscopeIcon from "@assets/icons/stethoscope.svg"
-import { useEffect } from "react"
+import doctorIcon from "@assets/icons/doctor.svg"
 
 export const DepartmentsLines = () => {
 	const breakpoint = useBreakpoint()
@@ -29,7 +29,7 @@ export const DepartmentsLines = () => {
 		<ChartContainer>
 			<ChartHeader
 				title="Acceptance rate"
-				icon={stethoscopeIcon}
+				icon={doctorIcon}
 				description="Waiting time ratio and number of patients per day by department"
 			/>
 
