@@ -1,6 +1,6 @@
 // import React from "react"
 // import { Sector } from "recharts"
-// import { HospitalDepartment } from "@/utils/data/hospitals"
+// import { HospitalDepartment } from "@/utils/data/hospitals/hospitalsTypes"
 
 // type ActiveShapeProps = {
 // 	cx: number

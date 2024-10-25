@@ -6,6 +6,7 @@ import arrowIcon from "@assets/icons/arrow.png"
 
 type SelectInputProps = {
 	labels: string[]
+	title?: string
 	onSelectChange: (value: string) => void
 	placeholder?: string
 	resetLabel?: boolean
@@ -13,6 +14,7 @@ type SelectInputProps = {
 
 export const SelectInput = ({
 	labels,
+	title,
 	onSelectChange,
 	placeholder,
 	resetLabel = false,
@@ -41,43 +43,51 @@ export const SelectInput = ({
 				selectedValue && "flex items-center justify-center gap-2",
 				"w-fit mt-1 mb-3"
 			)}>
-			{selectedValue && (
-				<Image
-					onClick={handleRefresh}
-					className="w-4 h-4 hover:cursor-pointer hover:opacity-70 transition-all ease-in-out duration-150"
-					src={refreshIcon}
-					alt="refresh filter"
-				/>
-			)}
+			<div>
+				{title && (
+					<p className="uppercase text-sm tracking-wide font-medium">{title}</p>
+				)}
 
-			<button
-				className="w-fit flex items-center py-1 pl-3 pr-2 bg-transparent border rounded-full border-primary hover:opacity-80 focus:outline-none transition-all ease-in-out duration-150"
-				onClick={() => setIsOpen(!isOpen)}>
-				{selectedValue || placeholder || "Select an option"}
-
-				<Image
-					onClick={handleRefresh}
-					className={clsx(
-						!isOpen && "rotate-180",
-						"w-4 h-4 hover:cursor-pointer transition-all ease-in-out duration-150 ml-4 md:ml-8"
+				<div className="flex items-center">
+					{selectedValue && (
+						<Image
+							onClick={handleRefresh}
+							className="w-4 h-4 hover:cursor-pointer hover:opacity-70 transition-all ease-in-out duration-150 mr-2"
+							src={refreshIcon}
+							alt="refresh filter"
+						/>
 					)}
-					src={arrowIcon}
-					alt="refresh filter"
-				/>
-			</button>
 
-			{isOpen && (
-				<ul className="absolute mt-2 z-10 bg-white divide divide-primary/20 rounded-md shadow-lg">
-					{labels.map((label: string) => (
-						<li
-							key={label}
-							className="px-4 py-1 hover:bg-[#051f30] hover:text-white cursor-pointer border-b border-primary/20 transition-all ease-in-out duration-150"
-							onClick={() => handleSelect(label)}>
-							{label}
-						</li>
-					))}
-				</ul>
-			)}
+					<button
+						className="w-fit flex items-center py-1 bg-transparent border-b border-primary hover:opacity-80 focus:outline-none transition-all ease-in-out duration-150"
+						onClick={() => setIsOpen(!isOpen)}>
+						{selectedValue || placeholder || "Select an option"}
+
+						<Image
+							onClick={handleRefresh}
+							className={clsx(
+								!isOpen && "rotate-180",
+								"w-4 h-4 hover:cursor-pointer transition-all ease-in-out duration-300 ml-4"
+							)}
+							src={arrowIcon}
+							alt="refresh filter"
+						/>
+					</button>
+
+					{isOpen && (
+						<ul className="absolute mt-2 z-10 bg-white divide divide-primary/20 rounded-md shadow-lg">
+							{labels.map((label: string) => (
+								<li
+									key={label}
+									className="px-4 py-1 hover:bg-tertiary hover:text-white cursor-pointer border-b border-primary/20 transition-all ease-in-out duration-150"
+									onClick={() => handleSelect(label)}>
+									{label}
+								</li>
+							))}
+						</ul>
+					)}
+				</div>
+			</div>
 		</div>
 	)
 }

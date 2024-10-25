@@ -4,6 +4,7 @@ export type CustomBarProps = {
 	fill: string
 	x: number
 	y: number
+	customWidth?: number
 	width: number
 	height: number
 }
@@ -12,6 +13,7 @@ export const CustomBar: React.FC<CustomBarProps> = ({
 	fill,
 	x,
 	y,
+	customWidth,
 	width,
 	height,
 }) => {
@@ -20,7 +22,7 @@ export const CustomBar: React.FC<CustomBarProps> = ({
 			<rect
 				x={x}
 				y={y - 4}
-				width={width}
+				width={customWidth ? customWidth : width}
 				height={height}
 				fill={fill}
 				rx={5}

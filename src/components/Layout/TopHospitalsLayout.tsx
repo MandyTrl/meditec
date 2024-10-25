@@ -1,7 +1,8 @@
 import React from "react"
-import { ResumeChart } from "@/components/TopHospitalsCharts/ResumeChart"
-import { Hospitalizations } from "@components/TopHospitalsCharts/Hospitalizations"
-import { DepartmentsLines } from "@components/TopHospitalsCharts/DepartmentsLines"
+import { SatisfactionRate } from "@/components/TopHospitalsCharts/SatisfactionRate"
+import { HospitalizationsBar } from "@components/TopHospitalsCharts/HospitalizationsBar"
+// import { DepartmentsLines } from "@components/TopHospitalsCharts/DepartmentsLines"
+import { DepartmentsBar } from "@components/TopHospitalsCharts/DepartmentsBar"
 import { DoctorSpecialties } from "@components/TopHospitalsCharts/DoctorSpecialties"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { useBreakpoint } from "@/utils/hooks/useBP"
@@ -12,17 +13,17 @@ export const TopHospitalsLayout = () => {
 	const isMobile = breakpoint === "mobile"
 
 	return (isMobile && hospitalSelected) || !hospitalSelected ? (
-		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-2">
-			<div className="md:flex w-full md:gap-2">
-				<ResumeChart />
-				<Hospitalizations />
+		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-4">
+			<div className="md:flex w-full md:gap-4">
+				<SatisfactionRate />
+				<HospitalizationsBar />
 			</div>
-			<div className="md:flex w-full md:gap-2">
+			<div className="md:flex w-full md:gap-4">
 				<div className="md:w-2/5">
 					<DoctorSpecialties />
 				</div>
 				<div className="md:w-3/5">
-					<DepartmentsLines />
+					<DepartmentsBar />
 				</div>
 			</div>
 		</section>
@@ -30,11 +31,11 @@ export const TopHospitalsLayout = () => {
 		<section className="w-full flex flex-col flex-wrap md:gap-2">
 			<div className="flex gap-2">
 				<div className="w-2/5 flex flex-col gap-2">
-					<ResumeChart />
-					<DepartmentsLines />
+					<SatisfactionRate />
+					<DepartmentsBar />
 				</div>
 				<div className="w-3/5 flex gap-2">
-					<Hospitalizations />
+					<HospitalizationsBar />
 					<DoctorSpecialties />
 				</div>
 			</div>

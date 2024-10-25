@@ -4,6 +4,13 @@ type HospitalDepartment = {
 	averageWaitTime: number
 }
 
+type DepartmentSummary = {
+	department: string
+	averagePatientsPerDay: number
+	averageWaitTime: number
+	hospitalCount: number
+}
+
 type ClinicalTrial = {
 	name: string
 	status: string
@@ -26,7 +33,7 @@ type MonthlyHospitalization = {
 
 type Overview = {
 	totalPatients: number
-	satisfactionRate: string
+	satisfactionRate: number
 	totalTreatments: number
 	numberOfDoctors: number
 	numberOfNurses: number
@@ -45,7 +52,14 @@ type Hospital = {
 type ResumeHospital = {
 	name: string
 	location: string
-	satisfactionRate: string
+	satisfactionRate: number
 }
 
-export type { ResumeHospital, Hospital, DoctorSpecialty, HospitalDepartment }
+export type {
+	ResumeHospital,
+	Hospital,
+	Overview,
+	DoctorSpecialty,
+	HospitalDepartment,
+	DepartmentSummary,
+}

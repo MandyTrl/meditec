@@ -26,7 +26,7 @@ type ChartData = {
 	2024: number
 }
 
-export const Hospitalizations = () => {
+export const HospitalizationsPerMonth = () => {
 	const breakpoint = useBreakpoint()
 	const isMobile = breakpoint === "mobile"
 
@@ -58,6 +58,7 @@ export const Hospitalizations = () => {
 		const data: ChartData[] = hospitalizationsPerYear.map((hospital) => {
 			return {
 				name: hospital.name,
+				"2022": hospital.yearlyHospitalizations["2022"],
 				"2023": hospital.yearlyHospitalizations["2023"],
 				"2024": hospital.yearlyHospitalizations["2024"],
 			}
@@ -102,17 +103,23 @@ export const Hospitalizations = () => {
 					/>
 
 					<Bar
-						dataKey="2023"
+						dataKey="2022"
 						fill="#aed6f1"
 						shape={(props: any) => <CustomBar {...props} />}
-						label={(props) => <CustomTextLabel {...props} />}
+						// label={(props) => <CustomTextLabel {...props} />}
 					/>
+
+					<Bar
+						dataKey="2023"
+						fill="#67a8d3"
+						shape={(props: any) => <CustomBar {...props} />}
+					/>
+
 					<Bar
 						dataKey="2024"
 						fill="#1b4f72"
 						// fill="#0EA5E9"
 						shape={(props: any) => <CustomBar {...props} />}
-						label={(props) => <CustomTextLabel {...props} />}
 					/>
 
 					<Tooltip
