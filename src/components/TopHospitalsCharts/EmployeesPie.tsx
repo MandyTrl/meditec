@@ -80,7 +80,7 @@ export const EmployeesPie = ({
 		}
 
 		setChartDatas(employeesDatas(datas))
-	}, [datas])
+	}, [datas, hasHospitalSelected])
 
 	return (
 		<ChartContainer>

@@ -1,46 +1,57 @@
 "use client"
-import React, { useContext, useEffect, useState } from "react"
-import { HospitalContext } from "@utils/Context/index"
-import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
+import React, { useEffect, useState } from "react"
+import clsx from "clsx"
 import { resumeTopHospitals } from "@/utils/data/hospitals/hospitals"
-import { ResumeHospital } from "@/utils/data/hospitals/hospitalsTypes"
+import { Hospital, ResumeHospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { ChartContainer } from "../ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import notation from "@assets/icons/sparkles.svg"
-import clsx from "clsx"
 
-export const SatisfactionRate = () => {
-	const hospitalCtxt = useContext(HospitalContext)
-	const { hospital, hospitalSelected } = useHospitalSelected()
+type SatisfactionRateProps = {
+	datas: Hospital[]
+	hasHospitalSelected: boolean
+}
 
-	const [hospitalsToRender, setHospitalsToRender] =
-		useState<ResumeHospital[]>(resumeTopHospitals)
+export const SatisfactionRate = ({
+	datas,
+	hasHospitalSelected,
+}: SatisfactionRateProps) => {
+	const [chartDatas, setChartDatas] = useState<ResumeHospital[] | number>(
+		resumeTopHospitals
+	)
+
+	const averageRate = typeof chartDatas === "number"
 
 	useEffect(() => {
-		if (!hospitalCtxt) {
-			console.log("no context available")
-			setHospitalsToRender(resumeTopHospitals)
-			return
+		if (!hasHospitalSelected) {
+			console.log("no datas for Satisfaction Rate available")
 		}
 
-		//si le context renvoit un hôpital sélectionné, le trouver dans "resumeTopHospital", sinon renvoyer tous les résumés
-		if (!hospitalSelected) {
-			setHospitalsToRender(resumeTopHospitals)
+		if (!hasHospitalSelected) {
+			const averageRate = (datas: Hospital[]) => {
+				let totalRate = 0
+				for (const hospital of datas) {
+					totalRate += hospital.overview.satisfactionRate
+				}
+				return totalRate / datas.length
+			}
+			setChartDatas(averageRate(datas))
+			// setChartDatas(resumeTopHospitals)
 		} else {
 			const hospitalFound = resumeTopHospitals.filter(
-				(el) => el.name === hospital[0].name
+				(el) => el.name === datas[0].name
 			)
 
-			setHospitalsToRender(hospitalFound)
+			setChartDatas(hospitalFound)
 		}
-	}, [hospitalCtxt, hospitalCtxt.hospital, hospital, hospitalSelected])
+	}, [datas, hasHospitalSelected])
 
 	const renderHospital = (el: ResumeHospital) => {
 		return (
 			<div
 				key={el.name}
 				className={clsx(
-					hospitalSelected && "border-none",
+					hasHospitalSelected && "border-none",
 					"border-b border-secondary/20 group flex items-start hover:opacity-80 transition-all duration-150 ease-in-out gap-2 mb-3 py-1"
 				)}>
 				<p className="font-semibold transition-all duration-150 ease-in-out text-2xl flex items-center justify-center">
@@ -60,11 +71,21 @@ export const SatisfactionRate = () => {
 			<ChartHeader
 				title="Satisfaction"
 				icon={notation}
-				description="Satisfaction rate in 2024"
+				description={
+					averageRate
+						? "Average of satisfaction rate in 2024"
+						: "Satisfaction rate in 2024"
+				}
 			/>
 
 			<div className="flex flex-col">
-				{hospitalsToRender.map(renderHospital)}
+				{averageRate ? (
+					<p className="font-semibold text-4xl flex items-center justify-center">
+						{chartDatas}%
+					</p>
+				) : (
+					chartDatas.map(renderHospital)
+				)}
 			</div>
 		</ChartContainer>
 	)
