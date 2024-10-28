@@ -87,7 +87,7 @@ export const EmployeesPie = ({
 			<ChartHeader
 				title="Employees"
 				icon={nurseIcon}
-				description="Repartition between nurses and doctors"
+				description="Repartition nurses vs doctors"
 			/>
 
 			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>

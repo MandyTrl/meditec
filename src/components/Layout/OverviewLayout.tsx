@@ -1,8 +1,8 @@
 import React from "react"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { EmployeesPie } from "@components/TopHospitalsCharts/EmployeesPie"
-import { SatisfactionRate } from "../TopHospitalsCharts/SatisfactionRate"
-import { Patients } from "../TopHospitalsCharts/Patients"
+import { SatisfactionRate } from "@components/TopHospitalsCharts/SatisfactionRate"
+import { Patients } from "@components/TopHospitalsCharts/Patients"
 
 type OverviewLayoutProps = {
 	isMobile: boolean
