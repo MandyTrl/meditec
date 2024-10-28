@@ -27,7 +27,11 @@ export const OverviewLayout = ({
 					hasHospitalSelected={hasHospitalSelected}
 					datas={datas}
 				/>
-				<Patients hasHospitalSelected={hasHospitalSelected} datas={datas} />
+				<Patients
+					hasHospitalSelected={hasHospitalSelected}
+					datas={datas}
+					isMobile={isMobile}
+				/>
 			</div>
 		</section>
 	)

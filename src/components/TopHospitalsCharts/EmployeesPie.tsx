@@ -8,10 +8,11 @@ import {
 	ResponsiveContainer,
 	Tooltip,
 } from "recharts"
-import { ChartContainer } from "../ChartUI/ChartContainer"
-import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
+import { ChartContainer } from "@components/ChartUI/ChartContainer"
+import { ChartHeader } from "@components/ChartUI/ChartHeader"
+import { InsightButton } from "@components/UI/InsightButton"
 import { handleChartHeight, shadowTool } from "@/utils/utils"
-import { ChartHeader } from "../ChartUI/ChartHeader"
+import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import nurseIcon from "@assets/icons/nurse.svg"
 
 type EmployeesPieProps = {
@@ -33,6 +34,8 @@ export const EmployeesPie = ({
 		{ name: "nurses", value: 0 },
 		{ name: "doctors", value: 0 },
 	])
+
+	const [hasBeenClicked, setHasBeenClicked] = useState<boolean>(false)
 
 	useEffect(() => {
 		const employeesDatas = (datas: Hospital[]) => {
@@ -82,12 +85,14 @@ export const EmployeesPie = ({
 		setChartDatas(employeesDatas(datas))
 	}, [datas, hasHospitalSelected])
 
+	console.log("click ?", hasBeenClicked)
+
 	return (
 		<ChartContainer>
 			<ChartHeader
 				title="Employees"
 				icon={nurseIcon}
-				description="Repartition nurses vs doctors"
+				description="Distribution nurses vs doctors"
 			/>
 
 			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
@@ -134,6 +139,10 @@ export const EmployeesPie = ({
 					/>
 				</PieChart>
 			</ResponsiveContainer>
+
+			<InsightButton
+				onClick={() => setHasBeenClicked((prevState) => !prevState)}
+			/>
 		</ChartContainer>
 	)
 }

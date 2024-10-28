@@ -12,6 +12,7 @@ const config: Config = {
 				primary: "#1b4f72",
 				secondary: "#ebf5fb",
 				tertiary: "#051f30",
+				fushia: "#EF62FF",
 			},
 		},
 	},

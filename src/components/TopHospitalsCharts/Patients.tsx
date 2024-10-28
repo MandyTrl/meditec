@@ -45,7 +45,7 @@ export const Patients = ({
 	return (
 		<ChartContainer>
 			<ChartHeader
-				title="Satisfaction"
+				title="Patients"
 				icon={patientsIcon}
 				description="Number of patients"
 			/>
