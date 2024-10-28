@@ -5,12 +5,16 @@ import { HospitalSelectedLayout } from "@components/Layout/HospitalSelectedLayou
 import { OverviewLayout } from "@components/Layout/OverviewLayout"
 
 export const TopHospitalsLayout = () => {
-	const { hospitalSelected } = useHospitalSelected()
+	const { hospitalSelected, hospital } = useHospitalSelected()
 	const breakpoint = useBreakpoint()
 	const isMobile = breakpoint === "mobile"
 
 	return !hospitalSelected ? (
-		<OverviewLayout />
+		<OverviewLayout
+			isMobile={isMobile}
+			hasHospitalSelected={hospitalSelected}
+			datas={hospital}
+		/>
 	) : (
 		<HospitalSelectedLayout isMobile={isMobile} />
 	)
