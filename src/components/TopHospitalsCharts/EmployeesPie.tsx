@@ -1,13 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import {
-	Cell,
-	Legend,
-	Pie,
-	PieChart,
-	ResponsiveContainer,
-	Tooltip,
-} from "recharts"
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { InsightButton } from "@components/UI/InsightButton"
@@ -95,7 +88,9 @@ export const EmployeesPie = ({
 				description="Distribution nurses vs doctors"
 			/>
 
-			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
+			<ResponsiveContainer
+				width="100%"
+				height={handleChartHeight({ isMobile, isPie: true })}>
 				<PieChart
 					width={isMobile || hasHospitalSelected ? 320 : 900}
 					height={isMobile ? 300 : 330}>
@@ -129,13 +124,6 @@ export const EmployeesPie = ({
 							lineHeight: 1,
 							fontWeight: 600,
 						}}
-					/>
-
-					<Legend
-						iconType="circle"
-						iconSize={12}
-						margin={{ top: 15, left: 0, right: 0, bottom: 0 }}
-						wrapperStyle={{ paddingTop: "15px" }}
 					/>
 				</PieChart>
 			</ResponsiveContainer>

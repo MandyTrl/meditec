@@ -6,11 +6,23 @@ export const handleChartWidth = (isMobile: boolean) => {
 	}
 }
 
-export const handleChartHeight = (isMobile: boolean) => {
-	if (isMobile) {
-		return 260
+type HandleChartHeightProps = {
+	isMobile: boolean
+	isPie?: boolean
+}
+
+export const handleChartHeight = ({
+	isMobile,
+	isPie,
+}: HandleChartHeightProps) => {
+	if (isPie) {
+		return 160
 	} else {
-		return 320
+		if (isMobile) {
+			return 260
+		} else {
+			return 320
+		}
 	}
 }
 

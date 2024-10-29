@@ -18,16 +18,16 @@ export const OverviewLayout = ({
 	return (
 		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-4">
 			<div className="md:flex w-full md:gap-4">
-				<EmployeesPie
-					hasHospitalSelected={hasHospitalSelected}
-					datas={datas}
-					isMobile={isMobile}
-				/>
 				<SatisfactionRate
 					hasHospitalSelected={hasHospitalSelected}
 					datas={datas}
 				/>
 				<Patients
+					hasHospitalSelected={hasHospitalSelected}
+					datas={datas}
+					isMobile={isMobile}
+				/>
+				<EmployeesPie
 					hasHospitalSelected={hasHospitalSelected}
 					datas={datas}
 					isMobile={isMobile}
