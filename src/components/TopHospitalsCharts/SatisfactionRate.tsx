@@ -73,7 +73,7 @@ export const SatisfactionRate = ({
 				icon={notation}
 				description={
 					averageRate
-						? "Average of satisfaction rate in 2024"
+						? "AVG satisfaction rate in 2024"
 						: "Satisfaction rate in 2024"
 				}
 			/>

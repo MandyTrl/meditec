@@ -23,8 +23,8 @@ export const ChartContainer = ({
 					: transparent
 					? "bg-transparent"
 					: "bg-white",
-				hospitalSelected ? "h-fit" : "h-full",
-				"w-full min-w-[340px] h-fit flex-auto mt-2 md:mt-0 rounded-2xl p-4 md:p-8 pb-8"
+				// hospitalSelected ? "h-fit" : "h-full",
+				"w-full min-w-[200px] h-fit flex-auto mt-2 md:mt-0 rounded-2xl p-4 md:p-5"
 			)}>
 			{children}
 		</div>
