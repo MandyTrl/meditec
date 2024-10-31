@@ -78,8 +78,6 @@ export const EmployeesPie = ({
 		setChartDatas(employeesDatas(datas))
 	}, [datas, hasHospitalSelected])
 
-	console.log("click ?", hasBeenClicked)
-
 	return (
 		<ChartContainer>
 			<ChartHeader
