@@ -19,7 +19,7 @@ export const Patients = ({
 	const [chartDatas, setChartDatas] = useState<number>(0)
 
 	useEffect(() => {
-		if (!hasHospitalSelected) {
+		if (!datas) {
 			console.log("no datas for Number of Patients available")
 		}
 

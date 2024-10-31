@@ -23,7 +23,7 @@ export const SatisfactionRate = ({
 	const averageRate = typeof chartDatas === "number"
 
 	useEffect(() => {
-		if (!hasHospitalSelected) {
+		if (!datas) {
 			console.log("no datas for Satisfaction Rate available")
 		}
 
