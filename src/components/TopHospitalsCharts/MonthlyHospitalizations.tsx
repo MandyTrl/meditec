@@ -73,8 +73,6 @@ export const MonthlyHospitalizations = ({
 		}
 	}, [datas, hasHospitalSelected, hospital])
 
-	console.log(chartData)
-
 	return (
 		<ChartContainer>
 			<ChartHeader

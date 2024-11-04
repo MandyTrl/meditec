@@ -49,7 +49,7 @@ export const HospitalizationsPerMonth = () => {
 				if (!hospitalData.yearlyHospitalizations[el.year]) {
 					hospitalData.yearlyHospitalizations[el.year] = 0
 				}
-				hospitalData.yearlyHospitalizations[el.year] += el.value
+				hospitalData.yearlyHospitalizations[el.year] += el.hospitalizations
 			})
 
 			return hospitalData

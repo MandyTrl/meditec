@@ -5,6 +5,7 @@ import { SatisfactionRate } from "@components/TopHospitalsCharts/SatisfactionRat
 import { Patients } from "@components/TopHospitalsCharts/Patients"
 import { TreatmentsData } from "@components/TopHospitalsCharts/TreatmentsData"
 import { MonthlyHospitalizations } from "@components/TopHospitalsCharts/MonthlyHospitalizations"
+import { DoctorSpecialtiesRadar } from "../TopHospitalsCharts/DoctorSpeciltiesRadar"
 
 type OverviewLayoutProps = {
 	isMobile: boolean
@@ -47,8 +48,14 @@ export const OverviewLayout = ({
 					</div>
 				</div>
 
-				<div className="w-auto shrink-0">
+				<div className="flex flex-col w-auto shrink-0 md:gap-3">
 					<EmployeesPie
+						hasHospitalSelected={hasHospitalSelected}
+						datas={datas}
+						isMobile={isMobile}
+					/>
+
+					<DoctorSpecialtiesRadar
 						hasHospitalSelected={hasHospitalSelected}
 						datas={datas}
 						isMobile={isMobile}
