@@ -90,7 +90,7 @@ export const EmployeesPie = ({
 				width="100%"
 				height={handleChartHeight({ isMobile, isPie: true })}>
 				<PieChart
-					width={isMobile || hasHospitalSelected ? 320 : 900}
+					width={isMobile || hasHospitalSelected ? 320 : 800}
 					height={isMobile ? 300 : 330}>
 					<Pie
 						dataKey="value"
@@ -100,7 +100,7 @@ export const EmployeesPie = ({
 						cx="50%"
 						cy="50%"
 						outerRadius={80}
-						innerRadius={40}>
+						innerRadius={45}>
 						<Cell key="nurses" fill="#aed6f1" />
 						<Cell key="doctors" fill="#1b4f72" />
 					</Pie>

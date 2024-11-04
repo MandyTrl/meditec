@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from "react"
-
-import {
-	Area,
-	AreaChart,
-	CartesianGrid,
-	Legend,
-	Line,
-	LineChart,
-	ResponsiveContainer,
-	Tooltip,
-	XAxis,
-} from "recharts"
+import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts"
 import { ChartContainer } from "../ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { handleChartHeight, shadowTool } from "@/utils/utils"
-import { useBreakpoint } from "@/utils/hooks/useBP"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import patientsIcon from "@assets/icons/patients.svg"
-import { CustomTextLabel } from "../ChartUI/CustomTextLabel"
 
 type MonthlyHospitalizationsProps = {
 	datas: Hospital[]
@@ -30,7 +17,7 @@ type MonthlyHospitalizationsProps = {
 type ChartData = {
 	month: string
 	year: number
-	value: number
+	hospitalizations: number
 }
 
 export const MonthlyHospitalizations = ({
@@ -38,7 +25,6 @@ export const MonthlyHospitalizations = ({
 	hasHospitalSelected,
 	isMobile,
 }: MonthlyHospitalizationsProps) => {
-	const breakpoint = useBreakpoint()
 	const { hospital } = useHospitalSelected()
 
 	const [chartData, setChartData] = useState<ChartData[] | []>([])
@@ -56,14 +42,16 @@ export const MonthlyHospitalizations = ({
 				const aggregatedData: { [key: string]: number } = {}
 
 				datas.forEach((hospital: Hospital) => {
-					hospital.monthlyHospitalizations.forEach(({ month, year, value }) => {
-						const key = `${month}-${year}`
-						if (!aggregatedData[key]) {
-							aggregatedData[key] = value
-						} else {
-							aggregatedData[key] += value
+					hospital.monthlyHospitalizations.forEach(
+						({ month, year, hospitalizations }) => {
+							const key = `${month}-${year}`
+							if (!aggregatedData[key]) {
+								aggregatedData[key] = hospitalizations
+							} else {
+								aggregatedData[key] += hospitalizations
+							}
 						}
-					})
+					)
 				})
 
 				return Object.keys(aggregatedData).map((key) => {
@@ -71,7 +59,7 @@ export const MonthlyHospitalizations = ({
 					return {
 						month,
 						year: parseInt(year),
-						value: aggregatedData[key],
+						hospitalizations: aggregatedData[key],
 					}
 				})
 			}
@@ -105,14 +93,12 @@ export const MonthlyHospitalizations = ({
 						left: isMobile ? 8 : 30,
 						bottom: 0,
 					}}>
-					<CartesianGrid vertical={false} stroke="#ebf5fb" />
-
 					<XAxis
 						dataKey="month"
 						stroke="#1b4f72"
 						height={50}
 						tick={(props) => <CustomAxisTick {...props} />}
-						tickMargin={5}
+						tickMargin={20}
 						interval={0}
 					/>
 
@@ -128,7 +114,7 @@ export const MonthlyHospitalizations = ({
 					<Line dataKey="2023" stroke="#67a8d3" /> */}
 
 					<Area
-						dataKey="value"
+						dataKey="hospitalizations"
 						stroke="#1b4f72"
 						fill="#c4deef"
 						type={"monotone"}

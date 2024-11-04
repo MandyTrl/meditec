@@ -28,7 +28,7 @@ type DoctorSpecialty = {
 type MonthlyHospitalization = {
 	month: string
 	year: number
-	value: number
+	hospitalizations: number
 }
 
 type Overview = {
