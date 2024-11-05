@@ -101,7 +101,8 @@ export const DoctorSpecialtiesRadar = ({
 							dataKey="numberOfDoctors"
 							stroke="#1b4f72"
 							fill="#dbeaf4"
-							fillOpacity={0.6}
+							fillOpacity={0.4}
+							name="N° of Doctors"
 						/>
 					))}
 
@@ -111,10 +112,20 @@ export const DoctorSpecialtiesRadar = ({
 							dataKey="satisfactionRate"
 							stroke="#EF62FF"
 							fill="#FDE6FF"
-							fillOpacity={0.4}
+							fillOpacity={0.8}
+							name="Statisfaction Rate"
 						/>
 					))}
-					<Legend />
+					<Legend
+						payload={[
+							{ value: "N° of Doctors", type: "line", color: "#1b4f72" },
+							{
+								value: "Statisfaction Rate",
+								type: "star",
+								color: "#EF62FF",
+							},
+						]}
+					/>
 				</RadarChart>
 			</ResponsiveContainer>
 		</ChartContainer>
