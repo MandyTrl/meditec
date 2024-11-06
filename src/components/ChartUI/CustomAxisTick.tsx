@@ -2,12 +2,11 @@ import React from "react"
 
 const formatLabel = (label: string) => {
 	const words = label.split(" ")
+
 	if (words.length > 1) {
 		return (
 			<>
-				<tspan x="0" dy="1.2em">
-					{words[0]}
-				</tspan>
+				<tspan x="0">{words[0]}</tspan>
 				<tspan x="0" dy="1.2em">
 					{words.slice(1).join(" ")}
 				</tspan>

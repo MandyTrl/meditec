@@ -24,7 +24,7 @@ export const ChartContainer = ({
 					? "bg-transparent"
 					: "bg-white",
 				// hospitalSelected ? "h-fit" : "h-full",
-				"w-full min-w-[200px] h-fit flex-auto mt-2 md:mt-0 rounded-2xl p-4 md:p-5"
+				"w-full min-w-[200px] max-w-[800px] h-fit flex flex-col items-center mt-2 md:mt-0 rounded-2xl p-4"
 			)}>
 			{children}
 		</div>

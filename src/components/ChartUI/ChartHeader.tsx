@@ -9,7 +9,7 @@ type ChartHeaderProps = {
 
 export const ChartHeader = ({ title, icon, description }: ChartHeaderProps) => {
 	return (
-		<div>
+		<div className="w-full">
 			<div className="flex flex-col">
 				<div className="flex items-center flex-1">
 					<Image alt="" src={icon} className="w-4 h-4 fill-primary mr-[5px]" />

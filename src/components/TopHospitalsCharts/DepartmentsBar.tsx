@@ -15,16 +15,16 @@ import {
 	DepartmentSummary,
 	HospitalDepartment,
 } from "@/utils/data/hospitals/hospitalsTypes"
-import { ChartHeader } from "../ChartUI/ChartHeader"
-import { ChartContainer } from "../ChartUI/ChartContainer"
-import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
+import { ChartHeader } from "@components/ChartUI/ChartHeader"
+import { ChartContainer } from "@components/ChartUI/ChartContainer"
+import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { handleChartHeight, handleChartWidth, shadowTool } from "@/utils/utils"
+import { CustomBar } from "@components/ChartUI/CustomBar"
 import doctorIcon from "@assets/icons/doctor.svg"
 import {
 	topHospitals,
 	aggregateHospitalDepartments,
 } from "@/utils/data/hospitals/hospitals"
-import { CustomBar } from "../ChartUI/CustomBar"
 
 export const DepartmentsBar = () => {
 	const breakpoint = useBreakpoint()

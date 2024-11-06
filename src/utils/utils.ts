@@ -18,11 +18,7 @@ export const handleChartHeight = ({
 	if (isPie) {
 		return 160
 	} else {
-		if (isMobile) {
-			return 260
-		} else {
-			return 320
-		}
+		return isMobile ? 260 : 320
 	}
 }
 

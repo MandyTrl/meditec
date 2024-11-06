@@ -7,12 +7,15 @@ import {
 	Radar,
 	RadarChart,
 	ResponsiveContainer,
+	Tooltip,
 } from "recharts"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
+import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { handleChartHeight } from "@/utils/utils"
 import stethoscopeIcon from "@assets/icons/stethoscope.svg"
+import CustomTooltip from "../ChartUI/CustomToolType"
 
 type DatasDoctorSpecialties = {
 	specialty: string
@@ -93,16 +96,22 @@ export const DoctorSpecialtiesRadar = ({
 			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
 				<RadarChart data={chartDatas}>
 					<PolarGrid />
-					<PolarAngleAxis dataKey="specialty" />
-					<PolarRadiusAxis />
+
+					<PolarAngleAxis
+						dataKey="specialty"
+						tick={(props) => <CustomAxisTick {...props} />}
+					/>
+
+					<PolarRadiusAxis scale="sqrt" angle={60} />
 					{chartDatas.map((hospital) => (
 						<Radar
 							key={hospital.specialty}
 							dataKey="numberOfDoctors"
 							stroke="#1b4f72"
+							strokeWidth={0.3}
 							fill="#dbeaf4"
-							fillOpacity={0.4}
-							name="N° of Doctors"
+							fillOpacity={0.2}
+							name="doctors"
 						/>
 					))}
 
@@ -111,21 +120,25 @@ export const DoctorSpecialtiesRadar = ({
 							key={hospital.satisfactionRate}
 							dataKey="satisfactionRate"
 							stroke="#EF62FF"
+							strokeWidth={0.3}
 							fill="#FDE6FF"
 							fillOpacity={0.8}
-							name="Statisfaction Rate"
+							name="satisfaction rate"
 						/>
 					))}
+
 					<Legend
 						payload={[
-							{ value: "N° of Doctors", type: "line", color: "#1b4f72" },
+							{ value: "doctors", type: "line", color: "#1b4f72" },
 							{
-								value: "Statisfaction Rate",
+								value: "satisfaction rate",
 								type: "star",
 								color: "#EF62FF",
 							},
 						]}
 					/>
+
+					<Tooltip content={(props) => <CustomTooltip {...props} />} />
 				</RadarChart>
 			</ResponsiveContainer>
 		</ChartContainer>
