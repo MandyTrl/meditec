@@ -2,17 +2,12 @@ import React, { useEffect, useState } from "react"
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts"
 import { ChartContainer } from "../ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
-import { CustomAxisTick } from "../ChartUI/CustomAxisTick"
+import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
+import { ComponentProps } from "@components/Layout/OverviewLayout"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { handleChartHeight, shadowTool } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import patientsIcon from "@assets/icons/patients.svg"
-
-type MonthlyHospitalizationsProps = {
-	datas: Hospital[]
-	hasHospitalSelected: boolean
-	isMobile: boolean
-}
 
 type ChartData = {
 	month: string
@@ -24,7 +19,7 @@ export const MonthlyHospitalizations = ({
 	datas,
 	hasHospitalSelected,
 	isMobile,
-}: MonthlyHospitalizationsProps) => {
+}: ComponentProps) => {
 	const { hospital } = useHospitalSelected()
 
 	const [chartData, setChartData] = useState<ChartData[] | []>([])

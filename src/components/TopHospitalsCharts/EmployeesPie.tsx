@@ -6,13 +6,8 @@ import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { InsightButton } from "@components/UI/InsightButton"
 import { handleChartHeight, shadowTool } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
+import { ComponentProps } from "@components/Layout/OverviewLayout"
 import nurseIcon from "@assets/icons/nurse.svg"
-
-type EmployeesPieProps = {
-	datas: Hospital[]
-	hasHospitalSelected: boolean
-	isMobile: boolean
-}
 
 type EmployeesPie = {
 	name: string
@@ -22,7 +17,7 @@ export const EmployeesPie = ({
 	datas,
 	hasHospitalSelected,
 	isMobile,
-}: EmployeesPieProps) => {
+}: ComponentProps) => {
 	const [chartDatas, setChartDatas] = useState<EmployeesPie[]>([
 		{ name: "nurses", value: 0 },
 		{ name: "doctors", value: 0 },

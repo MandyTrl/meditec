@@ -1,16 +1,22 @@
 import React from "react"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { EmployeesPie } from "@components/TopHospitalsCharts/EmployeesPie"
-import { SatisfactionRate } from "@components/TopHospitalsCharts/SatisfactionRate"
-import { Patients } from "@components/TopHospitalsCharts/Patients"
-import { TreatmentsData } from "@components/TopHospitalsCharts/TreatmentsData"
+import { SatisfactionRate } from "@/components/TopHospitalsCharts/KeyNumbers/SatisfactionRate"
+import { Patients } from "@/components/TopHospitalsCharts/KeyNumbers/Patients"
+import { Treatments } from "@/components/TopHospitalsCharts/KeyNumbers/Treatments"
 import { MonthlyHospitalizations } from "@components/TopHospitalsCharts/MonthlyHospitalizations"
-import { DoctorSpecialtiesRadar } from "../TopHospitalsCharts/DoctorSpeciltiesRadar"
+import { DoctorSpecialtiesRadar } from "@components/TopHospitalsCharts/DoctorSpeciltiesRadar"
 
 type OverviewLayoutProps = {
 	isMobile: boolean
 	datas: Hospital[]
 	hasHospitalSelected: boolean
+}
+
+export type ComponentProps = {
+	datas: Hospital[]
+	hasHospitalSelected: boolean
+	isMobile: boolean
 }
 
 export const OverviewLayout = ({
@@ -26,16 +32,17 @@ export const OverviewLayout = ({
 						<SatisfactionRate
 							hasHospitalSelected={hasHospitalSelected}
 							datas={datas}
+							isMobile
 						/>
 						<Patients
 							hasHospitalSelected={hasHospitalSelected}
 							datas={datas}
-							isMobile={isMobile}
+							isMobile
 						/>
-						<TreatmentsData
+						<Treatments
 							hasHospitalSelected={hasHospitalSelected}
 							datas={datas}
-							isMobile={isMobile}
+							isMobile
 						/>
 					</div>
 
@@ -43,7 +50,7 @@ export const OverviewLayout = ({
 						<MonthlyHospitalizations
 							hasHospitalSelected={hasHospitalSelected}
 							datas={datas}
-							isMobile={isMobile}
+							isMobile
 						/>
 					</div>
 				</div>
@@ -52,13 +59,13 @@ export const OverviewLayout = ({
 					<EmployeesPie
 						hasHospitalSelected={hasHospitalSelected}
 						datas={datas}
-						isMobile={isMobile}
+						isMobile
 					/>
 
 					<DoctorSpecialtiesRadar
 						hasHospitalSelected={hasHospitalSelected}
 						datas={datas}
-						isMobile={isMobile}
+						isMobile
 					/>
 				</div>
 			</div>

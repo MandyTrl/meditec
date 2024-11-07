@@ -1,21 +1,16 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import { ChartContainer } from "../ChartUI/ChartContainer"
+import { ChartContainer } from "../../ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
+import { ComponentProps } from "@components/Layout/OverviewLayout"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import treatmentIcon from "@assets/icons/treatment.svg"
 
-type TreatmentsDataProps = {
-	datas: Hospital[]
-	hasHospitalSelected: boolean
-	isMobile: boolean
-}
-
-export const TreatmentsData = ({
+export const Treatments = ({
 	datas,
 	hasHospitalSelected,
 	isMobile,
-}: TreatmentsDataProps) => {
+}: ComponentProps) => {
 	const [chartDatas, setChartDatas] = useState<number>(0)
 
 	useEffect(() => {

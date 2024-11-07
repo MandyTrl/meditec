@@ -3,19 +3,15 @@ import React, { useEffect, useState } from "react"
 import clsx from "clsx"
 import { resumeTopHospitals } from "@/utils/data/hospitals/hospitals"
 import { Hospital, ResumeHospital } from "@/utils/data/hospitals/hospitalsTypes"
-import { ChartContainer } from "../ChartUI/ChartContainer"
+import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
+import { ComponentProps } from "@components/Layout/OverviewLayout"
 import notation from "@assets/icons/sparkles.svg"
-
-type SatisfactionRateProps = {
-	datas: Hospital[]
-	hasHospitalSelected: boolean
-}
 
 export const SatisfactionRate = ({
 	datas,
 	hasHospitalSelected,
-}: SatisfactionRateProps) => {
+}: ComponentProps) => {
 	const [chartDatas, setChartDatas] = useState<ResumeHospital[] | number>(
 		resumeTopHospitals
 	)

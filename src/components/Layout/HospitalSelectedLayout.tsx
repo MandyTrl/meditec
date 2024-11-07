@@ -1,5 +1,5 @@
 import React from "react"
-import { SatisfactionRate } from "@/components/TopHospitalsCharts/SatisfactionRate"
+import { SatisfactionRate } from "@/components/TopHospitalsCharts/KeyNumbers/SatisfactionRate"
 import { HospitalizationsBar } from "@components/TopHospitalsCharts/HospitalizationsBar"
 // import { DepartmentsLines } from "@components/TopHospitalsCharts/DepartmentsLines"
 import { DepartmentsBar } from "@components/TopHospitalsCharts/DepartmentsBar"

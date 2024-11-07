@@ -11,11 +11,12 @@ import {
 } from "recharts"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
-import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
+import CustomTooltip from "@components/ChartUI/CustomToolType"
+import { ComponentProps } from "@components/Layout/OverviewLayout"
+// import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { handleChartHeight } from "@/utils/utils"
 import stethoscopeIcon from "@assets/icons/stethoscope.svg"
-import CustomTooltip from "../ChartUI/CustomToolType"
 
 type DatasDoctorSpecialties = {
 	specialty: string
@@ -23,17 +24,11 @@ type DatasDoctorSpecialties = {
 	satisfactionRate: number
 }
 
-type DatasDoctorSpecialtiesProps = {
-	datas: Hospital[]
-	hasHospitalSelected: boolean
-	isMobile: boolean
-}
-
 export const DoctorSpecialtiesRadar = ({
 	datas,
 	hasHospitalSelected,
 	isMobile,
-}: DatasDoctorSpecialtiesProps) => {
+}: ComponentProps) => {
 	const [chartDatas, setChartDatas] = useState<DatasDoctorSpecialties[]>([])
 
 	useEffect(() => {
@@ -99,7 +94,7 @@ export const DoctorSpecialtiesRadar = ({
 
 					<PolarAngleAxis
 						dataKey="specialty"
-						tick={(props) => <CustomAxisTick {...props} />}
+						// tick={(props) => <CustomAxisTick {...props} />}
 					/>
 
 					<PolarRadiusAxis scale="sqrt" angle={60} />
