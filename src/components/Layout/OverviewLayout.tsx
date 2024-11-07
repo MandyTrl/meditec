@@ -26,10 +26,10 @@ export const OverviewLayout = ({
 	datas,
 }: OverviewLayoutProps) => {
 	return (
-		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-3">
-			<div className="w-full md:flex md:gap-3">
-				<div className="w-full md:flex flex-col md:gap-3">
-					<div className="key__number__container w-full md:flex md:gap-3">
+		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-4">
+			<div className="w-full md:flex md:gap-4">
+				<div className="w-full md:flex flex-col md:gap-4">
+					<div className="key__number__container w-full md:flex md:gap-4">
 						<SatisfactionRate
 							datas={datas}
 							isMobile
@@ -47,7 +47,7 @@ export const OverviewLayout = ({
 						/>
 					</div>
 
-					<div className="w-full flex flex-col md:flex-1 md:gap-3">
+					<div className="w-full flex flex-col md:flex-1 md:gap-4">
 						<MonthlyHospitalizations
 							datas={datas}
 							isMobile
@@ -61,13 +61,12 @@ export const OverviewLayout = ({
 					</div>
 				</div>
 
-				<div className="flex flex-col w-auto shrink-0 md:gap-3">
+				<div className="flex flex-col w-auto shrink-0 md:gap-4">
 					<EmployeesPie
 						datas={datas}
 						isMobile
 						hasHospitalSelected={hasHospitalSelected}
 					/>
-
 					<DoctorSpecialtiesRadar
 						datas={datas}
 						isMobile
