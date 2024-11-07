@@ -1,11 +1,12 @@
 import React from "react"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { EmployeesPie } from "@components/TopHospitalsCharts/EmployeesPie"
-import { SatisfactionRate } from "@/components/TopHospitalsCharts/KeyNumbers/SatisfactionRate"
+import { DepartmentsBar } from "@components/TopHospitalsCharts/DepartmentsBar"
 import { Patients } from "@/components/TopHospitalsCharts/KeyNumbers/Patients"
 import { Treatments } from "@/components/TopHospitalsCharts/KeyNumbers/Treatments"
-import { MonthlyHospitalizations } from "@components/TopHospitalsCharts/MonthlyHospitalizations"
 import { DoctorSpecialtiesRadar } from "@components/TopHospitalsCharts/DoctorSpeciltiesRadar"
+import { MonthlyHospitalizations } from "@components/TopHospitalsCharts/MonthlyHospitalizations"
+import { SatisfactionRate } from "@/components/TopHospitalsCharts/KeyNumbers/SatisfactionRate"
 
 type OverviewLayoutProps = {
 	isMobile: boolean
@@ -20,7 +21,7 @@ export type ComponentProps = {
 }
 
 export const OverviewLayout = ({
-	isMobile,
+	// isMobile,
 	hasHospitalSelected,
 	datas,
 }: OverviewLayoutProps) => {
@@ -30,42 +31,47 @@ export const OverviewLayout = ({
 				<div className="w-full md:flex flex-col md:gap-3">
 					<div className="key__number__container w-full md:flex md:gap-3">
 						<SatisfactionRate
-							hasHospitalSelected={hasHospitalSelected}
 							datas={datas}
 							isMobile
+							hasHospitalSelected={hasHospitalSelected}
 						/>
 						<Patients
-							hasHospitalSelected={hasHospitalSelected}
 							datas={datas}
 							isMobile
+							hasHospitalSelected={hasHospitalSelected}
 						/>
 						<Treatments
-							hasHospitalSelected={hasHospitalSelected}
 							datas={datas}
 							isMobile
+							hasHospitalSelected={hasHospitalSelected}
 						/>
 					</div>
 
-					<div className="w-full md:flex-1">
+					<div className="w-full flex flex-col md:flex-1 md:gap-3">
 						<MonthlyHospitalizations
-							hasHospitalSelected={hasHospitalSelected}
 							datas={datas}
 							isMobile
+							hasHospitalSelected={hasHospitalSelected}
+						/>
+						<DepartmentsBar
+							datas={datas}
+							isMobile
+							hasHospitalSelected={hasHospitalSelected}
 						/>
 					</div>
 				</div>
 
 				<div className="flex flex-col w-auto shrink-0 md:gap-3">
 					<EmployeesPie
-						hasHospitalSelected={hasHospitalSelected}
 						datas={datas}
 						isMobile
+						hasHospitalSelected={hasHospitalSelected}
 					/>
 
 					<DoctorSpecialtiesRadar
-						hasHospitalSelected={hasHospitalSelected}
 						datas={datas}
 						isMobile
+						hasHospitalSelected={hasHospitalSelected}
 					/>
 				</div>
 			</div>

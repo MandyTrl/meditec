@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react"
 import clsx from "clsx"
 import {
@@ -8,28 +9,32 @@ import {
 	ResponsiveContainer,
 	Bar,
 	BarChart,
+	YAxis,
+	Line,
+	ComposedChart,
 } from "recharts"
-import { useBreakpoint } from "@/utils/hooks/useBP"
-import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import {
 	DepartmentSummary,
 	HospitalDepartment,
 } from "@/utils/data/hospitals/hospitalsTypes"
+import { CustomBar } from "@components/ChartUI/CustomBar"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
-import { handleChartHeight, handleChartWidth, shadowTool } from "@/utils/utils"
-import { CustomBar } from "@components/ChartUI/CustomBar"
-import doctorIcon from "@assets/icons/doctor.svg"
+import CustomTooltip from "@components/ChartUI/CustomToolType"
 import {
 	topHospitals,
 	aggregateHospitalDepartments,
 } from "@/utils/data/hospitals/hospitals"
+import { handleChartHeight } from "@/utils/utils"
+import { ComponentProps } from "@components/Layout/OverviewLayout"
+import doctorIcon from "@assets/icons/doctor.svg"
 
-export const DepartmentsBar = () => {
-	const breakpoint = useBreakpoint()
-	const isMobile = breakpoint === "mobile"
-	const { hospital, hospitalSelected } = useHospitalSelected()
+export const DepartmentsBar = ({
+	datas,
+	hasHospitalSelected,
+	isMobile,
+}: ComponentProps) => {
 	const [chartData, setChartData] = useState<
 		HospitalDepartment[] | DepartmentSummary[]
 	>([])
@@ -37,9 +42,9 @@ export const DepartmentsBar = () => {
 	useEffect(() => {}, [isMobile])
 
 	useEffect(() => {
-		if (hospitalSelected) {
+		if (hasHospitalSelected) {
 			const hospitalFound = topHospitals.find(
-				(el) => el.name === hospital[0]?.name
+				(el) => el.name === datas[0]?.name
 			)
 			if (hospitalFound) {
 				setChartData(hospitalFound.hospitalDepartments)
@@ -47,7 +52,7 @@ export const DepartmentsBar = () => {
 		} else {
 			setChartData(aggregateHospitalDepartments(topHospitals))
 		}
-	}, [hospital, hospitalSelected])
+	}, [datas, hasHospitalSelected])
 
 	return (
 		<ChartContainer>
@@ -58,17 +63,17 @@ export const DepartmentsBar = () => {
 			/>
 
 			<div className="w-full md:overflow-x-auto md:flex">
-				<div className={clsx(hospitalSelected ? "my1" : "my-5", "w-full")}>
-					{!hospitalSelected && (
-						<p className="md:mb-1 font-medium">{hospitalSelected}</p>
+				<div className={clsx(hasHospitalSelected ? "my1" : "my-5", "w-full")}>
+					{!hasHospitalSelected && (
+						<p className="md:mb-1 font-medium">{hasHospitalSelected}</p>
 					)}
 
 					<Legend iconSize={12} wrapperStyle={{ paddingTop: "2px" }} />
 
 					<ResponsiveContainer
-						width={handleChartWidth(isMobile)}
+						width="100%"
 						height={handleChartHeight(isMobile)}>
-						<BarChart
+						<ComposedChart
 							data={chartData}
 							barGap={3}
 							margin={{
@@ -88,48 +93,78 @@ export const DepartmentsBar = () => {
 								tick={(props) => <CustomAxisTick {...props} />}
 							/>
 
+							<YAxis
+								dataKey={
+									hasHospitalSelected
+										? "patientsPerDay"
+										: "averagePatientsPerDay"
+								}
+								yAxisId="left"
+								orientation="left"
+								stroke="#1b4f72"
+								label={{
+									value: "Patients per day",
+									angle: -90,
+									dx: -28,
+									fontSize: "14px",
+									fill: "#1b4f72",
+								}}
+								style={{
+									fill: "#1b4f72",
+								}}
+							/>
+
+							<Bar
+								type="monotone"
+								yAxisId="left"
+								dataKey={
+									hasHospitalSelected
+										? "patientsPerDay"
+										: "averagePatientsPerDay"
+								}
+								name={
+									hasHospitalSelected
+										? "patients per day"
+										: "average patients per day"
+								}
+								fill="#AED6F1"
+								shape={(props: any) => <CustomBar {...props} />}
+							/>
+
+							<YAxis
+								dataKey="averageWaitTime"
+								yAxisId="right"
+								orientation="right"
+								stroke="#1b4f72"
+								label={{
+									value: "Average wait time (mins)",
+									angle: -90,
+									dx: 28,
+									fontSize: "14px",
+									fill: "#1b4f72",
+								}}
+								style={{
+									fill: "#1b4f72",
+								}}
+							/>
+
+							<Line
+								type="monotone"
+								yAxisId="right"
+								dataKey="averageWaitTime"
+								name="average wait time (mins)"
+								stroke="#1b4f72"
+								fill="#1b4f72"
+							/>
+							{/* 
 							<Legend
 								iconType="circle"
 								iconSize={12}
 								wrapperStyle={{ paddingTop: "15px" }}
-							/>
+							/> */}
 
-							<Bar
-								type="monotone"
-								dataKey={
-									hospitalSelected ? "patientsPerDay" : "averagePatientsPerDay"
-								}
-								fill="#1b4f72"
-								shape={(props: any) => <CustomBar {...props} />}
-							/>
-							<Bar
-								type="monotone"
-								dataKey="averageWaitTime"
-								fill="#aed6f1"
-								barSize={20}
-								shape={(props: any) => (
-									<CustomBar customWidth={20} {...props} />
-								)}
-							/>
-
-							<Tooltip
-								cursor={{
-									fill: "#ebf5fb",
-									radius: 8,
-									y: 10,
-									opacity: 0.5,
-								}}
-								contentStyle={{
-									border: "none",
-									padding: 20,
-									borderRadius: 8,
-									boxShadow: `${shadowTool}`,
-									fontSize: 15,
-								}}
-								labelStyle={{ fontSize: 16 }}
-								itemStyle={{ lineHeight: 1, fontWeight: 600 }}
-							/>
-						</BarChart>
+							<Tooltip content={(props: any) => <CustomTooltip {...props} />} />
+						</ComposedChart>
 					</ResponsiveContainer>
 				</div>
 			</div>
