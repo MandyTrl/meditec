@@ -21,7 +21,7 @@ export type ComponentProps = {
 }
 
 export const OverviewLayout = ({
-	// isMobile,
+	isMobile,
 	hasHospitalSelected,
 	datas,
 }: OverviewLayoutProps) => {
@@ -32,17 +32,17 @@ export const OverviewLayout = ({
 					<div className="key__number__container w-full md:flex md:gap-4">
 						<SatisfactionRate
 							datas={datas}
-							isMobile
+							isMobile={isMobile}
 							hasHospitalSelected={hasHospitalSelected}
 						/>
 						<Patients
 							datas={datas}
-							isMobile
+							isMobile={isMobile}
 							hasHospitalSelected={hasHospitalSelected}
 						/>
 						<Treatments
 							datas={datas}
-							isMobile
+							isMobile={isMobile}
 							hasHospitalSelected={hasHospitalSelected}
 						/>
 					</div>
@@ -50,12 +50,12 @@ export const OverviewLayout = ({
 					<div className="w-full flex flex-col md:flex-1 md:gap-4">
 						<MonthlyHospitalizations
 							datas={datas}
-							isMobile
+							isMobile={isMobile}
 							hasHospitalSelected={hasHospitalSelected}
 						/>
 						<DepartmentsBar
 							datas={datas}
-							isMobile
+							isMobile={isMobile}
 							hasHospitalSelected={hasHospitalSelected}
 						/>
 					</div>
@@ -64,12 +64,12 @@ export const OverviewLayout = ({
 				<div className="flex flex-col w-auto shrink-0 md:gap-4">
 					<EmployeesPie
 						datas={datas}
-						isMobile
+						isMobile={isMobile}
 						hasHospitalSelected={hasHospitalSelected}
 					/>
 					<DoctorSpecialtiesRadar
 						datas={datas}
-						isMobile
+						isMobile={isMobile}
 						hasHospitalSelected={hasHospitalSelected}
 					/>
 				</div>

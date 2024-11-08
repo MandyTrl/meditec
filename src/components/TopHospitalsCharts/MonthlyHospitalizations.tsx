@@ -5,9 +5,10 @@ import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
-import { handleChartHeight, shadowTool } from "@/utils/utils"
+import { handleChartHeight } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import patientsIcon from "@assets/icons/patients.svg"
+import CustomTooltip from "@components/ChartUI/CustomToolType"
 
 type ChartData = {
 	month: string
@@ -114,23 +115,7 @@ export const MonthlyHospitalizations = ({
 						dot={false}
 					/>
 
-					<Tooltip
-						cursor={{
-							fill: "#ebf5fb",
-							radius: 8,
-							y: 10,
-							opacity: 0.5,
-						}}
-						contentStyle={{
-							border: "none",
-							padding: 20,
-							borderRadius: 8,
-							boxShadow: `${shadowTool}`,
-							fontSize: 15,
-						}}
-						labelStyle={{ fontSize: 16 }}
-						itemStyle={{ lineHeight: 1, fontWeight: 600 }}
-					/>
+					<Tooltip content={(props) => <CustomTooltip {...props} />} />
 				</AreaChart>
 			</ResponsiveContainer>
 		</ChartContainer>

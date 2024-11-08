@@ -8,15 +8,11 @@ import {
 	Legend,
 	ResponsiveContainer,
 	Bar,
-	BarChart,
 	YAxis,
 	Line,
 	ComposedChart,
 } from "recharts"
-import {
-	DepartmentSummary,
-	HospitalDepartment,
-} from "@/utils/data/hospitals/hospitalsTypes"
+import { HospitalDepartment } from "@/utils/data/hospitals/hospitalsTypes"
 import { CustomBar } from "@components/ChartUI/CustomBar"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
@@ -29,15 +25,18 @@ import {
 import { handleChartHeight } from "@/utils/utils"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
 import doctorIcon from "@assets/icons/doctor.svg"
+import { ResumeCharts } from "../UI/ResumeCharts"
 
 export const DepartmentsBar = ({
 	datas,
 	hasHospitalSelected,
 	isMobile,
 }: ComponentProps) => {
-	const [chartData, setChartData] = useState<
-		HospitalDepartment[] | DepartmentSummary[]
-	>([])
+	const [chartData, setChartData] = useState<HospitalDepartment[]>([])
+	const [resumeDatas, setResumeDatas] = useState({
+		averageWaitTime: 0,
+		sumOfPatientsPerDay: 0,
+	})
 
 	useEffect(() => {}, [isMobile])
 
@@ -52,7 +51,30 @@ export const DepartmentsBar = ({
 		} else {
 			setChartData(aggregateHospitalDepartments(topHospitals))
 		}
-	}, [datas, hasHospitalSelected])
+
+		const calculateTotals = (datas: HospitalDepartment[]) => {
+			const totalPatientsPerDay = datas.reduce(
+				(total, dept) => total + dept.patientsPerDay,
+				0
+			)
+
+			const totalWaitTime = datas.reduce(
+				(total, dept) => total + dept.averageWaitTime * dept.patientsPerDay,
+				0
+			)
+			const averageWaitTime =
+				totalPatientsPerDay > 0
+					? Math.ceil(totalWaitTime / totalPatientsPerDay)
+					: 0
+
+			setResumeDatas({
+				sumOfPatientsPerDay: totalPatientsPerDay,
+				averageWaitTime: averageWaitTime,
+			})
+		}
+
+		calculateTotals(chartData)
+	}, [chartData, datas, hasHospitalSelected, resumeDatas])
 
 	return (
 		<ChartContainer>
@@ -94,11 +116,7 @@ export const DepartmentsBar = ({
 							/>
 
 							<YAxis
-								dataKey={
-									hasHospitalSelected
-										? "patientsPerDay"
-										: "averagePatientsPerDay"
-								}
+								dataKey="patientsPerDay"
 								yAxisId="left"
 								orientation="left"
 								stroke="#1b4f72"
@@ -117,16 +135,8 @@ export const DepartmentsBar = ({
 							<Bar
 								type="monotone"
 								yAxisId="left"
-								dataKey={
-									hasHospitalSelected
-										? "patientsPerDay"
-										: "averagePatientsPerDay"
-								}
-								name={
-									hasHospitalSelected
-										? "patients per day"
-										: "average patients per day"
-								}
+								dataKey="patientsPerDay"
+								name="patients per day"
 								fill="#AED6F1"
 								shape={(props: any) => <CustomBar {...props} />}
 							/>
@@ -166,6 +176,19 @@ export const DepartmentsBar = ({
 							<Tooltip content={(props: any) => <CustomTooltip {...props} />} />
 						</ComposedChart>
 					</ResponsiveContainer>
+
+					<ResumeCharts
+						datas={[
+							{
+								description: "Total patients per day :",
+								value: resumeDatas.sumOfPatientsPerDay,
+							},
+							{
+								description: "Average wait time (mins) :",
+								value: resumeDatas.averageWaitTime,
+							},
+						]}
+					/>
 				</div>
 			</div>
 		</ChartContainer>

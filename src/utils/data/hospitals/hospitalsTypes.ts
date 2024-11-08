@@ -4,13 +4,6 @@ type HospitalDepartment = {
 	averageWaitTime: number
 }
 
-type DepartmentSummary = {
-	department: string
-	averagePatientsPerDay: number
-	averageWaitTime: number
-	hospitalCount: number
-}
-
 type ClinicalTrial = {
 	name: string
 	status: string
@@ -61,5 +54,4 @@ export type {
 	Overview,
 	DoctorSpecialty,
 	HospitalDepartment,
-	DepartmentSummary,
 }

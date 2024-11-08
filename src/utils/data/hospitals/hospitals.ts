@@ -1,4 +1,9 @@
-import { DepartmentSummary, Hospital, ResumeHospital } from "./hospitalsTypes"
+import {
+	DepartmentSummary,
+	Hospital,
+	HospitalDepartment,
+	ResumeHospital,
+} from "./hospitalsTypes"
 
 const topHospitals: Hospital[] = [
 	{
@@ -728,7 +733,7 @@ const getSpecialties = (hospitals: Hospital[]): string[] => {
 const hospitalsName = topHospitals.map((hospital: Hospital) => hospital.name)
 const aggregateHospitalDepartments = (
 	hospitals: Hospital[]
-): DepartmentSummary[] => {
+): HospitalDepartment[] => {
 	return hospitals
 		.flatMap((hospital) => hospital.hospitalDepartments)
 		.reduce((acc, department) => {
@@ -737,25 +742,22 @@ const aggregateHospitalDepartments = (
 			)
 
 			if (existingDepartment) {
-				existingDepartment.hospitalCount += 1
-
-				existingDepartment.averagePatientsPerDay =
-					(existingDepartment.averagePatientsPerDay *
-						(existingDepartment.hospitalCount - 1) +
+				existingDepartment.patientsPerDay = Math.ceil(
+					(existingDepartment.patientsPerDay * (acc.length - 1) +
 						department.patientsPerDay) /
-					existingDepartment.hospitalCount
+						acc.length
+				)
 
-				existingDepartment.averageWaitTime =
-					(existingDepartment.averageWaitTime *
-						(existingDepartment.hospitalCount - 1) +
+				existingDepartment.averageWaitTime = Math.ceil(
+					(existingDepartment.averageWaitTime * (acc.length - 1) +
 						department.averageWaitTime) /
-					existingDepartment.hospitalCount
+						acc.length
+				)
 			} else {
 				acc.push({
 					department: department.department,
-					averagePatientsPerDay: department.patientsPerDay,
+					patientsPerDay: department.patientsPerDay,
 					averageWaitTime: department.averageWaitTime,
-					hospitalCount: 1,
 				})
 			}
 
