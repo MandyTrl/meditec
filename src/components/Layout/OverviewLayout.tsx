@@ -54,7 +54,8 @@ export const OverviewLayout = ({
 							isMobile={isMobile}
 							hasHospitalSelected={hasHospitalSelected}
 						/>
-						<DepartmentsBar
+
+						<ClinicalTrialsList
 							datas={datas}
 							isMobile={isMobile}
 							hasHospitalSelected={hasHospitalSelected}
@@ -73,7 +74,7 @@ export const OverviewLayout = ({
 						isMobile={isMobile}
 						hasHospitalSelected={hasHospitalSelected}
 					/>
-					<ClinicalTrialsList
+					<DepartmentsBar
 						datas={datas}
 						isMobile={isMobile}
 						hasHospitalSelected={hasHospitalSelected}
