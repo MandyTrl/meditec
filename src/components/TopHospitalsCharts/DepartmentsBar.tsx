@@ -14,7 +14,9 @@ import {
 } from "recharts"
 import { HospitalDepartment } from "@/utils/data/hospitals/hospitalsTypes"
 import { CustomBar } from "@components/ChartUI/CustomBar"
+import { ResumeCharts } from "@components/UI/ResumeCharts"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
+import { ComponentProps } from "@components/Layout/OverviewLayout"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import CustomTooltip from "@components/ChartUI/CustomToolType"
@@ -23,9 +25,7 @@ import {
 	aggregateHospitalDepartments,
 } from "@/utils/data/hospitals/hospitals"
 import { handleChartHeight } from "@/utils/utils"
-import { ComponentProps } from "@components/Layout/OverviewLayout"
 import doctorIcon from "@assets/icons/doctor.svg"
-import { ResumeCharts } from "../UI/ResumeCharts"
 
 export const DepartmentsBar = ({
 	datas,
@@ -62,6 +62,7 @@ export const DepartmentsBar = ({
 				(total, dept) => total + dept.averageWaitTime * dept.patientsPerDay,
 				0
 			)
+
 			const averageWaitTime =
 				totalPatientsPerDay > 0
 					? Math.ceil(totalWaitTime / totalPatientsPerDay)

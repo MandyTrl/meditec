@@ -54,4 +54,5 @@ export type {
 	Overview,
 	DoctorSpecialty,
 	HospitalDepartment,
+	ClinicalTrial,
 }

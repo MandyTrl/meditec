@@ -7,6 +7,7 @@ import { Treatments } from "@/components/TopHospitalsCharts/KeyNumbers/Treatment
 import { DoctorSpecialtiesRadar } from "@components/TopHospitalsCharts/DoctorSpeciltiesRadar"
 import { MonthlyHospitalizations } from "@components/TopHospitalsCharts/MonthlyHospitalizations"
 import { SatisfactionRate } from "@/components/TopHospitalsCharts/KeyNumbers/SatisfactionRate"
+import { ClinicalTrialsList } from "../TopHospitalsCharts/ClinicalTrialsList"
 
 type OverviewLayoutProps = {
 	isMobile: boolean
@@ -68,6 +69,11 @@ export const OverviewLayout = ({
 						hasHospitalSelected={hasHospitalSelected}
 					/>
 					<DoctorSpecialtiesRadar
+						datas={datas}
+						isMobile={isMobile}
+						hasHospitalSelected={hasHospitalSelected}
+					/>
+					<ClinicalTrialsList
 						datas={datas}
 						isMobile={isMobile}
 						hasHospitalSelected={hasHospitalSelected}
