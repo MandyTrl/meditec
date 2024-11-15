@@ -12,7 +12,6 @@ import { sortData } from "@/utils/utils"
 
 export const ClinicalTrialsList = ({
 	datas,
-	isMobile,
 	hasHospitalSelected,
 }: ComponentProps) => {
 	const [chartData, setChartData] = useState<ClinicalTrial[] | null>(null)

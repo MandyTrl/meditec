@@ -107,10 +107,17 @@ export const MonthlyHospitalizations = ({
 
 					<Line dataKey="2023" stroke="#67a8d3" /> */}
 
+					<defs>
+						<linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+							<stop offset="0%" stopColor="#AED6F1" stopOpacity={0.9} />
+							<stop offset="100%" stopColor="#ffffff" stopOpacity={0.4} />
+						</linearGradient>
+					</defs>
+
 					<Area
 						dataKey="hospitalizations"
 						stroke="#1b4f72"
-						fill="#c4deef"
+						fill="url(#colorGradient)"
 						type={"monotone"}
 						dot={false}
 					/>

@@ -117,8 +117,9 @@ export const DoctorSpecialtiesRadar = ({
 							dataKey="satisfactionRate"
 							stroke="#EF62FF"
 							strokeWidth={0.3}
+							strokeDasharray="3 6"
 							fill="#FDE6FF"
-							fillOpacity={0.8}
+							fillOpacity={0.3}
 							name="satisfaction rate"
 						/>
 					))}

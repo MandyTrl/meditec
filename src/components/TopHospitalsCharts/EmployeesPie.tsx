@@ -84,9 +84,7 @@ export const EmployeesPie = ({
 			<ResponsiveContainer
 				width="100%"
 				height={handleChartHeight({ isMobile, isPie: true })}>
-				<PieChart
-					width={isMobile || hasHospitalSelected ? 320 : 800}
-					height={isMobile ? 300 : 330}>
+				<PieChart>
 					<Pie
 						dataKey="value"
 						startAngle={180}
@@ -95,7 +93,8 @@ export const EmployeesPie = ({
 						cx="50%"
 						cy="50%"
 						outerRadius={80}
-						innerRadius={45}>
+						innerRadius={45}
+						stroke="none">
 						<Cell key="nurses" fill="#aed6f1" />
 						<Cell key="doctors" fill="#1b4f72" />
 					</Pie>

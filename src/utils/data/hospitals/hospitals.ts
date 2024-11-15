@@ -1,9 +1,4 @@
-import {
-	DepartmentSummary,
-	Hospital,
-	HospitalDepartment,
-	ResumeHospital,
-} from "./hospitalsTypes"
+import { Hospital, HospitalDepartment, ResumeHospital } from "./hospitalsTypes"
 
 const topHospitals: Hospital[] = [
 	{
@@ -762,7 +757,7 @@ const aggregateHospitalDepartments = (
 			}
 
 			return acc
-		}, [] as DepartmentSummary[])
+		}, [] as HospitalDepartment[])
 }
 
 export {

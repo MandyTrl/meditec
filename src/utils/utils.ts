@@ -15,11 +15,8 @@ export const handleChartHeight = ({
 	isMobile,
 	isPie,
 }: HandleChartHeightProps) => {
-	if (isPie) {
-		return 160
-	} else {
-		return isMobile ? 260 : 320
-	}
+	const baseHeight = isPie ? 160 : isMobile ? 260 : 320
+	return Math.max(baseHeight, 160) //assure une hauteur minimale
 }
 
 export const shadowTool: string =

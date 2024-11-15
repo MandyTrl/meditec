@@ -4,6 +4,20 @@
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	background-image: url(../../public/assets/bgray.jpg);
+	background-repeat: repeat;
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* background-color: rgba(109, 179, 242, 0.3); */
+	background-color: rgb(27, 79, 114, 0.3);
+	z-index: -10;
 }
 
 /* ::-webkit-scrollbar {
