@@ -29,7 +29,7 @@ export const OverviewLayout = ({
 	return (
 		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-4">
 			{/* <div className="w-full md:flex md:gap-4"> */}
-			<div className="key__number__container w-[88%] md:flex md:gap-4">
+			<div className="key__number__container w-full md:w-[88%] md:flex md:gap-4">
 				<SatisfactionRate
 					datas={datas}
 					isMobile={isMobile}
@@ -48,7 +48,7 @@ export const OverviewLayout = ({
 			</div>
 
 			<div className="w-full md:flex md:gap-4">
-				<div className="w-full flex md:flex-col md:gap-4">
+				<div className="w-full flex flex-col md:gap-4">
 					<MonthlyHospitalizations
 						datas={datas}
 						isMobile={isMobile}
@@ -61,7 +61,7 @@ export const OverviewLayout = ({
 					/>
 				</div>
 
-				<div className="w-full flex md:flex-col md:gap-4">
+				<div className="w-full flex flex-col md:gap-4">
 					<EmployeesPie
 						datas={datas}
 						isMobile={isMobile}
