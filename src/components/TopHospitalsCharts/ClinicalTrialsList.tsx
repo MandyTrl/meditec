@@ -37,7 +37,7 @@ export const ClinicalTrialsList = ({
 		<ChartContainer>
 			<ChartHeader title="Clinical Trials" icon={treatmentIcon} />
 
-			<table>
+			<table className="w-full">
 				<thead className="text-left">
 					<tr>
 						<th className="pr-2" onClick={() => handleSort("name")}>

@@ -29,8 +29,7 @@ export const OverviewLayout = ({
 	return (
 		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-4">
 			{/* <div className="w-full md:flex md:gap-4"> */}
-			{/* <div className="w-full md:flex flex-col md:gap-4"> */}
-			<div className="key__number__container w-full md:flex md:gap-4">
+			<div className="key__number__container w-[88%] md:flex md:gap-4">
 				<SatisfactionRate
 					datas={datas}
 					isMobile={isMobile}
@@ -46,40 +45,41 @@ export const OverviewLayout = ({
 					isMobile={isMobile}
 					hasHospitalSelected={hasHospitalSelected}
 				/>
-				<EmployeesPie
-					datas={datas}
-					isMobile={isMobile}
-					hasHospitalSelected={hasHospitalSelected}
-				/>
 			</div>
 
-			<div className="flex w-auto shrink-0 md:gap-4">
-				<MonthlyHospitalizations
-					datas={datas}
-					isMobile={isMobile}
-					hasHospitalSelected={hasHospitalSelected}
-				/>
+			<div className="w-full md:flex md:gap-4">
+				<div className="w-full flex md:flex-col md:gap-4">
+					<MonthlyHospitalizations
+						datas={datas}
+						isMobile={isMobile}
+						hasHospitalSelected={hasHospitalSelected}
+					/>
+					<DoctorSpecialtiesRadar
+						datas={datas}
+						isMobile={isMobile}
+						hasHospitalSelected={hasHospitalSelected}
+					/>
+				</div>
 
-				<DepartmentsBar
-					datas={datas}
-					isMobile={isMobile}
-					hasHospitalSelected={hasHospitalSelected}
-				/>
+				<div className="w-full flex md:flex-col md:gap-4">
+					<EmployeesPie
+						datas={datas}
+						isMobile={isMobile}
+						hasHospitalSelected={hasHospitalSelected}
+					/>
+					<DepartmentsBar
+						datas={datas}
+						isMobile={isMobile}
+						hasHospitalSelected={hasHospitalSelected}
+					/>
+				</div>
 			</div>
 
-			<div className="w-full flex md:flex-1 md:gap-4">
-				<DoctorSpecialtiesRadar
-					datas={datas}
-					isMobile={isMobile}
-					hasHospitalSelected={hasHospitalSelected}
-				/>
-				<ClinicalTrialsList
-					datas={datas}
-					isMobile={isMobile}
-					hasHospitalSelected={hasHospitalSelected}
-				/>
-			</div>
-			{/* </div> */}
+			<ClinicalTrialsList
+				datas={datas}
+				isMobile={isMobile}
+				hasHospitalSelected={hasHospitalSelected}
+			/>
 			{/* </div> */}
 		</section>
 	)

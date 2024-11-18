@@ -24,9 +24,11 @@ export const ChartContainer = ({
 					? "bg-transparent"
 					: "bg-white",
 				// hospitalSelected ? "h-fit" : "h-full",
-				"w-full min-w-[200px] h-fit flex flex-col items-center mt-2 md:mt-0 rounded-2xl p-4"
+				"w-full min-w-[200px] max-h-[600px] h-fit overflow-hidden flex flex-col items-center mt-2 md:mt-0 rounded-2xl p-4"
 			)}>
-			{children}
+			<div className="w-full h-full overflow-y-auto rounded-2xl">
+				{children}
+			</div>
 		</div>
 	)
 }

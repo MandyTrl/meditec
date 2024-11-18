@@ -8,6 +8,8 @@ import { handleChartHeight, shadowTool } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
 import nurseIcon from "@assets/icons/nurse.svg"
+import { CustomPieLabel } from "../ChartUI/CustomPieLabel"
+import CustomTooltip from "../ChartUI/CustomToolType"
 
 type EmployeesPie = {
 	name: string
@@ -22,7 +24,7 @@ export const EmployeesPie = ({
 		{ name: "nurses", value: 0 },
 		{ name: "doctors", value: 0 },
 	])
-
+	const totalEmployees = chartDatas.reduce((acc, data) => acc + data.value, 0)
 	const [hasBeenClicked, setHasBeenClicked] = useState<boolean>(false)
 
 	useEffect(() => {
@@ -83,40 +85,28 @@ export const EmployeesPie = ({
 
 			<ResponsiveContainer
 				width="100%"
-				height={handleChartHeight({ isMobile, isPie: true })}>
+				height={handleChartHeight({ isMobile, isPie: true })}
+				className="recharts-surface">
 				<PieChart>
 					<Pie
 						dataKey="value"
-						startAngle={180}
+						startAngle={360}
 						endAngle={0}
 						data={chartDatas}
 						cx="50%"
 						cy="50%"
 						outerRadius={80}
-						innerRadius={45}
-						stroke="none">
+						innerRadius={55}
+						stroke="none"
+						label={(props) => (
+							<CustomPieLabel totalEmployees={totalEmployees} {...props} />
+						)}
+						labelLine={false}>
 						<Cell key="nurses" fill="#aed6f1" />
 						<Cell key="doctors" fill="#1b4f72" />
 					</Pie>
 
-					<Tooltip
-						cursor={{
-							radius: 8,
-							y: 10,
-						}}
-						contentStyle={{
-							border: "none",
-							padding: 12,
-							borderRadius: 8,
-							boxShadow: `${shadowTool}`,
-							fontSize: 15,
-						}}
-						labelStyle={{ fontSize: 16 }}
-						itemStyle={{
-							lineHeight: 1,
-							fontWeight: 600,
-						}}
-					/>
+					<Tooltip content={(props) => <CustomTooltip {...props} />} />
 				</PieChart>
 			</ResponsiveContainer>
 

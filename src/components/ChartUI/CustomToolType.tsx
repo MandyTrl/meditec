@@ -15,7 +15,6 @@ type CustomTooltipProps = {
 
 const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
 	// vérifie si le tooltip est actif et si des données sont présentes
-
 	if (active && payload && payload.length) {
 		const uniquePayload = payload.reduce((acc, entry) => {
 			if (!acc.some((item: PayloadItem) => item.name === entry.name)) {
