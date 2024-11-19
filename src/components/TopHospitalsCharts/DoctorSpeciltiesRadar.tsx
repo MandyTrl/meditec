@@ -36,11 +36,6 @@ export const DoctorSpecialtiesRadar = ({
 		const specilatiesDatas = (
 			datas: Hospital[]
 		): DatasDoctorSpecialties[] | undefined => {
-			if (!datas || datas.length === 0) {
-				console.log("No data for Doctor Specialties available")
-				return undefined
-			}
-
 			if (hasHospitalSelected) {
 				return datas[0].doctorSpecialties
 			} else {

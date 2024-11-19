@@ -32,7 +32,7 @@ export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 			)
 
 		setResumeDatas(highestPatients)
-	}, [chartData, datas])
+	}, [datas])
 
 	const handleSort = (key: string) => {
 		if (chartData) {
@@ -46,7 +46,7 @@ export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 		<ChartContainer>
 			<ChartHeader title="Clinical Trials" icon={treatmentIcon} />
 
-			<div className="w-full max-h-[600px] overflow-y-auto">
+			<div className="w-full max-h-[550px] overflow-y-auto">
 				<table className="w-full">
 					<thead className="text-left">
 						<tr>

@@ -6,7 +6,6 @@ import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import CustomTooltip from "@components/ChartUI/CustomToolType"
 import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
-import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { handleChartHeight } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import patientsIcon from "@assets/icons/patients.svg"
@@ -22,7 +21,6 @@ export const MonthlyHospitalizations = ({
 	hasHospitalSelected,
 	isMobile,
 }: ComponentProps) => {
-	const { hospital } = useHospitalSelected()
 	const [chartData, setChartData] = useState<ChartData[] | []>([])
 	const [resumeDatas, setResumeDatas] = useState<ChartData | null>(null)
 
@@ -71,7 +69,7 @@ export const MonthlyHospitalizations = ({
 			)
 
 		setResumeDatas(highestHospitalizations)
-	}, [chartData, datas, hasHospitalSelected, hospital])
+	}, [datas, hasHospitalSelected])
 
 	return (
 		<ChartContainer>

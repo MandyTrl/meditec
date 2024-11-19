@@ -75,7 +75,7 @@ export const DepartmentsBar = ({
 		}
 
 		calculateTotals(chartData)
-	}, [chartData, datas, hasHospitalSelected, resumeDatas])
+	}, [datas, hasHospitalSelected])
 
 	return (
 		<ChartContainer>

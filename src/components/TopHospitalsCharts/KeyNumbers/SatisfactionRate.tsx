@@ -13,10 +13,6 @@ export const SatisfactionRate = ({
 	const [chartDatas, setChartDatas] = useState<number>(0)
 
 	useEffect(() => {
-		if (!datas) {
-			console.log("no datas for Satisfaction Rate available")
-		}
-
 		if (!hasHospitalSelected) {
 			const averageRate = (datas: Hospital[]) => {
 				let totalRate = 0

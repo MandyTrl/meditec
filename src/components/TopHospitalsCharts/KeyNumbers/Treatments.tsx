@@ -10,10 +10,6 @@ export const Treatments = ({ datas, hasHospitalSelected }: ComponentProps) => {
 	const [chartDatas, setChartDatas] = useState<number>(0)
 
 	useEffect(() => {
-		if (!datas) {
-			console.log("no datas for Number of Treatments available")
-		}
-
 		if (!hasHospitalSelected) {
 			const sumOfTreatments = (datas: Hospital[]) => {
 				let total = 0
