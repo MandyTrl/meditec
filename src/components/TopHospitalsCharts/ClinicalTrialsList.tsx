@@ -9,7 +9,7 @@ import { ClinicalTrial, Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import treatmentIcon from "@assets/icons/treatment.svg"
 import sortIcon from "@assets/icons/sort.svg"
 import { sortData } from "@/utils/utils"
-import { ResumeCharts } from "../UI/ResumeCharts"
+import { ResumeCharts } from "../ChartUI/ResumeCharts"
 
 export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 	const [chartData, setChartData] = useState<ClinicalTrial[] | null>(null)
@@ -91,7 +91,7 @@ export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 									<span
 										className={clsx(
 											trial.status === "En cours"
-												? "bg-fushia/10"
+												? "bg-sunrise/40"
 												: "bg-secondary",
 											"rounded-2xl px-2 py-[1px]"
 										)}>

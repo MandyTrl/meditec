@@ -1,4 +1,4 @@
-import { Hospital, HospitalDepartment, ResumeHospital } from "./hospitalsTypes"
+import { Hospital, HospitalDepartment } from "./hospitalsTypes"
 
 const topHospitals: Hospital[] = [
 	{
@@ -703,14 +703,6 @@ const topHospitals: Hospital[] = [
 	},
 ]
 
-const resumeTopHospitals: ResumeHospital[] = topHospitals
-	.map((hospital: Hospital) => ({
-		name: hospital.name,
-		location: hospital.location,
-		satisfactionRate: hospital.overview.satisfactionRate,
-	}))
-	.sort((a, b) => b.satisfactionRate - a.satisfactionRate)
-
 const getSpecialties = (hospitals: Hospital[]): string[] => {
 	const specialties: string[] = []
 
@@ -762,7 +754,6 @@ const aggregateHospitalDepartments = (
 
 export {
 	topHospitals,
-	resumeTopHospitals,
 	getSpecialties,
 	hospitalsName,
 	aggregateHospitalDepartments,

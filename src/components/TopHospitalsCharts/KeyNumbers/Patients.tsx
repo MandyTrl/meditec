@@ -6,11 +6,7 @@ import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
 import patientsIcon from "@assets/icons/patients.svg"
 
-export const Patients = ({
-	datas,
-	hasHospitalSelected,
-	isMobile,
-}: ComponentProps) => {
+export const Patients = ({ datas, hasHospitalSelected }: ComponentProps) => {
 	const [chartDatas, setChartDatas] = useState<number>(0)
 
 	useEffect(() => {
@@ -27,13 +23,10 @@ export const Patients = ({
 				return total
 			}
 			setChartDatas(sumOfPatients(datas))
-			// setChartDatas(resumeTopHospitals)
-			// } else {
-			// 	const hospitalFound = resumeTopHospitals.filter(
-			// 		(el) => el.name === datas[0].name
-			// 	)
+		} else {
+			const hospitalFound = datas.filter((el) => el.name === datas[0].name)
 
-			// 	setChartDatas(hospitalFound)
+			setChartDatas(hospitalFound[0].overview.totalPatients)
 		}
 	}, [datas, hasHospitalSelected])
 
@@ -46,13 +39,9 @@ export const Patients = ({
 			/>
 
 			<div className="flex flex-col">
-				{/* {averageRate ? ( */}
 				<p className="font-semibold text-4xl flex items-center justify-center">
 					{chartDatas}
 				</p>
-				{/* ) : (
-					chartDatas.map(renderHospital)
-				)} */}
 			</div>
 		</ChartContainer>
 	)

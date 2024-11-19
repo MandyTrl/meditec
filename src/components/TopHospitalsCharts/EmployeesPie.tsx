@@ -4,7 +4,7 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { InsightButton } from "@components/UI/InsightButton"
-import { handleChartHeight, shadowTool } from "@/utils/utils"
+import { handleChartHeight } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
 import nurseIcon from "@assets/icons/nurse.svg"
@@ -25,6 +25,7 @@ export const EmployeesPie = ({
 		{ name: "doctors", value: 0 },
 	])
 	const totalEmployees = chartDatas.reduce((acc, data) => acc + data.value, 0)
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [hasBeenClicked, setHasBeenClicked] = useState<boolean>(false)
 
 	useEffect(() => {
@@ -102,8 +103,8 @@ export const EmployeesPie = ({
 							<CustomPieLabel totalEmployees={totalEmployees} {...props} />
 						)}
 						labelLine={false}>
-						<Cell key="nurses" fill="#aed6f1" />
-						<Cell key="doctors" fill="#1b4f72" />
+						<Cell key="nurses" fill="#EDB895" />
+						<Cell key="doctors" fill="#AED6F1" />
 					</Pie>
 
 					<Tooltip content={(props) => <CustomTooltip {...props} />} />

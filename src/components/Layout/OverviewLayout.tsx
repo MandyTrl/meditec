@@ -7,7 +7,7 @@ import { Treatments } from "@/components/TopHospitalsCharts/KeyNumbers/Treatment
 import { DoctorSpecialtiesRadar } from "@components/TopHospitalsCharts/DoctorSpeciltiesRadar"
 import { MonthlyHospitalizations } from "@components/TopHospitalsCharts/MonthlyHospitalizations"
 import { SatisfactionRate } from "@/components/TopHospitalsCharts/KeyNumbers/SatisfactionRate"
-import { ClinicalTrialsList } from "../TopHospitalsCharts/ClinicalTrialsList"
+import { ClinicalTrialsList } from "@components/TopHospitalsCharts/ClinicalTrialsList"
 
 type OverviewLayoutProps = {
 	isMobile: boolean
@@ -28,7 +28,6 @@ export const OverviewLayout = ({
 }: OverviewLayoutProps) => {
 	return (
 		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-4">
-			{/* <div className="w-full md:flex md:gap-4"> */}
 			<div className="key__number__container w-full md:w-[88%] md:flex md:gap-4">
 				<SatisfactionRate
 					datas={datas}
@@ -80,7 +79,6 @@ export const OverviewLayout = ({
 				isMobile={isMobile}
 				hasHospitalSelected={hasHospitalSelected}
 			/>
-			{/* </div> */}
 		</section>
 	)
 }

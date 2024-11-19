@@ -14,7 +14,7 @@ import {
 } from "recharts"
 import { HospitalDepartment } from "@/utils/data/hospitals/hospitalsTypes"
 import { CustomBar } from "@components/ChartUI/CustomBar"
-import { ResumeCharts } from "@components/UI/ResumeCharts"
+import { ResumeCharts } from "@/components/ChartUI/ResumeCharts"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
@@ -139,7 +139,8 @@ export const DepartmentsBar = ({
 								dataKey="patientsPerDay"
 								name="patients per day"
 								fill="#AED6F1"
-								shape={(props: any) => <CustomBar {...props} />}
+								// eslint-disable-next-line @typescript-eslint/no-explicit-any
+								shape={(props: any) => <CustomBar {...props} width={20} />}
 							/>
 
 							<YAxis

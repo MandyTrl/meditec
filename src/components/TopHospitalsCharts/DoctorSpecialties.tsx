@@ -108,12 +108,12 @@ export const DoctorSpecialties = () => {
 							type="monotone"
 							dataKey="satisfactionRate"
 							fill="#FDE6FF"
-							stroke="#EF62FF"
+							stroke="#EDB895"
 						/>
 					) : (
 						<Bar
 							dataKey="satisfactionRate"
-							fill="#EF62FF"
+							fill="#EDB895"
 							shape={(props: any) => <CustomBar {...props} />}
 							label={(props) => <CustomTextLabel {...props} />}
 						/>

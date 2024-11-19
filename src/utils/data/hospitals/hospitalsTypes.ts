@@ -42,14 +42,7 @@ type Hospital = {
 	hospitalDepartments: HospitalDepartment[]
 }
 
-type ResumeHospital = {
-	name: string
-	location: string
-	satisfactionRate: number
-}
-
 export type {
-	ResumeHospital,
 	Hospital,
 	Overview,
 	DoctorSpecialty,

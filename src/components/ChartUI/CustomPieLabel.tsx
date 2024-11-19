@@ -4,11 +4,7 @@ type CustomPieLabelProps = {
 	totalEmployees: number
 }
 
-export const CustomPieLabel = ({
-	x,
-	y,
-	totalEmployees,
-}: CustomPieLabelProps) => {
+export const CustomPieLabel = ({ totalEmployees }: CustomPieLabelProps) => {
 	return (
 		<>
 			<text

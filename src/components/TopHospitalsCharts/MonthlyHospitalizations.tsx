@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts"
+import { ResumeCharts } from "@/components/ChartUI/ResumeCharts"
 import { ChartContainer } from "../ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
+import CustomTooltip from "@components/ChartUI/CustomToolType"
 import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 import { handleChartHeight } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import patientsIcon from "@assets/icons/patients.svg"
-import CustomTooltip from "@components/ChartUI/CustomToolType"
-import { ResumeCharts } from "../UI/ResumeCharts"
 
 type ChartData = {
 	month: string
@@ -27,57 +27,50 @@ export const MonthlyHospitalizations = ({
 	const [resumeDatas, setResumeDatas] = useState<ChartData | null>(null)
 
 	useEffect(() => {
-		if (!datas) {
-			console.log("no datas for Monthly Hospitalizations available")
-			return
-		}
+		const aggregateMonthlyHospitalizations = (
+			datas: Hospital[]
+		): ChartData[] => {
+			const aggregatedData: { [key: string]: number } = {}
 
-		if (!hasHospitalSelected) {
-			const aggregateMonthlyHospitalizations = (
-				datas: Hospital[]
-			): ChartData[] => {
-				const aggregatedData: { [key: string]: number } = {}
-
-				datas.forEach((hospital: Hospital) => {
-					hospital.monthlyHospitalizations.forEach(
-						({ month, year, hospitalizations }) => {
-							const key = `${month}-${year}`
-							if (!aggregatedData[key]) {
-								aggregatedData[key] = hospitalizations
-							} else {
-								aggregatedData[key] += hospitalizations
-							}
+			datas.forEach((hospital: Hospital) => {
+				hospital.monthlyHospitalizations.forEach(
+					({ month, year, hospitalizations }) => {
+						const key = `${month}-${year}`
+						if (!aggregatedData[key]) {
+							aggregatedData[key] = hospitalizations
+						} else {
+							aggregatedData[key] += hospitalizations
 						}
-					)
-				})
-
-				return Object.keys(aggregatedData).map((key) => {
-					const [month, year] = key.split("-")
-					return {
-						month,
-						year: parseInt(year),
-						hospitalizations: aggregatedData[key],
 					}
-				})
-			}
-
-			const aggregatedData = aggregateMonthlyHospitalizations(datas)
-			const sum2024 = aggregatedData.filter((el: ChartData) => {
-				return el.year === 2024
+				)
 			})
 
-			setChartData(sum2024)
-
-			const highestHospitalizations =
-				chartData &&
-				chartData.reduce(
-					(max, hospital) =>
-						hospital.hospitalizations > max.hospitalizations ? hospital : max,
-					chartData[0]
-				)
-
-			setResumeDatas(highestHospitalizations)
+			return Object.keys(aggregatedData).map((key) => {
+				const [month, year] = key.split("-")
+				return {
+					month,
+					year: parseInt(year),
+					hospitalizations: aggregatedData[key],
+				}
+			})
 		}
+
+		const aggregatedData = aggregateMonthlyHospitalizations(datas)
+		const sum2024 = aggregatedData.filter((el: ChartData) => {
+			return el.year === 2024
+		})
+
+		setChartData(sum2024)
+
+		const highestHospitalizations =
+			chartData &&
+			chartData.reduce(
+				(max, hospital) =>
+					hospital.hospitalizations > max.hospitalizations ? hospital : max,
+				chartData[0]
+			)
+
+		setResumeDatas(highestHospitalizations)
 	}, [chartData, datas, hasHospitalSelected, hospital])
 
 	return (
@@ -108,17 +101,6 @@ export const MonthlyHospitalizations = ({
 						tickMargin={20}
 						interval={0}
 					/>
-
-					{/* 
-					<Legend
-						iconType="circle"
-						iconSize={12}
-						wrapperStyle={{ paddingTop: "15px" }}
-					/> */}
-
-					{/* <Line dataKey="2022" stroke="#aed6f1" />
-
-					<Line dataKey="2023" stroke="#67a8d3" /> */}
 
 					<defs>
 						<linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">

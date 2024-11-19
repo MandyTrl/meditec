@@ -58,14 +58,14 @@
 // 				endAngle={endAngle}
 // 				innerRadius={outerRadius + 6}
 // 				outerRadius={outerRadius + 8}
-// 				fill="#EF62FF"
+// 				fill="#EDB895"
 // 			/>
 // 			<path
 // 				d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
-// 				stroke="#EF62FF"
+// 				stroke="#EDB895"
 // 				fill="none"
 // 			/>
-// 			<circle cx={ex} cy={ey} r={2} fill="#EF62FF" stroke="none" />
+// 			<circle cx={ex} cy={ey} r={2} fill="#EDB895" stroke="none" />
 // 			<text
 // 				x={ex + (cos >= 0 ? 1 : -1) * 12}
 // 				y={ey}
@@ -78,7 +78,7 @@
 // 				dy={18}
 // 				textAnchor={textAnchor}
 // 				fontSize={13}
-// 				fill="#EF62FF">
+// 				fill="#EDB895">
 // 				{`(Average wait time ${payload.averageWaitTime})`}
 // 			</text>
 // 		</g>

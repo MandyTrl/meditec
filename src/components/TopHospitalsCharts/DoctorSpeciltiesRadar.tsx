@@ -89,23 +89,23 @@ export const DoctorSpecialtiesRadar = ({
 				description="Ratio between satisfaction rate and number of doctors per specialty"
 			/>
 
-			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
+			<ResponsiveContainer
+				width="100%"
+				height={handleChartHeight({ isMobile })}>
 				<RadarChart data={chartDatas}>
-					<PolarGrid />
+					<PolarGrid strokeWidth={0.7} />
 
-					<PolarAngleAxis
-						dataKey="specialty"
-						// tick={(props) => <CustomAxisTick {...props} />}
-					/>
+					<PolarAngleAxis dataKey="specialty" />
 
-					<PolarRadiusAxis scale="sqrt" angle={60} />
+					<PolarRadiusAxis scale="auto" angle={60} />
+
 					{chartDatas.map((hospital) => (
 						<Radar
 							key={hospital.specialty}
 							dataKey="numberOfDoctors"
 							stroke="#1b4f72"
-							strokeWidth={0.3}
-							fill="#dbeaf4"
+							strokeWidth={0.7}
+							fill="transparent"
 							fillOpacity={0.2}
 							name="doctors"
 						/>
@@ -115,10 +115,9 @@ export const DoctorSpecialtiesRadar = ({
 						<Radar
 							key={hospital.satisfactionRate}
 							dataKey="satisfactionRate"
-							stroke="#EF62FF"
+							stroke="#ea9662"
 							strokeWidth={0.3}
-							strokeDasharray="3 6"
-							fill="#FDE6FF"
+							fill="#FAECE3"
 							fillOpacity={0.3}
 							name="satisfaction rate"
 						/>
@@ -130,7 +129,7 @@ export const DoctorSpecialtiesRadar = ({
 							{
 								value: "satisfaction rate",
 								type: "star",
-								color: "#EF62FF",
+								color: "#ea9662",
 							},
 						]}
 					/>
