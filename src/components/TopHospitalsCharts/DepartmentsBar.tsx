@@ -85,7 +85,7 @@ export const DepartmentsBar = ({
 				description="Waiting time ratio and number of patients per day by department"
 			/>
 
-			<div className="w-full md:overflow-x-auto md:flex">
+			<div className="w-full md:overflow-x-auto md:flex flex-col">
 				<div className={clsx(hasHospitalSelected ? "my1" : "my-5", "w-full")}>
 					{!hasHospitalSelected && (
 						<p className="md:mb-1 font-medium">{hasHospitalSelected}</p>
@@ -95,7 +95,7 @@ export const DepartmentsBar = ({
 
 					<ResponsiveContainer
 						width="100%"
-						height={handleChartHeight(isMobile)}>
+						height={handleChartHeight({ isMobile })}>
 						<ComposedChart
 							data={chartData}
 							barGap={3}
@@ -167,30 +167,24 @@ export const DepartmentsBar = ({
 								stroke="#1b4f72"
 								fill="#1b4f72"
 							/>
-							{/* 
-							<Legend
-								iconType="circle"
-								iconSize={12}
-								wrapperStyle={{ paddingTop: "15px" }}
-							/> */}
 
-							<Tooltip content={(props: any) => <CustomTooltip {...props} />} />
+							<Tooltip content={(props) => <CustomTooltip {...props} />} />
 						</ComposedChart>
 					</ResponsiveContainer>
-
-					<ResumeCharts
-						datas={[
-							{
-								description: "Total patients per day :",
-								value: resumeDatas.sumOfPatientsPerDay,
-							},
-							{
-								description: "Average wait time (mins) :",
-								value: resumeDatas.averageWaitTime,
-							},
-						]}
-					/>
 				</div>
+
+				<ResumeCharts
+					datas={[
+						{
+							description: "Total patients per day :",
+							value: resumeDatas.sumOfPatientsPerDay,
+						},
+						{
+							description: "Average wait time (mins) :",
+							value: resumeDatas.averageWaitTime,
+						},
+					]}
+				/>
 			</div>
 		</ChartContainer>
 	)

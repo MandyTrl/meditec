@@ -45,7 +45,7 @@ export const Patients = ({
 				description="Number of patients"
 			/>
 
-			<div className="flex flex-col overflow-hidden">
+			<div className="flex flex-col">
 				{/* {averageRate ? ( */}
 				<p className="font-semibold text-4xl flex items-center justify-center">
 					{chartDatas}

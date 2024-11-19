@@ -9,6 +9,7 @@ import { handleChartHeight } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import patientsIcon from "@assets/icons/patients.svg"
 import CustomTooltip from "@components/ChartUI/CustomToolType"
+import { ResumeCharts } from "../UI/ResumeCharts"
 
 type ChartData = {
 	month: string
@@ -22,8 +23,8 @@ export const MonthlyHospitalizations = ({
 	isMobile,
 }: ComponentProps) => {
 	const { hospital } = useHospitalSelected()
-
 	const [chartData, setChartData] = useState<ChartData[] | []>([])
+	const [resumeDatas, setResumeDatas] = useState<ChartData | null>(null)
 
 	useEffect(() => {
 		if (!datas) {
@@ -66,8 +67,18 @@ export const MonthlyHospitalizations = ({
 			})
 
 			setChartData(sum2024)
+
+			const highestHospitalizations =
+				chartData &&
+				chartData.reduce(
+					(max, hospital) =>
+						hospital.hospitalizations > max.hospitalizations ? hospital : max,
+					chartData[0]
+				)
+
+			setResumeDatas(highestHospitalizations)
 		}
-	}, [datas, hasHospitalSelected, hospital])
+	}, [chartData, datas, hasHospitalSelected, hospital])
 
 	return (
 		<ChartContainer>
@@ -77,7 +88,9 @@ export const MonthlyHospitalizations = ({
 				description="Number of hospitalizations per month"
 			/>
 
-			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
+			<ResponsiveContainer
+				width="100%"
+				height={handleChartHeight({ isMobile })}>
 				<AreaChart
 					data={chartData}
 					barGap={3}
@@ -125,6 +138,17 @@ export const MonthlyHospitalizations = ({
 					<Tooltip content={(props) => <CustomTooltip {...props} />} />
 				</AreaChart>
 			</ResponsiveContainer>
+
+			{resumeDatas && (
+				<ResumeCharts
+					datas={[
+						{
+							description: `Month with the most hospitalizations - "${resumeDatas.month}" :`,
+							value: resumeDatas.hospitalizations,
+						},
+					]}
+				/>
+			)}
 		</ChartContainer>
 	)
 }

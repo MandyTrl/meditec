@@ -11,7 +11,7 @@ export const ChartHeader = ({ title, icon, description }: ChartHeaderProps) => {
 	return (
 		<div className="w-full">
 			<div className="flex flex-col">
-				<div className="flex items-center flex-1">
+				<div className="w-fit flex items-center flex-1">
 					<Image alt="" src={icon} className="w-4 h-4 fill-primary mr-[5px]" />
 					<h3 className="font-semibold">{title}</h3>
 				</div>

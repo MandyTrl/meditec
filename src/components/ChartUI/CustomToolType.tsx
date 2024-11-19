@@ -1,23 +1,20 @@
 import React from "react"
+import { TooltipProps } from "recharts"
+import {
+	NameType,
+	ValueType,
+} from "recharts/types/component/DefaultTooltipContent"
 import { shadowTool } from "@/utils/utils"
 
-type PayloadItem = {
-	name: string
-	value: string | number
-	color: string
-}
-
-type CustomTooltipProps = {
-	active: boolean
-	payload: PayloadItem[]
-	label: string
-}
-
-const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
+const CustomTooltip = ({
+	active,
+	payload,
+	label,
+}: TooltipProps<ValueType, NameType>) => {
 	// vérifie si le tooltip est actif et si des données sont présentes
 	if (active && payload && payload.length) {
-		const uniquePayload = payload.reduce((acc, entry) => {
-			if (!acc.some((item: PayloadItem) => item.name === entry.name)) {
+		const uniquePayload = payload.reduce((acc: typeof payload, entry) => {
+			if (!acc.some((item) => item.name === entry.name)) {
 				acc.push(entry)
 			}
 			return acc
@@ -47,7 +44,7 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
 				</p>
 
 				<div className="item" style={{ marginBottom: "5px" }}>
-					{uniquePayload.map((entry: PayloadItem) => (
+					{uniquePayload.map((entry) => (
 						<div className="item" key={entry.name}>
 							<span
 								style={{

@@ -71,7 +71,9 @@ export const DoctorSpecialties = () => {
 				resetLabel
 			/>
 
-			<ResponsiveContainer width="100%" height={handleChartHeight(isMobile)}>
+			<ResponsiveContainer
+				width="100%"
+				height={handleChartHeight({ isMobile })}>
 				<ComposedChart
 					width={isMobile || hospitalSelected ? 320 : 900}
 					height={isMobile ? 300 : 330}
