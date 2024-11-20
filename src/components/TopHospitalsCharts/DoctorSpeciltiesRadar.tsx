@@ -14,7 +14,6 @@ import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import CustomTooltip from "@components/ChartUI/CustomToolType"
 import { ComponentProps } from "@components/Layout/OverviewLayout"
-// import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { handleChartHeight } from "@/utils/utils"
 import stethoscopeIcon from "@assets/icons/stethoscope.svg"
@@ -98,7 +97,7 @@ export const DoctorSpecialtiesRadar = ({
 						<Radar
 							key={hospital.specialty}
 							dataKey="numberOfDoctors"
-							stroke="#1b4f72"
+							stroke="#5E17EB"
 							strokeWidth={0.7}
 							fill="transparent"
 							fillOpacity={0.2}
@@ -110,9 +109,9 @@ export const DoctorSpecialtiesRadar = ({
 						<Radar
 							key={hospital.satisfactionRate}
 							dataKey="satisfactionRate"
-							stroke="#ea9662"
+							stroke="#C817EB"
 							strokeWidth={0.3}
-							fill="#FAECE3"
+							fill="#da9ce5"
 							fillOpacity={0.3}
 							name="satisfaction rate"
 						/>
@@ -120,11 +119,11 @@ export const DoctorSpecialtiesRadar = ({
 
 					<Legend
 						payload={[
-							{ value: "doctors", type: "line", color: "#1b4f72" },
+							{ value: "doctors", type: "line", color: "#5E17EB" },
 							{
 								value: "satisfaction rate",
 								type: "star",
-								color: "#ea9662",
+								color: "#C817EB",
 							},
 						]}
 					/>

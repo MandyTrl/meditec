@@ -34,14 +34,14 @@ export const DashboardContainer = () => {
 						{hospital.length > 1 ? (
 							<p className="my-1 md:text-3xl">
 								You are on the{" "}
-								<span className="font-semibold pb-[1px] border-b-2 border-b-primary">
+								<span className="font-semibold pb-[1px] border-b-2 border-b-tertiary">
 									overview
 								</span>
 							</p>
 						) : (
 							<p className="my-1 md:text-3xl">
 								You are on the{" "}
-								<span className="font-semibold pb-[1px] border-b-2 border-b-primary">
+								<span className="font-semibold pb-[1px] border-b-2 border-b-tertiary">
 									{hospital[0].name}
 								</span>{" "}
 								view

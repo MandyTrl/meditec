@@ -14,7 +14,10 @@ export const dancingScript = Dancing_Script({
 
 export const metadata: Metadata = {
 	title: "Meditec Dashboard",
-	description: "Admin dashboard for medical data visualization",
+	description: "One dashboard for rule them all.",
+	icons: {
+		icon: "/assets/logo-meditec.png",
+	},
 }
 
 export default function RootLayout({
@@ -25,10 +28,18 @@ export default function RootLayout({
 	return (
 		<html lang="fr">
 			<body
-				className={`${krub.className} w-full md:py-4 bg-slate-300/50 text-sky-950`}>
-				<Header />
+				className={`${krub.className} w-full md:py-4 bg-slate-300/50 text-tertiary`}>
+				<link
+					rel="logo-meditec"
+					type="image/png"
+					href="/assets/logo-meditec.png"
+					sizes="32x32"
+				/>
 
-				<main className="px-3 md:px-[8%]">{children}</main>
+				<main className="px-3 md:px-[8%]">
+					<Header />
+					{children}
+				</main>
 			</body>
 		</html>
 	)

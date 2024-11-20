@@ -9,10 +9,12 @@ const config: Config = {
 	theme: {
 		extend: {
 			colors: {
-				primary: "#1b4f72",
-				secondary: "#ebf5fb",
-				tertiary: "#051f30",
-				sunrise: "#EDB895",
+				primary: "#3919a0",
+				secondary: "#E8E3F6",
+				tertiary: "#16043d",
+				vi: "#5E17EB",
+				jinx: "#C817EB",
+				shimmer: "#A4EB17",
 			},
 		},
 	},

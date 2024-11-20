@@ -30,7 +30,7 @@ export const CustomAxisTick: React.FC<CustomAxisTickProps> = ({
 }) => {
 	return (
 		<g transform={`translate(${x},${y})`}>
-			<text textAnchor="middle" fill="#1b4f72" fontSize={15}>
+			<text textAnchor="middle" fill="#16043d" fontSize={15}>
 				{formatLabel(payload.value)}
 			</text>
 		</g>

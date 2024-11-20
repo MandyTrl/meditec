@@ -1,16 +1,12 @@
 import React from "react"
+import Image from "next/image"
 import { ListTabs } from "./UI/ListTabs"
-import { dancingScript } from "@/app/layout"
+import logo from "@assets/logo-meditec-gray.png"
 
 export const Header = () => {
 	return (
-		<header className="w-full flex justify-between md:py-4 md:px-10">
-			<h1 className="w-fit tracking-widder text-xl font-semibold uppercase">
-				<span className={`${dancingScript.className} md:text-4xl`}>M</span>
-				ed
-				<span className="text-sky-500">i</span>tec
-			</h1>
-
+		<header className="w-full flex items-center justify-between md:my-6">
+			<Image src={logo} alt={"logo-meditec"} className="w-20 h-20" />
 			<ListTabs />
 		</header>
 	)

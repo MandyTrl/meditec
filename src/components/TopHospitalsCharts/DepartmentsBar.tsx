@@ -122,7 +122,7 @@ export const DepartmentsBar = ({
 
 							<XAxis
 								dataKey="department"
-								stroke="#1b4f72"
+								stroke="#16043d"
 								height={50}
 								interval={0}
 								tickMargin={18}
@@ -133,16 +133,16 @@ export const DepartmentsBar = ({
 								dataKey="patientsPerDay"
 								yAxisId="left"
 								orientation="left"
-								stroke="#1b4f72"
+								stroke="#16043d"
 								label={{
 									value: "Patients per day",
 									angle: -90,
 									dx: -28,
 									fontSize: "14px",
-									fill: "#1b4f72",
+									fill: "#16043d",
 								}}
 								style={{
-									fill: "#1b4f72",
+									fill: "#16043d",
 								}}
 							/>
 
@@ -151,7 +151,7 @@ export const DepartmentsBar = ({
 								yAxisId="left"
 								dataKey="patientsPerDay"
 								name="patients per day"
-								fill="#AED6F1"
+								fill="#16043d"
 								// eslint-disable-next-line @typescript-eslint/no-explicit-any
 								shape={(props: any) => <CustomBar {...props} />}
 							/>
@@ -160,16 +160,16 @@ export const DepartmentsBar = ({
 								dataKey="averageWaitTime"
 								yAxisId="right"
 								orientation="right"
-								stroke="#1b4f72"
+								stroke="#16043d"
 								label={{
 									value: "Average wait time (mins)",
 									angle: -90,
 									dx: 28,
 									fontSize: "14px",
-									fill: "#1b4f72",
+									fill: "#16043d",
 								}}
 								style={{
-									fill: "#1b4f72",
+									fill: "#16043d",
 								}}
 							/>
 
@@ -178,8 +178,9 @@ export const DepartmentsBar = ({
 								yAxisId="right"
 								dataKey="averageWaitTime"
 								name="average wait time (mins)"
-								stroke="#1b4f72"
-								fill="#1b4f72"
+								stroke="#C817EB"
+								strokeWidth={1.5}
+								fill="#C817EB"
 							/>
 
 							<Tooltip content={(props) => <CustomTooltip {...props} />} />

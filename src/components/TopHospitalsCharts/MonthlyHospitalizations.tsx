@@ -95,7 +95,7 @@ export const MonthlyHospitalizations = ({
 					}}>
 					<XAxis
 						dataKey="month"
-						stroke="#1b4f72"
+						stroke="#16043d"
 						height={50}
 						tick={(props) => <CustomAxisTick {...props} />}
 						tickMargin={20}
@@ -104,14 +104,14 @@ export const MonthlyHospitalizations = ({
 
 					<defs>
 						<linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="0%" stopColor="#AED6F1" stopOpacity={0.9} />
+							<stop offset="0%" stopColor="#b298ea" stopOpacity={0.9} />
 							<stop offset="100%" stopColor="#ffffff" stopOpacity={0.4} />
 						</linearGradient>
 					</defs>
 
 					<Area
 						dataKey="hospitalizations"
-						stroke="#1b4f72"
+						stroke="#5E17EB"
 						fill="url(#colorGradient)"
 						type={"monotone"}
 						dot={false}

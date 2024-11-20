@@ -7,7 +7,7 @@ type InsightBtnProps = {
 export const InsightButton = ({ onClick }: InsightBtnProps) => {
 	return (
 		<div
-			className="flex items-center justify-center place-self-end gap-1 mt-1 bg-secondary pt-3 pb-[10px] pl-3 pr-[10px] rounded-full border border-transparent hover:border-sunrise/50 hover:cursor-pointer hover:text-sunrise hover:fill-sunrise hover:bg-sunrise/5 transform-all duration-300 ease-in-out"
+			className="flex items-center justify-center place-self-end gap-1 mt-1 bg-vi/5 pt-3 pb-[10px] pl-3 pr-[10px] rounded-full border border-transparent hover:border-jinx/50 hover:cursor-pointer hover:text-jinx hover:fill-jinx hover:bg-jinx/5 transform-all duration-300 ease-in-out"
 			onClick={() => onClick()}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

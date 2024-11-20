@@ -93,8 +93,8 @@ export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 									<span
 										className={clsx(
 											trial.status === "En cours"
-												? "bg-sunrise/40"
-												: "bg-secondary",
+												? "bg-tertiary text-white"
+												: "bg-vi/10",
 											"rounded-2xl px-2 py-[1px]"
 										)}>
 										{trial.status}

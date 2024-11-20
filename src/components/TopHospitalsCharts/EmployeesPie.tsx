@@ -103,8 +103,8 @@ export const EmployeesPie = ({
 							<CustomPieLabel totalEmployees={totalEmployees} {...props} />
 						)}
 						labelLine={false}>
-						<Cell key="nurses" fill="#EDB895" />
-						<Cell key="doctors" fill="#AED6F1" />
+						<Cell key="nurses" fill="#5E17EB" />
+						<Cell key="doctors" fill="#beea64" />
 					</Pie>
 
 					<Tooltip content={(props) => <CustomTooltip {...props} />} />
