@@ -22,7 +22,9 @@ export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 		)
 
 		setChartData(clinicalTrialsList)
+	}, [datas])
 
+	useEffect(() => {
 		const highestPatients =
 			chartData &&
 			chartData.reduce(
@@ -32,7 +34,7 @@ export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 			)
 
 		setResumeDatas(highestPatients)
-	}, [datas])
+	}, [chartData])
 
 	const handleSort = (key: string) => {
 		if (chartData) {

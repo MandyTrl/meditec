@@ -59,7 +59,9 @@ export const MonthlyHospitalizations = ({
 		})
 
 		setChartData(sum2024)
+	}, [datas, hasHospitalSelected])
 
+	useEffect(() => {
 		const highestHospitalizations =
 			chartData &&
 			chartData.reduce(
@@ -69,7 +71,7 @@ export const MonthlyHospitalizations = ({
 			)
 
 		setResumeDatas(highestHospitalizations)
-	}, [datas, hasHospitalSelected])
+	}, [chartData])
 
 	return (
 		<ChartContainer>

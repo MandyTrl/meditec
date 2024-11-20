@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import clsx from "clsx"
 import {
 	CartesianGrid,
@@ -38,6 +38,37 @@ export const DepartmentsBar = ({
 		sumOfPatientsPerDay: 0,
 	})
 
+	const calculateTotals = useCallback((datas: HospitalDepartment[]) => {
+		const totalPatientsPerDay = datas.reduce(
+			(total, dept) => total + dept.patientsPerDay,
+			0
+		)
+
+		const totalWaitTime = datas.reduce(
+			(total, dept) => total + dept.averageWaitTime * dept.patientsPerDay,
+			0
+		)
+
+		const averageWaitTime =
+			totalPatientsPerDay > 0
+				? Math.ceil(totalWaitTime / totalPatientsPerDay)
+				: 0
+
+		setResumeDatas((prev) => {
+			//évite une mise à jour si les données sont inchangées avec "prev"
+			if (
+				prev.sumOfPatientsPerDay === totalPatientsPerDay &&
+				prev.averageWaitTime === averageWaitTime
+			) {
+				return prev
+			}
+			return {
+				sumOfPatientsPerDay: totalPatientsPerDay,
+				averageWaitTime: averageWaitTime,
+			}
+		})
+	}, [])
+
 	useEffect(() => {}, [isMobile])
 
 	useEffect(() => {
@@ -51,31 +82,13 @@ export const DepartmentsBar = ({
 		} else {
 			setChartData(aggregateHospitalDepartments(topHospitals))
 		}
-
-		const calculateTotals = (datas: HospitalDepartment[]) => {
-			const totalPatientsPerDay = datas.reduce(
-				(total, dept) => total + dept.patientsPerDay,
-				0
-			)
-
-			const totalWaitTime = datas.reduce(
-				(total, dept) => total + dept.averageWaitTime * dept.patientsPerDay,
-				0
-			)
-
-			const averageWaitTime =
-				totalPatientsPerDay > 0
-					? Math.ceil(totalWaitTime / totalPatientsPerDay)
-					: 0
-
-			setResumeDatas({
-				sumOfPatientsPerDay: totalPatientsPerDay,
-				averageWaitTime: averageWaitTime,
-			})
-		}
-
-		calculateTotals(chartData)
 	}, [datas, hasHospitalSelected])
+
+	useEffect(() => {
+		if (chartData.length) {
+			calculateTotals(chartData)
+		}
+	}, [chartData])
 
 	return (
 		<ChartContainer>
@@ -140,7 +153,7 @@ export const DepartmentsBar = ({
 								name="patients per day"
 								fill="#AED6F1"
 								// eslint-disable-next-line @typescript-eslint/no-explicit-any
-								shape={(props: any) => <CustomBar {...props} width={20} />}
+								shape={(props: any) => <CustomBar {...props} />}
 							/>
 
 							<YAxis
@@ -174,18 +187,20 @@ export const DepartmentsBar = ({
 					</ResponsiveContainer>
 				</div>
 
-				<ResumeCharts
-					datas={[
-						{
-							description: "Total patients per day :",
-							value: resumeDatas.sumOfPatientsPerDay,
-						},
-						{
-							description: "Average wait time (mins) :",
-							value: resumeDatas.averageWaitTime,
-						},
-					]}
-				/>
+				{resumeDatas && (
+					<ResumeCharts
+						datas={[
+							{
+								description: "Total patients per day :",
+								value: resumeDatas.sumOfPatientsPerDay,
+							},
+							{
+								description: "Average wait time (mins) :",
+								value: resumeDatas.averageWaitTime,
+							},
+						]}
+					/>
+				)}
 			</div>
 		</ChartContainer>
 	)
