@@ -41,11 +41,11 @@ export const SelectInput = ({
 		<div
 			className={clsx(
 				selectedValue && "flex items-center justify-center gap-2",
-				"w-fit mt-1 mb-3"
+				"w-fit mt-1 mb-3 relative group"
 			)}>
 			<div>
 				{title && (
-					<p className="uppercase text-sm tracking-wide font-medium">{title}</p>
+					<p className="text-sm tracking-wide font-medium mb-2">{title}</p>
 				)}
 
 				<div className="flex items-center">
@@ -59,33 +59,29 @@ export const SelectInput = ({
 					)}
 
 					<button
-						className="w-fit flex items-center py-1 bg-transparent border-b border-primary hover:opacity-80 focus:outline-none transition-all ease-in-out duration-150"
+						className="w-fit flex items-center px-2 py-1 bg-transparent hover:opacity-80 focus:outline-none transition-all ease-in-out duration-150 rounded-lg italic"
 						onClick={() => setIsOpen(!isOpen)}>
 						{selectedValue || placeholder || "Select an option"}
 
 						<Image
 							onClick={handleRefresh}
-							className={clsx(
-								!isOpen && "rotate-180",
-								"w-4 h-4 hover:cursor-pointer transition-all ease-in-out duration-300 ml-4"
-							)}
+							className="group-hover:rotate-180
+								w-4 h-4 hover:cursor-pointer transition-all ease-in-out duration-300 ml-4"
 							src={arrowIcon}
 							alt="refresh filter"
 						/>
 					</button>
 
-					{isOpen && (
-						<ul className="absolute mt-2 z-10 bg-white divide divide-primary/20 rounded-md shadow-lg">
-							{labels.map((label: string) => (
-								<li
-									key={label}
-									className="px-4 py-1 hover:bg-tertiary hover:text-white cursor-pointer border-b border-primary/20 transition-all ease-in-out duration-150"
-									onClick={() => handleSelect(label)}>
-									{label}
-								</li>
-							))}
-						</ul>
-					)}
+					<ul className="max-h-0 group-hover:max-h-[300px] -translate-y-2 group-hover:translate-y-2 group-hover:opacity-100 opacity-0 absolute top-16 bg-white divide divide-primary/20 rounded-md shadow-lg transition-all ease-in-out duration-300 z-50 overflow-hidden">
+						{labels.map((label: string) => (
+							<li
+								key={label}
+								className="px-4 py-[6px] cursor-pointer border-b border-primary/20 transition-all ease-in-out duration-150 hover:font-medium"
+								onClick={() => handleSelect(label)}>
+								{label}
+							</li>
+						))}
+					</ul>
 				</div>
 			</div>
 		</div>

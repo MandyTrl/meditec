@@ -1,19 +1,15 @@
 "use client"
 import React, { useContext, useState } from "react"
-import Image from "next/image"
-import clsx from "clsx"
 import { HospitalContext } from "@/utils/Context"
 import { hospitalsName, topHospitals } from "@/utils/data/hospitals/hospitals"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { TopHospitalsLayout } from "@components/Layout/TopHospitalsLayout"
 import { SelectInput } from "./UI/SelectInput"
-import filterIcon from "@assets/icons/filters.svg"
 
 export const DashboardContainer = () => {
 	const hospitalCtxt = useContext(HospitalContext)
 	const { handleHospital } = hospitalCtxt
 	const [hospital, setHospital] = useState<Hospital[]>(topHospitals)
-	const [isOpen, setIsOpen] = useState<boolean>(false)
 
 	const handleSelect = (hospitalSelected: string) => {
 		const hospitalFound = topHospitals.find(
@@ -49,17 +45,7 @@ export const DashboardContainer = () => {
 						)}
 					</div>
 
-					<button
-						className="flex items-center self-end md:mt-8 ml-2 hover:opacity-70 transition-all ease-in-out duration-150"
-						onClick={() => setIsOpen((PrevState) => !PrevState)}>
-						<Image alt="" src={filterIcon} className="w-4 mr-2" /> Filters
-					</button>
-
-					<div
-						className={clsx(
-							isOpen ? "max-h-fit p-4 md:p-6 block" : "max-h-0 overflow-hidden",
-							"transition-all ease-in-out duration-300 mt-2 mb-4"
-						)}>
+					<div className="max-h-fit h-full p-4 md:p-6 mt-2 mb-4 block">
 						<SelectInput
 							labels={hospitalsName}
 							title="Hospitals"
