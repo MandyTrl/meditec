@@ -5,6 +5,7 @@ import { hospitalsName, topHospitals } from "@/utils/data/hospitals/hospitals"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { TopHospitalsLayout } from "@components/Layout/TopHospitalsLayout"
 import { SelectInput } from "./UI/SelectInput"
+import { LocalTime } from "./UI/LocalTime"
 
 export const DashboardContainer = () => {
 	const hospitalCtxt = useContext(HospitalContext)
@@ -22,28 +23,18 @@ export const DashboardContainer = () => {
 		<HospitalContext.Provider value={{ hospital, handleHospital }}>
 			<div className="w-full h-full">
 				<div className="px-3 md:px-0">
-					<h2 className="text-xl md:text-2xl mt-8">
-						Welcome on your <span className="font-semibold">Dashboard</span>
-					</h2>
+					<div className="flex items-end justify-between">
+						<h2 className="my-1 md:text-4xl font-semibold">
+							{hospital.length > 1 ? "Overview" : `${hospital[0].name}`}
+						</h2>
 
-					<div className="flex">
-						{hospital.length > 1 ? (
-							<p className="my-1 md:text-3xl">
-								You are on the{" "}
-								<span className="font-semibold pb-[1px] border-b-2 border-b-tertiary">
-									overview
-								</span>
-							</p>
-						) : (
-							<p className="my-1 md:text-3xl">
-								You are on the{" "}
-								<span className="font-semibold pb-[1px] border-b-2 border-b-tertiary">
-									{hospital[0].name}
-								</span>{" "}
-								view
-							</p>
-						)}
+						<p className="text-lg md:text-xl mt-8">
+							Welcome on your dashboard,{" "}
+							<span className="font-semibold">John Doe</span>
+						</p>
 					</div>
+
+					<LocalTime />
 
 					<div className="max-h-fit h-full p-4 md:p-6 mt-2 mb-4 block">
 						<SelectInput
