@@ -26,9 +26,10 @@ _Et voilà !_ 👌
 
 - [ ] filter by date
 - [x] ~~chart by department with number of patients per day~~
-- [ ] a chart for clinical tests
-- [x] ~~a graph for satisfaction by specialty with number of staff allocated~~
+- [x] a chart for clinical tests
+- [x] ~~a graph for satisfaction by specialty with number of staff assigned~~
+- [ ] a feature to download graphs in PDF format
 - [ ] integrate an additional table with data on the latest research
-- [ ] add a monthly visualization to the hospitalization chart
-- [ ] integrate a search bar to filter data
+- [x] add a monthly visualisation to the hospitalisation chart
+- [ ] integrate a search bar to filter the data
 - [ ] integrated translation
