@@ -36,7 +36,7 @@ export const DashboardContainer = () => {
 
 					<LocalTime />
 
-					<div className="max-h-fit h-full p-4 md:p-6 mt-2 mb-4 block">
+					<div className="max-h-fit h-full p-4 md:p-6 mt-2 md:mt-4 mb-4 block bg-white/30 rounded-lg">
 						<SelectInput
 							labels={hospitalsName}
 							title="Hospitals"

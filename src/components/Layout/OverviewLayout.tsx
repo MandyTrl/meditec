@@ -27,7 +27,7 @@ export const OverviewLayout = ({
 	datas,
 }: OverviewLayoutProps) => {
 	return (
-		<section className="w-full flex flex-col md:flex-row flex-wrap md:gap-4">
+		<section className="w-full flex flex-col bg-white/20 md:flex-row flex-wrap md:gap-4 md:p-8 rounded-lg">
 			<div className="key__number__container w-full md:w-[88%] md:flex md:gap-4">
 				<SatisfactionRate
 					datas={datas}

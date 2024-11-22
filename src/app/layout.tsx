@@ -36,7 +36,7 @@ export default function RootLayout({
 					sizes="32x32"
 				/>
 
-				<main className="px-3 md:px-[8%]">
+				<main className="px-3 md:px-[6%]">
 					<Header />
 					{children}
 				</main>
