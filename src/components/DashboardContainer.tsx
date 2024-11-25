@@ -1,55 +1,14 @@
-"use client"
-import React, { useContext, useState } from "react"
-import { HospitalContext } from "@/utils/Context"
-import { hospitalsName, topHospitals } from "@/utils/data/hospitals/hospitals"
-import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
+import { AppProviders } from "@/utils/Context"
 import { TopHospitalsLayout } from "@components/Layout/TopHospitalsLayout"
-import { SelectInput } from "./UI/SelectInput"
-import { LocalTime } from "./UI/LocalTime"
+import { TopHospitalsHeader } from "./TopHospitalHeader"
 
 export const DashboardContainer = () => {
-	const hospitalCtxt = useContext(HospitalContext)
-	const { handleHospital } = hospitalCtxt
-	const [hospital, setHospital] = useState<Hospital[]>(topHospitals)
-
-	const handleSelect = (hospitalSelected: string) => {
-		const hospitalFound = topHospitals.find(
-			(el: Hospital) => el.name === hospitalSelected
-		)
-		setHospital(hospitalFound ? new Array(hospitalFound) : topHospitals)
-	}
-
 	return (
-		<HospitalContext.Provider value={{ hospital, handleHospital }}>
+		<AppProviders>
 			<div className="w-full h-full">
-				<div>
-					<div className="flex flex-col-reverse md:flex-row flex-reverse items-end justify-between px-1 md:px-0">
-						<h2 className="my-1 text-lg md:text-4xl font-semibold">
-							{hospital.length > 1 ? "Overview" : `${hospital[0].name}`}
-						</h2>
-
-						<p className="text-right md:text-xl mt-8">
-							Welcome on your dashboard,{" "}
-							<span className="font-semibold">John Doe</span>
-						</p>
-					</div>
-
-					<LocalTime />
-
-					<div className="max-h-fit h-full px-3 py-2 md:p-6 mt-2 md:mt-4 mb-4 block bg-white/30 rounded-lg">
-						<SelectInput
-							labels={hospitalsName}
-							title="Hospitals"
-							onSelectChange={(selectedHospital) =>
-								handleSelect(selectedHospital)
-							}
-							placeholder="Select an hospital"
-						/>
-					</div>
-				</div>
-
+				<TopHospitalsHeader />
 				<TopHospitalsLayout />
 			</div>
-		</HospitalContext.Provider>
+		</AppProviders>
 	)
 }

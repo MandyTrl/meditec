@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { ChartContainer } from "../../ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
-import { ComponentProps } from "@components/Layout/OverviewLayout"
+import { ComponentProps } from "@components/Layout/TopHospitalsLayout"
 import patientsIcon from "@assets/icons/patients.svg"
 
 export const Patients = ({ datas, hasHospitalSelected }: ComponentProps) => {

@@ -13,7 +13,7 @@ import {
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import CustomTooltip from "@components/ChartUI/CustomToolType"
-import { ComponentProps } from "@components/Layout/OverviewLayout"
+import { ComponentProps } from "@components/Layout/TopHospitalsLayout"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { handleChartHeight } from "@/utils/utils"
 import stethoscopeIcon from "@assets/icons/stethoscope.svg"

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { ChartContainer } from "@components/ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
-import { ComponentProps } from "@components/Layout/OverviewLayout"
+import { ComponentProps } from "@components/Layout/TopHospitalsLayout"
 import notation from "@assets/icons/sparkles.svg"
 
 export const SatisfactionRate = ({

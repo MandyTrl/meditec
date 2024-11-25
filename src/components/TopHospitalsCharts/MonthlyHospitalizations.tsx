@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from "react"
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis } from "recharts"
 import { ResumeCharts } from "@/components/ChartUI/ResumeCharts"
@@ -5,10 +6,10 @@ import { ChartContainer } from "../ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import CustomTooltip from "@components/ChartUI/CustomToolType"
 import { CustomAxisTick } from "@components/ChartUI/CustomAxisTick"
-import { ComponentProps } from "@components/Layout/OverviewLayout"
 import { handleChartHeight } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import patientsIcon from "@assets/icons/patients.svg"
+import { ComponentProps } from "../Layout/TopHospitalsLayout"
 
 type ChartData = {
 	month: string
@@ -20,9 +21,11 @@ export const MonthlyHospitalizations = ({
 	datas,
 	hasHospitalSelected,
 	isMobile,
+	timeLine,
 }: ComponentProps) => {
 	const [chartData, setChartData] = useState<ChartData[] | []>([])
 	const [resumeDatas, setResumeDatas] = useState<ChartData | null>(null)
+	// console.log("graphic datas", timeLine)
 
 	useEffect(() => {
 		const aggregateMonthlyHospitalizations = (
@@ -54,12 +57,14 @@ export const MonthlyHospitalizations = ({
 		}
 
 		const aggregatedData = aggregateMonthlyHospitalizations(datas)
-		const sum2024 = aggregatedData.filter((el: ChartData) => {
-			return el.year === 2024
+
+		const sumByYear = aggregatedData.filter((el: ChartData) => {
+			console.log(el.year.toString(), "chouquette", timeLine)
+			return el.year.toString() === timeLine
 		})
 
-		setChartData(sum2024)
-	}, [datas, hasHospitalSelected])
+		setChartData(sumByYear)
+	}, [datas, hasHospitalSelected, timeLine])
 
 	useEffect(() => {
 		const highestHospitalizations =

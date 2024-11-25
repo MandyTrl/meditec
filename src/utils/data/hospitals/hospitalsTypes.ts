@@ -46,6 +46,7 @@ export type {
 	Hospital,
 	Overview,
 	DoctorSpecialty,
+	MonthlyHospitalization,
 	HospitalDepartment,
 	ClinicalTrial,
 }

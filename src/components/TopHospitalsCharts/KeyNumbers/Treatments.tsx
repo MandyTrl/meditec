@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react"
 import { ChartContainer } from "../../ChartUI/ChartContainer"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
-import { ComponentProps } from "@components/Layout/OverviewLayout"
+import { ComponentProps } from "@components/Layout/TopHospitalsLayout"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import treatmentIcon from "@assets/icons/treatment.svg"
 
