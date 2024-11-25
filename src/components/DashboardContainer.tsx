@@ -22,13 +22,13 @@ export const DashboardContainer = () => {
 	return (
 		<HospitalContext.Provider value={{ hospital, handleHospital }}>
 			<div className="w-full h-full">
-				<div className="px-3 md:px-0">
-					<div className="flex items-end justify-between">
-						<h2 className="my-1 md:text-4xl font-semibold">
+				<div>
+					<div className="flex flex-col-reverse md:flex-row flex-reverse items-end justify-between px-1 md:px-0">
+						<h2 className="my-1 text-lg md:text-4xl font-semibold">
 							{hospital.length > 1 ? "Overview" : `${hospital[0].name}`}
 						</h2>
 
-						<p className="text-lg md:text-xl mt-8">
+						<p className="text-right md:text-xl mt-8">
 							Welcome on your dashboard,{" "}
 							<span className="font-semibold">John Doe</span>
 						</p>
@@ -36,7 +36,7 @@ export const DashboardContainer = () => {
 
 					<LocalTime />
 
-					<div className="max-h-fit h-full p-4 md:p-6 mt-2 md:mt-4 mb-4 block bg-white/30 rounded-lg">
+					<div className="max-h-fit h-full px-3 py-2 md:p-6 mt-2 md:mt-4 mb-4 block bg-white/30 rounded-lg">
 						<SelectInput
 							labels={hospitalsName}
 							title="Hospitals"

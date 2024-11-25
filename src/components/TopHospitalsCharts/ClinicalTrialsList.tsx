@@ -10,8 +10,9 @@ import treatmentIcon from "@assets/icons/treatment.svg"
 import sortIcon from "@assets/icons/sort.svg"
 import { sortData } from "@/utils/utils"
 import { ResumeCharts } from "../ChartUI/ResumeCharts"
+import { ClinicalTrialCard } from "../ChartUI/ClinicalTrialCard"
 
-export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
+export const ClinicalTrialsList = ({ datas, isMobile }: ComponentProps) => {
 	const [chartData, setChartData] = useState<ClinicalTrial[] | null>(null)
 	const [sortOrder, setSortOrder] = useState(true) //"true" = croissant, "false" = décroissant
 	const [resumeDatas, setResumeDatas] = useState<ClinicalTrial | null>(null)
@@ -40,7 +41,7 @@ export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 		if (chartData) {
 			const sortedData = sortData(chartData, key, sortOrder)
 			setChartData(sortedData)
-			setSortOrder(!sortOrder) //inverse l’ordre de tri pour le prochain clic
+			setSortOrder(!sortOrder) //inverse l’ordre de tri au prochain clic
 		}
 	}
 
@@ -48,65 +49,101 @@ export const ClinicalTrialsList = ({ datas }: ComponentProps) => {
 		<ChartContainer>
 			<ChartHeader title="Clinical Trials" icon={treatmentIcon} />
 
-			<div className="w-full max-h-[550px] overflow-y-auto">
-				<table className="w-full">
-					<thead className="text-left">
-						<tr>
-							<th className="pr-2" onClick={() => handleSort("name")}>
-								<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
+			<div className="w-full max-h-[350px] md:max-h-[550px] overflow-y-auto">
+				{!isMobile ? (
+					<table className="w-full">
+						<thead className="text-left">
+							<tr>
+								<th className="pr-2" onClick={() => handleSort("name")}>
+									<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
+										<span>Name</span>
+										<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
+									</div>
+								</th>
+								<th className="px-4" onClick={() => handleSort("status")}>
+									<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
+										<span>Status</span>
+										<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
+									</div>
+								</th>
+								<th className="px-2" onClick={() => handleSort("startDate")}>
+									<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
+										<span>Start Date</span>
+										<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
+									</div>
+								</th>
+								<th className="px-2" onClick={() => handleSort("endDate")}>
+									<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
+										<span>End Date</span>
+										<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
+									</div>
+								</th>
+								<th
+									className="px-2"
+									onClick={() => handleSort("totalPatients")}>
+									<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
+										<span>Patients</span>
+										<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
+									</div>
+								</th>
+							</tr>
+						</thead>
+
+						<tbody className="mx-[2px] divide-y divide-primary/20">
+							{chartData?.map((trial: ClinicalTrial) => (
+								<tr key={trial.name} className="px-2">
+									<td className="py-1 md:py-2 truncate">{trial.name}</td>
+									<td className="px-2">
+										<span
+											className={clsx(
+												trial.status === "En cours"
+													? "bg-tertiary text-white"
+													: "bg-vi/10",
+												"rounded-2xl text-sm md:text-base px-2 py-[1px]"
+											)}>
+											{trial.status}
+										</span>
+									</td>
+									<td className="px-2 w-fit">{trial.startDate}</td>
+									<td className="px-2 w-fit">{trial.endDate}</td>
+									<td className="text-center">{trial.totalPatients}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				) : (
+					<div>
+						<div className="flex flex-col space-y-2 mb-4">
+							<span className="font-medium text-sm">Sort by :</span>
+							<div className="flex space-x-4">
+								<div
+									className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold"
+									onClick={() => handleSort("name")}>
 									<span>Name</span>
 									<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
 								</div>
-							</th>
-							<th className="px-4" onClick={() => handleSort("status")}>
-								<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
+
+								<div
+									className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold"
+									onClick={() => handleSort("status")}>
 									<span>Status</span>
 									<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
 								</div>
-							</th>
-							<th className="px-2" onClick={() => handleSort("startDate")}>
-								<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
-									<span>Start Date</span>
-									<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
-								</div>
-							</th>
-							<th className="px-2" onClick={() => handleSort("endDate")}>
-								<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
-									<span>End Date</span>
-									<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
-								</div>
-							</th>
-							<th className="px-2" onClick={() => handleSort("totalPatients")}>
-								<div className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold">
+
+								<div
+									className="inline-flex items-center hover:cursor-pointer ease-in-out duration-150 transform-all hover:opacity-80 font-semibold"
+									onClick={() => handleSort("totalPatients")}>
 									<span>Patients</span>
 									<Image alt="" src={sortIcon} className="ml-2 h-3 w-3" />
 								</div>
-							</th>
-						</tr>
-					</thead>
+							</div>
+						</div>
 
-					<tbody className="mx-[2px] divide-y divide-primary/20">
 						{chartData?.map((trial: ClinicalTrial) => (
-							<tr key={trial.name} className="px-2">
-								<td className="py-2 truncate">{trial.name}</td>
-								<td className="px-2">
-									<span
-										className={clsx(
-											trial.status === "En cours"
-												? "bg-tertiary text-white"
-												: "bg-vi/10",
-											"rounded-2xl px-2 py-[1px]"
-										)}>
-										{trial.status}
-									</span>
-								</td>
-								<td className="px-2">{trial.startDate}</td>
-								<td className="px-2">{trial.endDate}</td>
-								<td className="text-center">{trial.totalPatients}</td>
-							</tr>
+							<ClinicalTrialCard trial={trial} key={trial.name} />
 						))}
-					</tbody>
-				</table>
+					</div>
+				)}
 			</div>
 
 			{resumeDatas && (
