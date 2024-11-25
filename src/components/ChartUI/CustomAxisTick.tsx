@@ -1,5 +1,9 @@
 import React from "react"
 
+const truncateLabel = (label: string, maxLength: number) => {
+	return label.length > maxLength ? `${label.slice(0, maxLength)}..` : label
+}
+
 const formatLabel = (label: string) => {
 	const words = label.split(" ")
 
@@ -21,17 +25,39 @@ type CustomAxisTickProps = {
 	y: number
 	payload: { value: string }
 	isMobile?: boolean
+	maxLabelLength?: number
 }
 
 export const CustomAxisTick: React.FC<CustomAxisTickProps> = ({
 	x,
 	y,
 	payload,
+	isMobile,
+	maxLabelLength,
 }) => {
+	const longLabel = payload.value.length > 7
+	const label =
+		maxLabelLength && isMobile
+			? truncateLabel(payload.value, maxLabelLength)
+			: payload.value
+
 	return (
-		<g transform={`translate(${x},${y})`}>
-			<text textAnchor="middle" fill="#16043d" fontSize={15}>
-				{formatLabel(payload.value)}
+		<g
+			transform={`translate(${isMobile && longLabel ? x - 12 : x},${
+				isMobile && longLabel ? y + 12 : y
+			})`}>
+			<text
+				textAnchor="middle"
+				fill="#16043d"
+				fontSize={15}
+				transform={
+					isMobile && longLabel
+						? "rotate(-38)"
+						: isMobile
+						? "rotate(-45)"
+						: undefined
+				}>
+				{formatLabel(label)}
 			</text>
 		</g>
 	)

@@ -123,10 +123,16 @@ export const DepartmentsBar = ({
 							<XAxis
 								dataKey="department"
 								stroke="#16043d"
-								height={50}
+								height={isMobile ? 80 : 50}
 								interval={0}
 								tickMargin={18}
-								tick={(props) => <CustomAxisTick {...props} />}
+								tick={(props) => (
+									<CustomAxisTick
+										{...props}
+										isMobile={isMobile}
+										maxLabelLength={6}
+									/>
+								)}
 							/>
 
 							<YAxis

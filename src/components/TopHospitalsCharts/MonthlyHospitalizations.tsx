@@ -97,7 +97,7 @@ export const MonthlyHospitalizations = ({
 						dataKey="month"
 						stroke="#16043d"
 						height={50}
-						tick={(props) => <CustomAxisTick {...props} />}
+						tick={(props) => <CustomAxisTick {...props} isMobile={isMobile} />}
 						tickMargin={20}
 						interval={0}
 					/>
