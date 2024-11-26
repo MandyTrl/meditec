@@ -14,7 +14,7 @@ export const useHospitalSelected = () => {
 
 	const { hospital } = hospitalCtxt
 
-	hasHospitalSelected = hospital.length > 1 && true
+	hasHospitalSelected = hospital.length === 1 && true
 
 	return { hospital, hasHospitalSelected }
 }
