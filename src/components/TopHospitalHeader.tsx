@@ -10,11 +10,9 @@ export const TopHospitalsHeader = () => {
 
 	return (
 		<div>
-			<div className="flex flex-col-reverse md:flex-row flex-reverse items-end justify-between px-1 md:px-0">
-				<div className="flex flex-col items-start">
-					<p className="text-right md:text-xl mt-8">
-						Welcome on your dashboard,
-					</p>
+			<div className="w-full flex flex-col md:flex-row flex-reverse md:items-end justify-between px-1 md:px-0">
+				<div className="flex flex-col md:items-start">
+					<p className="md:text-xl mt-8">Welcome on your dashboard,</p>
 
 					<h2 className="my-1 text-lg md:text-4xl font-semibold">
 						{!hasHospitalSelected ? "Overview" : `${hospital[0].name}`}

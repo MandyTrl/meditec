@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Krub } from "next/font/google"
 import "./globals.css"
 import { Header } from "@components/Header"
+import { AppProviders } from "@/utils/Context"
 
 const krub = Krub({
 	subsets: ["latin"],
@@ -32,10 +33,12 @@ export default function RootLayout({
 					sizes="32x32"
 				/>
 
-				<main className="px-3 md:px-[6%]">
-					<Header />
-					{children}
-				</main>
+				<AppProviders>
+					<main className="px-3 md:px-[6%]">
+						<Header />
+						{children}
+					</main>
+				</AppProviders>
 			</body>
 		</html>
 	)

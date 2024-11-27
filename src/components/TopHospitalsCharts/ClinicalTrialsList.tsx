@@ -92,7 +92,7 @@ export const ClinicalTrialsList = ({ datas, isMobile }: ComponentProps) => {
 						<tbody className="mx-[2px] divide-y divide-primary/20">
 							{chartData?.map((trial: ClinicalTrial) => (
 								<tr key={trial.name} className="px-2">
-									<td className="py-1 md:py-2 truncate">{trial.name}</td>
+									<td className="truncate py-2 md:py-4">{trial.name}</td>
 									<td className="px-2">
 										<span
 											className={clsx(

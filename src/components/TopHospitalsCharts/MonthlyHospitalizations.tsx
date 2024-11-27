@@ -59,7 +59,6 @@ export const MonthlyHospitalizations = ({
 		const aggregatedData = aggregateMonthlyHospitalizations(datas)
 
 		const sumByYear = aggregatedData.filter((el: ChartData) => {
-			console.log(el.year.toString(), "chouquette", timeLine)
 			return el.year.toString() === timeLine
 		})
 

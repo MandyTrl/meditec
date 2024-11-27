@@ -3,7 +3,7 @@ import ProfilPicture from "@assets/john-doe.jpg"
 
 export const Profil = () => {
 	return (
-		<div className="w-fit flex items-center">
+		<div className="w-fit flex items-center self-end">
 			<div className="flex flex-col mr-2">
 				<p className="w-full text-right text-lg md:text-xl font-semibold">
 					John Doe
