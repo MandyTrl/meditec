@@ -5,13 +5,13 @@ import { useBreakpoint } from "@/utils/hooks/useBP"
 import { ClinicalTrialsList } from "../TopHospitalsCharts/ClinicalTrialsList"
 import { DepartmentsBar } from "../TopHospitalsCharts/DepartmentsBar"
 import { DoctorSpecialtiesRadar } from "../TopHospitalsCharts/DoctorSpeciltiesRadar"
-import { EmployeesPie } from "../TopHospitalsCharts/EmployeesPie"
 import { Patients } from "../TopHospitalsCharts/KeyNumbers/Patients"
 import { SatisfactionRate } from "../TopHospitalsCharts/KeyNumbers/SatisfactionRate"
 import { Treatments } from "../TopHospitalsCharts/KeyNumbers/Treatments"
 import { MonthlyHospitalizations } from "../TopHospitalsCharts/MonthlyHospitalizations"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
 import { TimeLineContext } from "@/utils/Context"
+import { EmployeesDuoTons } from "../TopHospitalsCharts/EmployeesDuoTons"
 
 export type ComponentProps = {
 	datas: Hospital[]
@@ -63,7 +63,7 @@ export const TopHospitalsLayout = () => {
 				</div>
 
 				<div className="w-full flex flex-col md:gap-4">
-					<EmployeesPie
+					<EmployeesDuoTons
 						datas={hospital}
 						isMobile={isMobile}
 						hasHospitalSelected={hasHospitalSelected}

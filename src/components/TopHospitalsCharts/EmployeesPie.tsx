@@ -1,14 +1,14 @@
 "use client"
 import { useEffect, useState } from "react"
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
-import { ChartContainer } from "@components/ChartUI/ChartContainer"
+import { CustomPieLabel } from "@components/ChartUI/CustomPieLabel"
 import { ChartHeader } from "@components/ChartUI/ChartHeader"
 import { InsightButton } from "@components/UI/InsightButton"
+import { ChartContainer } from "@components/ChartUI/ChartContainer"
+import { ComponentProps } from "@components/Layout/TopHospitalsLayout"
 import { handleChartHeight } from "@/utils/utils"
 import { Hospital } from "@/utils/data/hospitals/hospitalsTypes"
-import { ComponentProps } from "@components/Layout/TopHospitalsLayout"
 import nurseIcon from "@assets/icons/nurse.svg"
-import { CustomPieLabel } from "../ChartUI/CustomPieLabel"
 import CustomTooltip from "../ChartUI/CustomToolType"
 
 type EmployeesPie = {
