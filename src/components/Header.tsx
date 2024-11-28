@@ -5,7 +5,7 @@ import logo from "@assets/logo-meditec-gray.png"
 
 export const Header = () => {
 	return (
-		<header className="w-full flex items-center justify-between md:py-6 border border-b-tertiary/50 md:border-none">
+		<header className="w-full flex items-center justify-between md:py-6 border border-b-tertiary/50 md:border-none md:px-[6%]">
 			<Image
 				src={logo}
 				alt={"logo-meditec"}
