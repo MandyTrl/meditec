@@ -8,12 +8,12 @@ import { MoleculesLayout } from "./Layout/MoleculesLayout"
 export const DashboardContainer = () => {
 	const dashboardCtxt = useContext(DashboardsContext)
 	const { dashboard } = dashboardCtxt
-	const hospitalDashboard = dashboard === "Hospitals Performances"
+	const isHospitalDashboard = dashboard === "Hospitals Performances"
 
 	return (
 		<div className="w-full h-full">
-			<DashboardIntro />
-			{hospitalDashboard ? <TopHospitalsLayout /> : <MoleculesLayout />}
+			<DashboardIntro isHospitalDashboard={isHospitalDashboard} />
+			{isHospitalDashboard ? <TopHospitalsLayout /> : <MoleculesLayout />}
 		</div>
 	)
 }

@@ -34,10 +34,9 @@ export default function RootLayout({
 				/>
 
 				<AppProviders>
-					<main className="px-3 md:px-[6%]">
-						<Header />
-						{children}
-					</main>
+					<Header />
+
+					<main className="px-3 md:px-[6%]">{children}</main>
 				</AppProviders>
 			</body>
 		</html>

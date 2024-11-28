@@ -1,23 +1,4 @@
-type PriceHistory = {
-	date: string
-	priceEUR: number
-	priceUSD: number
-}
-
-type Medication = {
-	name: string
-	dosage: string
-	priceHistory: PriceHistory[]
-}
-
-type Molecule = {
-	name: string
-	description: string
-	codeATC: string
-	formula: string
-	image: string
-	medications: Medication[]
-}
+import { Molecule } from "./moleculesTypes"
 
 export const molecules: Molecule[] = [
 	{
@@ -26,7 +7,7 @@ export const molecules: Molecule[] = [
 			"Inhibiteur de l'enzyme de conversion de l'angiotensine (ECA) utilisé principalement pour traiter l'hypertension artérielle.",
 		codeATC: "C09AA03",
 		formula: "C21H31N3O5",
-		image: "/public/assets/molecules/Lisinopril.png",
+		image: "/assets/molecules/Lisinopril.png",
 		medications: [
 			{
 				name: "Zestril",
@@ -66,7 +47,7 @@ export const molecules: Molecule[] = [
 			"Antidiabétique oral utilisé pour le traitement du diabète de type 2.",
 		codeATC: "A10BA02",
 		formula: "C4H11N5",
-		image: "/public/assets/molecules/Metformin.png",
+		image: "/assets/molecules/Metformin.png",
 		medications: [
 			{
 				name: "Glucophage",
@@ -121,7 +102,7 @@ export const molecules: Molecule[] = [
 			"Antihistaminique utilisé pour soulager les symptômes des allergies.",
 		codeATC: "R06AE07",
 		formula: "C21H25ClN2O3",
-		image: "/public/assets/molecules/Cetirizine.png",
+		image: "/assets/molecules/Cetirizine.png",
 		medications: [
 			{
 				name: "Zyrtec",
@@ -160,7 +141,7 @@ export const molecules: Molecule[] = [
 		description: "Statine utilisée pour abaisser les niveaux de cholestérol.",
 		codeATC: "C10AA05",
 		formula: "C33H35FN2O5",
-		image: "/public/assets/molecules/Atorvastatin.png",
+		image: "/assets/molecules/Atorvastatin.png",
 		medications: [
 			{
 				name: "Lipitor",
@@ -215,7 +196,7 @@ export const molecules: Molecule[] = [
 			"Inhibiteur de la pompe à protons utilisé pour traiter les ulcères gastriques et le reflux gastro-œsophagien.",
 		codeATC: "A02BC01",
 		formula: "C17H19N3O3S",
-		image: "/public/assets/molecules/Omeprazole.png",
+		image: "/assets/molecules/Omeprazole.png",
 		medications: [
 			{
 				name: "Prilosec",
@@ -254,8 +235,8 @@ export const molecules: Molecule[] = [
 		description:
 			"Bloqueur des canaux calciques utilisé pour traiter l'hypertension et l'angine de poitrine.",
 		codeATC: "C08CA01",
-		formula: "C20H25ClN2O5.C6H6O3S",
-		image: "/public/assets/molecules/Amlodipine.png",
+		formula: "C20H25ClN2O5C6H6O3S",
+		image: "/assets/molecules/Amlodipine.png",
 		medications: [
 			{
 				name: "Norvasc",
@@ -295,7 +276,7 @@ export const molecules: Molecule[] = [
 			"Antidépresseur utilisé pour traiter la dépression et les TOC.",
 		codeATC: "N06AB03",
 		formula: "C17H18F3NO",
-		image: "/public/assets/molecules/Fluoxetine.png",
+		image: "/assets/molecules/Fluoxetine.png",
 		medications: [
 			{
 				name: "Prozac",

@@ -5,7 +5,13 @@ import { LocalTime } from "./UI/LocalTime"
 import { FiltersTab } from "./FiltersTab"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 
-export const DashboardIntro = () => {
+type DashboardIntroProps = {
+	isHospitalDashboard: boolean
+}
+
+export const DashboardIntro = ({
+	isHospitalDashboard,
+}: DashboardIntroProps) => {
 	const { hasHospitalSelected, hospital } = useHospitalSelected()
 
 	return (
@@ -24,7 +30,7 @@ export const DashboardIntro = () => {
 
 			<LocalTime />
 
-			<FiltersTab />
+			{isHospitalDashboard && <FiltersTab />}
 		</div>
 	)
 }
