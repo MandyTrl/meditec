@@ -26,7 +26,7 @@ export const molecules: Molecule[] = [
 			"Inhibiteur de l'enzyme de conversion de l'angiotensine (ECA) utilisé principalement pour traiter l'hypertension artérielle.",
 		codeATC: "C09AA03",
 		formula: "C21H31N3O5",
-		image: "https://example.com/images/lisinopril.jpg",
+		image: "/public/assets/molecules/Lisinopril.png",
 		medications: [
 			{
 				name: "Zestril",
@@ -66,7 +66,7 @@ export const molecules: Molecule[] = [
 			"Antidiabétique oral utilisé pour le traitement du diabète de type 2.",
 		codeATC: "A10BA02",
 		formula: "C4H11N5",
-		image: "https://example.com/images/metformin.jpg",
+		image: "/public/assets/molecules/Metformin.png",
 		medications: [
 			{
 				name: "Glucophage",
@@ -121,7 +121,7 @@ export const molecules: Molecule[] = [
 			"Antihistaminique utilisé pour soulager les symptômes des allergies.",
 		codeATC: "R06AE07",
 		formula: "C21H25ClN2O3",
-		image: "https://example.com/images/cetirizine.jpg",
+		image: "/public/assets/molecules/Cetirizine.png",
 		medications: [
 			{
 				name: "Zyrtec",
@@ -138,6 +138,21 @@ export const molecules: Molecule[] = [
 					{ date: "2023-09-01", priceEUR: 4.79, priceUSD: 5.1 },
 				],
 			},
+			{
+				name: "Claritin",
+				dosage: "10mg",
+				priceHistory: [
+					{ date: "2021-01-01", priceEUR: 5.99, priceUSD: 6.4 },
+					{ date: "2021-05-01", priceEUR: 6.09, priceUSD: 6.5 },
+					{ date: "2021-09-01", priceEUR: 6.19, priceUSD: 6.6 },
+					{ date: "2022-01-01", priceEUR: 6.29, priceUSD: 6.7 },
+					{ date: "2022-05-01", priceEUR: 6.39, priceUSD: 6.8 },
+					{ date: "2022-09-01", priceEUR: 6.49, priceUSD: 6.9 },
+					{ date: "2023-01-01", priceEUR: 6.59, priceUSD: 7.0 },
+					{ date: "2023-05-01", priceEUR: 6.69, priceUSD: 7.1 },
+					{ date: "2023-09-01", priceEUR: 6.79, priceUSD: 7.2 },
+				],
+			},
 		],
 	},
 	{
@@ -145,7 +160,7 @@ export const molecules: Molecule[] = [
 		description: "Statine utilisée pour abaisser les niveaux de cholestérol.",
 		codeATC: "C10AA05",
 		formula: "C33H35FN2O5",
-		image: "atorvastatin.png",
+		image: "/public/assets/molecules/Atorvastatin.png",
 		medications: [
 			{
 				name: "Lipitor",
@@ -200,7 +215,7 @@ export const molecules: Molecule[] = [
 			"Inhibiteur de la pompe à protons utilisé pour traiter les ulcères gastriques et le reflux gastro-œsophagien.",
 		codeATC: "A02BC01",
 		formula: "C17H19N3O3S",
-		image: "omeprazole.png",
+		image: "/public/assets/molecules/Omeprazole.png",
 		medications: [
 			{
 				name: "Prilosec",
@@ -240,7 +255,7 @@ export const molecules: Molecule[] = [
 			"Bloqueur des canaux calciques utilisé pour traiter l'hypertension et l'angine de poitrine.",
 		codeATC: "C08CA01",
 		formula: "C20H25ClN2O5.C6H6O3S",
-		image: "amlodipine.png",
+		image: "/public/assets/molecules/Amlodipine.png",
 		medications: [
 			{
 				name: "Norvasc",
@@ -280,7 +295,7 @@ export const molecules: Molecule[] = [
 			"Antidépresseur utilisé pour traiter la dépression et les TOC.",
 		codeATC: "N06AB03",
 		formula: "C17H18F3NO",
-		image: "https://example.com/images/fluoxetine.jpg",
+		image: "/public/assets/molecules/Fluoxetine.png",
 		medications: [
 			{
 				name: "Prozac",
@@ -295,6 +310,21 @@ export const molecules: Molecule[] = [
 					{ date: "2023-01-01", priceEUR: 13.19, priceUSD: 14.7 },
 					{ date: "2023-05-01", priceEUR: 13.29, priceUSD: 14.8 },
 					{ date: "2023-09-01", priceEUR: 13.39, priceUSD: 14.9 },
+				],
+			},
+			{
+				name: "Sarafem",
+				dosage: "20mg",
+				priceHistory: [
+					{ date: "2021-01-01", priceEUR: 14.49, priceUSD: 15.6 },
+					{ date: "2021-05-01", priceEUR: 14.59, priceUSD: 15.7 },
+					{ date: "2021-09-01", priceEUR: 14.69, priceUSD: 15.8 },
+					{ date: "2022-01-01", priceEUR: 14.79, priceUSD: 15.9 },
+					{ date: "2022-05-01", priceEUR: 14.69, priceUSD: 15.8 },
+					{ date: "2022-09-01", priceEUR: 14.59, priceUSD: 15.7 },
+					{ date: "2023-01-01", priceEUR: 14.79, priceUSD: 15.9 },
+					{ date: "2023-05-01", priceEUR: 14.89, priceUSD: 16.0 },
+					{ date: "2023-09-01", priceEUR: 14.99, priceUSD: 16.1 },
 				],
 			},
 		],
