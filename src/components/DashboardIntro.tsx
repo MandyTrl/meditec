@@ -5,7 +5,7 @@ import { LocalTime } from "./UI/LocalTime"
 import { FiltersTab } from "./FiltersTab"
 import { useHospitalSelected } from "@/utils/hooks/useHospitalSelected"
 
-export const TopHospitalsHeader = () => {
+export const DashboardIntro = () => {
 	const { hasHospitalSelected, hospital } = useHospitalSelected()
 
 	return (
