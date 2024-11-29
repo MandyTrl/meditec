@@ -6,7 +6,7 @@ type PriceHistory = {
 
 type Medication = {
 	name: string
-	dosage: string
+	dosage: number
 	priceHistory: PriceHistory[]
 }
 

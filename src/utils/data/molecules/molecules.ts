@@ -11,7 +11,7 @@ export const molecules: Molecule[] = [
 		medications: [
 			{
 				name: "Zestril",
-				dosage: "10mg",
+				dosage: 10,
 				priceHistory: [
 					{ date: "2023-01-01", priceEUR: 5.49, priceUSD: 6.1 },
 					{ date: "2023-05-01", priceEUR: 5.59, priceUSD: 6.2 },
@@ -26,7 +26,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Prinivil",
-				dosage: "20mg",
+				dosage: 20,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 7.99, priceUSD: 8.5 },
 					{ date: "2021-05-01", priceEUR: 8.09, priceUSD: 8.6 },
@@ -51,7 +51,7 @@ export const molecules: Molecule[] = [
 		medications: [
 			{
 				name: "Glucophage",
-				dosage: "500mg",
+				dosage: 500,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 4.69, priceUSD: 5.1 },
 					{ date: "2021-05-01", priceEUR: 4.79, priceUSD: 5.2 },
@@ -66,7 +66,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Fortamet",
-				dosage: "850mg",
+				dosage: 850,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 9.99, priceUSD: 10.8 },
 					{ date: "2021-05-01", priceEUR: 10.09, priceUSD: 10.9 },
@@ -81,7 +81,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Glumetza",
-				dosage: "1000mg",
+				dosage: 1000,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 14.99, priceUSD: 16.2 },
 					{ date: "2021-05-01", priceEUR: 15.09, priceUSD: 16.3 },
@@ -106,7 +106,7 @@ export const molecules: Molecule[] = [
 		medications: [
 			{
 				name: "Zyrtec",
-				dosage: "10mg",
+				dosage: 10,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 3.99, priceUSD: 4.3 },
 					{ date: "2021-05-01", priceEUR: 4.09, priceUSD: 4.4 },
@@ -121,7 +121,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Claritin",
-				dosage: "10mg",
+				dosage: 10,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 5.99, priceUSD: 6.4 },
 					{ date: "2021-05-01", priceEUR: 6.09, priceUSD: 6.5 },
@@ -145,7 +145,7 @@ export const molecules: Molecule[] = [
 		medications: [
 			{
 				name: "Lipitor",
-				dosage: "10mg",
+				dosage: 10,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 6.49, priceUSD: 6.9 },
 					{ date: "2021-05-01", priceEUR: 6.59, priceUSD: 7.0 },
@@ -160,7 +160,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Torvast",
-				dosage: "20mg",
+				dosage: 20,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 9.49, priceUSD: 10.2 },
 					{ date: "2021-05-01", priceEUR: 9.59, priceUSD: 10.3 },
@@ -175,7 +175,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Sortis",
-				dosage: "40mg",
+				dosage: 40,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 7.79, priceUSD: 8.4 },
 					{ date: "2021-05-01", priceEUR: 7.89, priceUSD: 8.5 },
@@ -200,7 +200,7 @@ export const molecules: Molecule[] = [
 		medications: [
 			{
 				name: "Prilosec",
-				dosage: "20mg",
+				dosage: 20,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 9.79, priceUSD: 10.6 },
 					{ date: "2021-05-01", priceEUR: 9.89, priceUSD: 10.7 },
@@ -215,7 +215,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Losec",
-				dosage: "40mg",
+				dosage: 40,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 14.79, priceUSD: 15.9 },
 					{ date: "2021-05-01", priceEUR: 14.89, priceUSD: 16.0 },
@@ -240,7 +240,7 @@ export const molecules: Molecule[] = [
 		medications: [
 			{
 				name: "Norvasc",
-				dosage: "5mg",
+				dosage: 5,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 18.79, priceUSD: 20.3 },
 					{ date: "2021-05-01", priceEUR: 18.89, priceUSD: 20.4 },
@@ -255,7 +255,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Amlor",
-				dosage: "10mg",
+				dosage: 10,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 15.79, priceUSD: 17.0 },
 					{ date: "2021-05-01", priceEUR: 15.89, priceUSD: 17.1 },
@@ -280,7 +280,7 @@ export const molecules: Molecule[] = [
 		medications: [
 			{
 				name: "Prozac",
-				dosage: "20mg",
+				dosage: 20,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 12.99, priceUSD: 14.5 },
 					{ date: "2021-05-01", priceEUR: 13.09, priceUSD: 14.6 },
@@ -295,7 +295,7 @@ export const molecules: Molecule[] = [
 			},
 			{
 				name: "Sarafem",
-				dosage: "20mg",
+				dosage: 20,
 				priceHistory: [
 					{ date: "2021-01-01", priceEUR: 14.49, priceUSD: 15.6 },
 					{ date: "2021-05-01", priceEUR: 14.59, priceUSD: 15.7 },
